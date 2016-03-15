@@ -19,8 +19,6 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.github.url }}/assets/bil-design.jpg "BIL Conference")
-
 I'm in Long Beach this weekend, attending the [BIL Conference](http://bilconference.com/). BIL is an open, self-organizing, emergent, arts, science, society and technology conference. Anyone can come; anyone can speak. If you have an idea to spread, start talking. If someone is saying something interesting, stop and listen.
 
 BIL takes place next to [TED](http://ted.com), which is a high powered annual conference, bringing together luminaries of Technology, Entertainment and Design. The ethos of BIL is that you don't need to be a luminary to have a great idea.

@@ -36,9 +36,9 @@ User XYZ's tweet was 42 characters. UserABC's RT was 52 characters, i.e. 10 char
 
 Put another way, if UserXYZ creates a tweet that was longer than 130 characters, nobody would be able to RT it with modifying the original tweet. If you're trying to get a specific message out to the world, you might not be happy with lots of people fiddling with it.
 
-I've created a new Greasemonkey script which will help you with this. I've written about Greasemonkey plugins [before](/2009/02/15/augmenting-twitter-whoami/) and this is another Twitter helper. If you install the script, you will see the following change:
+I've created a new Greasemonkey script which will help you with this. I've written about Greasemonkey plugins [before](/home/javascript/2009/02/15/augmenting-twitter-whoami.html) and this is another Twitter helper. If you install the script, you will see the following change:
 
-[![]({{ site.github.url }}/assets/retweetable_screenshot1.png "retweetable_screenshot")](/wp-content/uploads/2010/03/retweetable_screenshot1.png)
+[![retweetable_screenshot]({{ site.github.url }}/assets/retweetable_screenshot1.png "retweetable_screenshot")](/assets/retweetable_screenshot1.png)
 
 You can now see, next to the normal character countdown, a bracketed countdown. This is the number of characters that you have left, before a tweet can no longer be RTed without modification. In this example, you would be able to send the tweet (as you have 6 characters left), but Twitter users would have to remove 8 characters before they could RT your Tweet.
 

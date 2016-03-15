@@ -23,8 +23,6 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.github.url }}/assets/whale.png "Twitter Whale")
-
 As part of the [preDevCamp 2009](http://predevcamp.org) site, I created a JavaScript TwitterFeed today.
 
 A sample [can be seen here](/twitterTest.html). If you leave this page open, it will constantly update with all Twitter tweets that contain the word 'twitter'. It will update once every 5 seconds and will contain no more than the 25 most recent tweets.

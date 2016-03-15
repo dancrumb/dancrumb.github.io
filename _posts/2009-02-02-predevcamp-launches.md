@@ -20,8 +20,6 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.github.url }}/assets/smartphonewarsfeb.jpg "Palm pre")
-
 Today, [@whurley](http://twitter.com/whurley), [@giovanni](http://twitter.com/giovanni) and [I](http://twitter.com/dancrumb) launched the Palm [preDevCamp](http://predevcamp.org/).
 
 For those of you not familiar with what a DevCamp is, it's an event to develop applications (local and web based) for the Palm Pre using the Mojo development SDK. They're open to all-comers and we're really looking forward to getting our hands on this new platform and coding some apps.

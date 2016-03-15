@@ -29,13 +29,13 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.github.url }}/assets/laptopAndBooks.jpg "Laptop and Books")
+![Laptop and Books]({{ site.github.url }}/assets/laptopAndBooks.jpg "Laptop and Books")
 
 I saw [@mhat](http://twitter.com/mhat)'s tweet today about '[What language should I learn](http://twitter.com/mhat/status/1212746649)'  and it got me thinking about the times I've asked that question and how I might answer it. So, @mhat, I'm taking your tweet to be a challenge to write an unbiased and 'unwrong' post. To do this, I'm going to give you a history of the languages I have learned.  
 
 ## The early years
 
-As I wrote in [my first post](/2009/01/25/all-geekness-great-and-small/), I started at a tender age, on a ZX Spectrum. The Spectrum came with a dialect of BASIC, called 'Sinclair Basic'. Like all [BASIC](http://en.wikipedia.org/wiki/BASIC_programming_language) derivatives, it's a high level language, however unlike modern flavours of BASIC, it was untyped and unstructured. Lines of code were entered with the line number provided explicitly. There was no variable scoping and subroutines were implemented as a special 'GOTO' called 'GOSUB' which allowed you to 'RETURN' to the next line. However, since there was no variable scoping, recursion was impossible.
+As I wrote in [my first post](/home/work/2009/01/25/all-geekness-great-and-small.html), I started at a tender age, on a ZX Spectrum. The Spectrum came with a dialect of BASIC, called 'Sinclair Basic'. Like all [BASIC](http://en.wikipedia.org/wiki/BASIC_programming_language) derivatives, it's a high level language, however unlike modern flavours of BASIC, it was untyped and unstructured. Lines of code were entered with the line number provided explicitly. There was no variable scoping and subroutines were implemented as a special 'GOTO' called 'GOSUB' which allowed you to 'RETURN' to the next line. However, since there was no variable scoping, recursion was impossible.
 
 That said, I was 5 at the time, I wasn't too worried about recursion at the time. My programming was limited to copying code out of books containing page after page of ZX Spectrum programs. My brother and I would diligently type these out, then play the game for a while and then start playing with the code to see what changes we could make. This process was about as successful as genetic mutation. More often than not, our change would kill the program, but sometimes it would lead to great stuff.
 

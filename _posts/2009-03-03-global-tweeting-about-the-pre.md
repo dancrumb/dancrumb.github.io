@@ -48,7 +48,7 @@ As you can see, the BODY of the page is exceptionally simple; just two DIVs with
 
 [jQuery](http://jquery.com/) is a library that extends the Javascript language and makes it easier to perform Web 2.0 functionality in a way that works independent of your users' browsers. You can find good tutorials on jQuery all over the Internet and the docs are pretty good too, with lots of examples. One thing that I discovered the hard way is that your CSS links **must** appear before loading jQuery or else you can find you have problems when you try to access CSS properties in later code. For the life of me, I can't figure out why this is so, but that's how it works.
 
-Other people might say Prototype or YUI. I haven't used either of those, so I can't comment, but I will be learning Prototype soon, since it underpins a lot of the [webOS](/2009/02/18/what-have-we-learned-about-webos/) language.
+Other people might say Prototype or YUI. I haven't used either of those, so I can't comment, but I will be learning Prototype soon, since it underpins a lot of the [webOS](/javascript/predevcamp/programming/2009/02/18/what-have-we-learned-about-webos.html) language.
 
 ## Google Maps
 

@@ -23,9 +23,9 @@ author:
   first_name: ''
   last_name: ''
 ---
-I recently wrote about [a script designed to generate Rotating Banners](/2009/11/09/rotating-banners-in-random-order/). The script works fine, but using JavaScript to present a user with links creates a few problems of its own:
+I recently wrote about [a script designed to generate Rotating Banners](/javascript/programming/2009/11/09/rotating-banners-in-random-order.html). The script works fine, but using JavaScript to present a user with links creates a few problems of its own:
 
-*   Google Analytics will not be able to track these external links (if, for instance, you're using my [Google Analytics for external links](/2009/06/21/enabling-external-links-for-google-analytics/))
+*   Google Analytics will not be able to track these external links (if, for instance, you're using my [Google Analytics for external links](/javascript/2009/06/21/enabling-external-links-for-google-analytics.html))
 *   Non-visual User Agents will not be able to access these links
 *   As a subset, Google will not be able to crawl these links and so associate your site with the sites those banners point to.
 

@@ -18,8 +18,8 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.github.url }}/assets/tweetMonkey.jpg "Twitter - Greasemonkey")
+![Greasemonkey]({{ site.github.url }}/assets/tweetMonkey.jpg "Twitter - Greasemonkey")
 
-Twitter recently changed the ids and classes that they use for the DIVs their pages, so I had to make an update to the [Twitter WhoAmi script](/2009/02/15/augmenting-twitter-whoami/).
+Twitter recently changed the ids and classes that they use for the DIVs their pages, so I had to make an update to the [Twitter WhoAmi script](/home/javascript/2009/02/15/augmenting-twitter-whoami.html).
 
 Still find it useful as I now have at least 4 Twitter identities (one personal and three project IDs).
