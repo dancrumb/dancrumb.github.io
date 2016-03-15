@@ -8,7 +8,7 @@
 # Site settings
 title: All Geekness Great and Small
 email: dancrumb@gmail.com
-description: > Dan Rumney's personal blog
+description: Dan Rumney's personal blog
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://danrumney.com" # the base hostname & protocol for your site
 twitter_username: therealdancrumb
