@@ -1,0 +1,46 @@
+/*
+ * CSS for box containing all the tweets
+ */
+div#tweets
+{
+} 
+
+/*
+ * CSS for the box containing a single tweet
+ */
+div.tweet
+{
+  margin:0.5em;
+  padding-top:1.5em;
+  text-align:left;
+  height:8em;
+}
+
+a.userImage,
+a.userImage img
+{
+  border:0;
+}
+
+/*
+ * CSS for a link to a twitter user's page
+ */
+span.tweetUser
+{
+}
+
+/*
+ * CSS for a link to an external page
+ */
+span.extLink
+{
+}
+
+/*
+ * CSS for the text of the tweet
+ */
+div.tweetText
+{
+  padding-top:1em;
+  padding-left:1em;
+}

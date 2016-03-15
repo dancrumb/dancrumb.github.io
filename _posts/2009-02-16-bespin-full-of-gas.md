@@ -22,7 +22,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.baseurl }}/assets/Episode_5_Cloud_City_Clouds.jpg "Bespin")
+![]({{ site.github.url }}/assets/Episode_5_Cloud_City_Clouds.jpg "Bespin")
 
 Lot's of people have been writing about [Bespin](https://bespin.mozilla.com/), including [Whurley](http://weblog.infoworld.com/whurley/archives/2009/02/cloud_computing_3.html), and I've got to say, I'm not sharing the general enthusiasm for the release.
 

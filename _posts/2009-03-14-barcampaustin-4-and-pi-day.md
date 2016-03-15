@@ -21,7 +21,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.baseurl }}/assets/dj-dillo.png "BarCamp Armadillo")
+![]({{ site.github.url }}/assets/dj-dillo.png "BarCamp Armadillo")
 
 I'm doubly excited today. It's BarCampAustin time and it's Pi Day!  
 

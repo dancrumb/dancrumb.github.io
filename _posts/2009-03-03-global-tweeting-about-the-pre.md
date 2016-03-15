@@ -23,7 +23,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.baseurl }}/assets/twitterGlobe.jpg "Twitter around the globe")
+![]({{ site.github.url }}/assets/twitterGlobe.jpg "Twitter around the globe")
 
 The other day, the preDevCamp team published our 'PreView' map at [<del datetime="2012-12-11T03:42:21+00:00">http://predevcamp.org/preView.html</del>](http://predevcamp.org/preView.html "This link is now defunct"). In this post, I'll talk about how it was put together.
 

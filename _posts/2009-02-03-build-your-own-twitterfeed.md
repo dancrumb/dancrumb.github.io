@@ -23,7 +23,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.baseurl }}/assets/whale.png "Twitter Whale")
+![]({{ site.github.url }}/assets/whale.png "Twitter Whale")
 
 As part of the [preDevCamp 2009](http://predevcamp.org) site, I created a JavaScript TwitterFeed today.
 

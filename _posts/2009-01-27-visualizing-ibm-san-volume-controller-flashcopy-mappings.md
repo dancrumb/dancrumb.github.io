@@ -22,7 +22,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-[![disk]({{ site.baseurl }}/assets/disk1.jpg "disk")](/wp-content/uploads/2009/01/disk1.jpg)
+[![disk]({{ site.github.url }}/assets/disk1.jpg "disk")](/wp-content/uploads/2009/01/disk1.jpg)
 
 Last week, I completed a paper on [Visualizing SAN Volume Controller FlashCopy Mapping](/papers/visualfcms/visualisefcms.pdf).
 

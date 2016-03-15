@@ -19,7 +19,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.baseurl }}/assets/bil-design.jpg "BIL Conference")
+![]({{ site.github.url }}/assets/bil-design.jpg "BIL Conference")
 
 I'm in Long Beach this weekend, attending the [BIL Conference](http://bilconference.com/). BIL is an open, self-organizing, emergent, arts, science, society and technology conference. Anyone can come; anyone can speak. If you have an idea to spread, start talking. If someone is saying something interesting, stop and listen.
 

@@ -19,7 +19,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.baseurl }}/assets/time-flies-clock.gif "Time flies")
+![]({{ site.github.url }}/assets/time-flies-clock.gif "Time flies")
 
 So, it's been over a month since I last posted, but things have got busy. Here's what I've been up to:
 

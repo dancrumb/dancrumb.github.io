@@ -1,0 +1,47 @@
+body
+{
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+h1
+{
+     background-color:#3B5998;
+     color:#FFFFFF;
+     padding-left:0.5em;
+}
+
+p
+{
+	padding-left:0.5em;
+	padding-right:0.5em;
+}
+
+label
+{
+	width: 12em;
+	float: left;
+	text-align: right;
+	margin-right: 0.5em;
+	display: block
+}
+
+form div
+{
+	padding-bottom:0.5em;
+}
+
+.blurredBox
+{
+	color:#444444;
+	font-style:italic;
+}
+
+input.error
+{
+	background-color:#FF8080;
+}
+
+input[type=text]
+{
+	width:35em;
+}

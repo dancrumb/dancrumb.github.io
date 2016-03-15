@@ -21,7 +21,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.baseurl }}/assets/zxspectrum_48k.jpg "ZX Spectrum 48K")
+![ZX Spectrum 48K]({{ site.github.url }}/assets/zxspectrum_48k.jpg "ZX Spectrum 48K")
 
 I've been playing with technology for nearly 25 years, ever since my parents bought a [ZX Spectrum 48K](http://en.wikipedia.org/wiki/ZX_Spectrum#Models "Wikipedia Article on ZX Spectrum") for my siblings and me. My brother and I would faithfully copy program listings from books, play the games that those listings created and then merrily modify them to our own ends. We also had a huge disorganised box of Lego and whiled away many a Saturday building models from plans and imagination (for British readers: many of these models were inspired by 'Chock-A-Block').
 

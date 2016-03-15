@@ -21,9 +21,9 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.baseurl }}/assets/messageIcons.png "Message Icons")
+![]({{ site.github.url }}/assets/messageIcons.png "Message Icons")
 
-Yesterday, my [sister](http://twitter.com/meganvwalker) sent me a [tweet](http://twitter.com/meganvwalker/status/1216695782) that posed a good question: "How is Twitter any better or different than an SMS or Facebook?".
+Yesterday, my [sister](http://twitter.com/MeganWalkerUK) sent me a tweet that posed a good question: "How is Twitter any better or different than an SMS or Facebook?".
 
 To me, the major difference is intent; intended audience and the intention behind all submissions.  
 

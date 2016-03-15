@@ -18,7 +18,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.baseurl }}/assets/glasses.jpg "NerdNite Glasses")
+![]({{ site.github.url }}/assets/glasses.jpg "NerdNite Glasses")
 
 Thanks to [Michelle Greer](http://blogs.discovery.com/nerdabout_austin/2009/03/nerdnite-austin-needs-you.html) for announcing the arrival of NerdNite in Austin.
 

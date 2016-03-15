@@ -23,7 +23,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.baseurl }}/assets/tweetMonkey.jpg "Twitter and Greasemonkey")
+![]({{ site.github.url }}/assets/tweetMonkey.jpg "Twitter and Greasemonkey")
 
 We all know, by now, that Twitter limits its tweets to 140 characters. We've all got pretty good at limiting ourselves to 140 characters, but many overlook a hidden limit. This post outlines what that is and how we can avoid it.
 
@@ -38,7 +38,7 @@ Put another way, if UserXYZ creates a tweet that was longer than 130 characters,
 
 I've created a new Greasemonkey script which will help you with this. I've written about Greasemonkey plugins [before](/2009/02/15/augmenting-twitter-whoami/) and this is another Twitter helper. If you install the script, you will see the following change:
 
-[![]({{ site.baseurl }}/assets/retweetable_screenshot1.png "retweetable_screenshot")](/wp-content/uploads/2010/03/retweetable_screenshot1.png)
+[![]({{ site.github.url }}/assets/retweetable_screenshot1.png "retweetable_screenshot")](/wp-content/uploads/2010/03/retweetable_screenshot1.png)
 
 You can now see, next to the normal character countdown, a bracketed countdown. This is the number of characters that you have left, before a tweet can no longer be RTed without modification. In this example, you would be able to send the tweet (as you have 6 characters left), but Twitter users would have to remove 8 characters before they could RT your Tweet.
 

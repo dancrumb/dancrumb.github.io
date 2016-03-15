@@ -22,7 +22,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.baseurl }}/assets/iStock_000005299702XSmall.jpg "Conference")
+![]({{ site.github.url }}/assets/iStock_000005299702XSmall.jpg "Conference")
 
 I spent the past 2 days at the BIL Conference in Long Beach, this weekend. I was, once again, reminded of the value of conferences in the technology arena.
 

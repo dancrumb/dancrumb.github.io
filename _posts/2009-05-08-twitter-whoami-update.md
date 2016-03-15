@@ -18,7 +18,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.baseurl }}/assets/tweetMonkey.jpg "Twitter - Greasemonkey")
+![]({{ site.github.url }}/assets/tweetMonkey.jpg "Twitter - Greasemonkey")
 
 Twitter recently changed the ids and classes that they use for the DIVs their pages, so I had to make an update to the [Twitter WhoAmi script](/2009/02/15/augmenting-twitter-whoami/).
 

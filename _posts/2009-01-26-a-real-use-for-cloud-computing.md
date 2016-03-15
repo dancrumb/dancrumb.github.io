@@ -22,7 +22,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-![Cloud]({{ site.baseurl }}/assets/cloud-61.jpg "Cloud")
+![Cloud]({{ site.github.url }}/assets/cloud-61.jpg "Cloud")
 
 "Cloud computing" is the latest in a long line of technology buzzwords that nobody really seems to understand... or should I say that **everybody** claims to know what it means, but nobody seems to agree. Today, [whurley](http://whurley.com/ "whurley's home page") published [an open letter to Barack Obama](http://weblog.infoworld.com/whurley/archives/2009/01/cloud_computing.html "Open Letter to Obama") advocating the creation of a computing cloud for use by all colleges and universities.
 

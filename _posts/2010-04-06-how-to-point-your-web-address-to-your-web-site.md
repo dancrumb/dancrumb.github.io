@@ -25,15 +25,15 @@ Let's say you have a website hosted somewhere, and you've bought the domain name
 
 First, log on to your account. Once you have, you should see a page similar to this:
 
-[![]({{ site.baseurl }}/assets/account1.jpg "Go Daddy Account page")](http://danrumney.com/wp-content/uploads/2010/04/account1.jpg)
+[![]({{ site.github.url }}/assets/account1.jpg "Go Daddy Account page")](http://danrumney.com/wp-content/uploads/2010/04/account1.jpg)
 
 Select 'Domain Manager' and the next window will open up:
 
-[![]({{ site.baseurl }}/assets/domain_manager1.jpg "Go Daddy Domain Manager")](http://danrumney.com/wp-content/uploads/2010/04/domain_manager1.jpg)
+[![]({{ site.github.url }}/assets/domain_manager1.jpg "Go Daddy Domain Manager")](http://danrumney.com/wp-content/uploads/2010/04/domain_manager1.jpg)
 
 On this page, select the domain name that you're interested in and then click on the Nameservers. The following window will pop up:
 
-[![]({{ site.baseurl }}/assets/dns_settings1.jpg "Go Daddy Nameserver Settings")](http://danrumney.com/wp-content/uploads/2010/04/dns_settings1.jpg)
+[![]({{ site.github.url }}/assets/dns_settings1.jpg "Go Daddy Nameserver Settings")](http://danrumney.com/wp-content/uploads/2010/04/dns_settings1.jpg)
 
 Choose 'I have specific nameservers for my domain' and insert the nameservers that your hosting solution provided.
 

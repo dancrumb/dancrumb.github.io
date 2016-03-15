@@ -21,7 +21,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-[![preDevCamp Logo]({{ site.baseurl }}/assets/predevcamp_2009_bg2.png "preDevCamp Logo")](http://danrumney.com/wp-content/uploads/2009/05/predevcamp_2009_bg2.png)
+[![preDevCamp Logo]({{ site.github.url }}/assets/predevcamp_2009_bg2.png "preDevCamp Logo")](http://danrumney.com/wp-content/uploads/2009/05/predevcamp_2009_bg2.png)
 
 Back in February, [Whurley](http://whurley.com/), [Gio](http://www.gallucci.net/) and I heard about a new product called the Palm Pre.  
 I was excited at the promise of a new, open mobile development platform and we decided to recreate the success of iPhoneDevCamp by creating preDevCamp.

@@ -29,7 +29,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.baseurl }}/assets/laptopAndBooks.jpg "Laptop and Books")
+![]({{ site.github.url }}/assets/laptopAndBooks.jpg "Laptop and Books")
 
 I saw [@mhat](http://twitter.com/mhat)'s tweet today about '[What language should I learn](http://twitter.com/mhat/status/1212746649)'  and it got me thinking about the times I've asked that question and how I might answer it. So, @mhat, I'm taking your tweet to be a challenge to write an unbiased and 'unwrong' post. To do this, I'm going to give you a history of the languages I have learned.  
 
@@ -55,7 +55,7 @@ While at university, I also participated in an Electronics lab which involved le
 
 In the summer between my second and third years, I spent four weeks working for [Milford Instruments](http://www.milinst.com/). While there, I developed a [DMX-512 Transceiver Controller](http://www.ppmilinst.redcetera.com/shop/DMX/pdf/1_463.pdf). I was working with the SX-Chip from Parallax and learned how to write assembler, how to work with interrupt handlers and how to get microcontrollers to talk to other microchips. For 4 weeks, I worked on the firmware and the hardware and really learned what programming was all about...
 
-![]({{ site.baseurl }}/assets/computerCode.jpg "Computer Code")
+![]({{ site.github.url }}/assets/computerCode.jpg "Computer Code")
 
 ## Coding starts to bring in money
 

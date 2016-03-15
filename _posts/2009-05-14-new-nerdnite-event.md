@@ -20,7 +20,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-[![nerd_nite_glasses]({{ site.baseurl }}/assets/nerd_nite_glasses1.jpg "nerd_nite_glasses")](http://danrumney.com/wp-content/uploads/2009/05/nerd_nite_glasses1.jpg)  
+[![nerd_nite_glasses]({{ site.github.url }}/assets/nerd_nite_glasses1.jpg "nerd_nite_glasses")](http://danrumney.com/wp-content/uploads/2009/05/nerd_nite_glasses1.jpg)  
 [nerdnite Austin](http://austin.nerdnite.com/) has just announced the line up for the May edition of nerdnite.
 
 As the co-founder of nerdnite Austin, I have to admit a little bias, but I think you should head on over and check it out! This month we're talking about accidental innovation and smart environments.

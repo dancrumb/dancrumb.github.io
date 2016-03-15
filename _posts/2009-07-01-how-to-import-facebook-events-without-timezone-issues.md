@@ -24,7 +24,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-[![syncMess]({{ site.baseurl }}/assets/syncMess11.png "syncMess")](/wp-content/uploads/2009/07/syncMess11.png)
+[![syncMess]({{ site.github.url }}/assets/syncMess11.png "syncMess")](/wp-content/uploads/2009/07/syncMess11.png)
 
 As an owner of a brand new Palm Pre, I recently got exposed to the vagaries of trying to import my Facebook Calendar into my Pre. It's not as easy as it should be and the fault lies with Facebook **and** with Palm. While we're waiting to sort things out, I've written a little application, along with the post, to help myself and others out of this pickle
 

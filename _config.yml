@@ -10,9 +10,9 @@ title: All Geekness Great and Small
 email: dancrumb@gmail.com
 description: Dan Rumney's personal blog
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://danrumney.com" # the base hostname & protocol for your site
 twitter_username: therealdancrumb
 github_username:  dancrumb
+timezone: America/Chicago
 
 # Build settings
 markdown: redcarpet

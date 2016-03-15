@@ -21,7 +21,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.baseurl }}/assets/predevcamp_2009.png "preDevCamp 2009")
+![]({{ site.github.url }}/assets/predevcamp_2009.png "preDevCamp 2009")
 
 On Monday, I [announced the launch of preDevCamp](/?p=52 "preDevCamp Launches!"). There has been a fantastic global response and today I'd like to announce [the fanclub that we've set up on Facebook](http://www.facebook.com/pages/PreDevCamp/46844088654 "preDevCamp Facebook Fanclub").
 

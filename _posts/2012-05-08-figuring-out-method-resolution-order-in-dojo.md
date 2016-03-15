@@ -33,13 +33,13 @@ When you have an Object that inherits methods from multiple parent Object, there
 
 Normally, it's pretty easy to figure things out. Consider the following:
 
-![Basic Inheritance Chain]({{ site.baseurl }}/assets/mro/simple_inheritance.jpg)
+![Basic Inheritance Chain]({{ site.github.url }}/assets/mro/simple_inheritance.jpg)
 
 It's easy to figure out which Function object to use for the method call `C.method()`. If it's not in `C`, look in `B`. If it's not there, look in `A`.
 
 Now consider this diagram, which shows the well-known [Diamond problem](http://en.wikipedia.org/wiki/Diamond_problem)
 
-![Diamond problem diagram]({{ site.baseurl }}/assets/mro/diamond.jpg)
+![Diamond problem diagram]({{ site.github.url }}/assets/mro/diamond.jpg)
 
 In this diagram, `C` inherits from `B` and `D`, which both inherit from `A`. So here's the question: if `C` overrides a method from `A` called `foo`, and `B` and `D` both override that method differently, which Function will be used for the method call `C.foo()`?
 

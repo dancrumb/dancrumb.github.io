@@ -22,7 +22,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.baseurl }}/assets/predevcamp_2009.png "preDevCamp Logo")
+![]({{ site.github.url }}/assets/predevcamp_2009.png "preDevCamp Logo")
 
 On a number of occasions this weekend, while I was at the [BIL Conference](http://bilconference.com/), I was asked the question: "Why are you doing the preDevCamp?" I thought it would be useful to provide an answer here.
 

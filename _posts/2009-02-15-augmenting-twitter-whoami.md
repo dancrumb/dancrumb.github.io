@@ -22,7 +22,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.baseurl }}/assets/tweetMonkey.jpg "Twitter meets GreaseMonkey")
+![]({{ site.github.url }}/assets/tweetMonkey.jpg "Twitter meets GreaseMonkey")
 
 Like a fair number of people, I have a number of Twitter identities. I have my personal identity ([@dancrumb](http://twitter.com/dancrumb)) as well as a number of shared identities that represent events or organizations in which I'm involved.
 

@@ -7,10 +7,7 @@ published: true
 status: publish
 categories: []
 tags: []
-meta:
-  _edit_last: '1'
 author:
-  login: admin
   email: dancrumb@gmail.com
   display_name: dancrumb
   first_name: ''
@@ -40,7 +37,7 @@ a worked example of automation on the SVC Command Line. This paper assumes famil
 FlashCopy functionality.
 
 
-* [![icon_pdf (1K)]({{ site.baseurl }}/assets/icon_pdf.gif)](papers/visualfcms/visualisefcms.pdf "PDF version") PDF
-* [![icon_script (1K)]({{ site.baseurl }}/assets/icon_script.gif)](visualfcms/makeFCMapTree.sh "Script") FlashCopy Mapping Visualisation script</td>
-* [![icon_html (1K)]({{ site.baseurl }}/assets/icon_html.gif)](visualfcms/visualisefcms.html "HTML version") HTML</td>
-* [![icon_xml (1K)]({{ site.baseurl }}/assets/icon_xml.gif)](visualfcms/visualisefcms.xml "DocBook version") DocBook</td>
+* [![icon_pdf (1K)]({{ site.github.url }}/assets/icon_pdf.gif)]({{ site.github.url }}/papers/visualfcms/visualisefcms.pdf "PDF version") PDF
+* [![icon_script (1K)]({{ site.github.url }}/assets/icon_script.gif)]({{ site.github.url }}/visualfcms/makeFCMapTree.sh "Script") FlashCopy Mapping Visualisation script</td>
+* [![icon_html (1K)]({{ site.github.url }}/assets/icon_html.gif)]({{ site.github.url }}/visualfcms/visualisefcms.html "HTML version") HTML</td>
+* [![icon_xml (1K)]({{ site.github.url }}/assets/icon_xml.gif)]({{ site.github.url }}/visualfcms/visualisefcms.xml "DocBook version") DocBook</td>

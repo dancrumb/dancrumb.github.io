@@ -236,7 +236,7 @@ The way that Dojo handles this is to create a dispatch Function that creates a l
 
 In Javascript, an Object is simply an [associative array](http://en.wikipedia.org/wiki/Associative_array) with some special features. The keys of the Object are the field names and method names. The values of the Object are the field values and Function objects. In the image below, you can see a representation of the two objects created in our code sample:
 
-![Basic object diagram]({{ site.baseurl }}/assets/basic_objects.jpg)
+![Basic object diagram]({{ site.github.url }}/assets/basic_objects.jpg)
 
 You can see the Function objects represented as rounded rectangles. Plain rectangles represent variable names.  
 Whenever a call is made to `bar.anotherMethod`, the `anotherMethod` Function object is called, with `bar` as the context.
@@ -244,21 +244,21 @@ Whenever a call is made to `bar.anotherMethod`, the `anotherMethod` Function obj
 In the next diagram, we create our reference to `bar.anotherMethod`. When this happens, Javascript looks to see what `bar.anotherMethod` points to and points `barAM` to that. The little `bar` on the arrow tells us that this is a hitch and that the context for this call will be `bar`.  
 At this point, you can see that a call to `bar.anotherMethod` and `barAM` will be identical. They point to the same Function object and will be called with the same context.
 
-![Initial hitch]({{ site.baseurl }}/assets/reference.jpg)
+![Initial hitch]({{ site.github.url }}/assets/reference.jpg)
 
 Next, we perform our `connect`, which is just an `aspect.after`. Here's where the problem kicks in.
 
-![Initial connect]({{ site.baseurl }}/assets/connect.jpg)
+![Initial connect]({{ site.github.url }}/assets/connect.jpg)
 
 When the `aspect.after` is performed, Dojo replaces the `anotherMethod` Function with the `DISPATCHER` function that handles all of the AOP magic. Now, `bar.anotherMethod` points to `DISPATCHER`. `DISPATCHER`'s job is to call all of the `aspect.before` Functions, then the Function that is being advised (in this case `anotherMethod`) and then the `aspect.after` functions. (We're ignoring `aspect.around` here, just for diagrammatic clarity... it doesn't alter the explanation). You can see here, that `barAM` and `bar.anotherMethod` no longer point to the same thing.
 
 Now, we add our second hitch:
 
-![Second hitch]({{ site.baseurl }}/assets/reference2.jpg)
+![Second hitch]({{ site.github.url }}/assets/reference2.jpg)
 
 Now, `bar.anotherMethod` is pointing to the AOP dispatcher, so that's what `barAM2` points to. When we connect our second method:
 
-![Second connect]({{ site.baseurl }}/assets/connect2.jpg)
+![Second connect]({{ site.github.url }}/assets/connect2.jpg)
 
 `bar.anotherMethod` and `barAM2` are still pointing to the same thing. That explains what we saw in our console. Once AOP advice has been attached to a method, any newly created references to this method will see any advice attached **after** that reference is made
 
@@ -272,7 +272,7 @@ Since the very nature of web-apps results is asynchronous, you often cannot guar
 
 So how do we avoid this? Luckily, it's really easy. `hitch` allows you to provide a `method` as a String, rather than a Function. When you do this, your reference points to the method in a different way:
 
-![Safe hitch]({{ site.baseurl }}/assets/safe_hitch.jpg)
+![Safe hitch]({{ site.github.url }}/assets/safe_hitch.jpg)
 
 Your code would now look like:
 

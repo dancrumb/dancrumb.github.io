@@ -25,7 +25,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.baseurl }}/assets/perl.jpg "Perl Camel")
+![]({{ site.github.url }}/assets/perl.jpg "Perl Camel")
 
 I've been coding in Perl for years and, generally, I think I'm a pretty competent coder. However, every now and again, I fall into a hole that takes me a loooong time to get out of. Invariably, these problems boil down to _upload_ issues, not code issues. As an aide-mémoire for myself and, hopefully, to you, I thought I'd jot down a few problems that I've seen and what the solution was.  
 

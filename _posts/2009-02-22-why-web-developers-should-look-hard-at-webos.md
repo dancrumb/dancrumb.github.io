@@ -23,7 +23,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.baseurl }}/assets/guyAtComputer.jpg "Guy At Computer")There is a lot of excitement in the mobile development world about the coming of the Palm Pre. Palm's been doing pretty poorly of late, so the alternate prospects of abject failure (and bye, bye Palm) and glorious success (bye, bye iPhone) has get everyone all of a quiver. The thing is, I'm a big geek... I'm just excited about webOS.  
+![]({{ site.github.url }}/assets/guyAtComputer.jpg "Guy At Computer")There is a lot of excitement in the mobile development world about the coming of the Palm Pre. Palm's been doing pretty poorly of late, so the alternate prospects of abject failure (and bye, bye Palm) and glorious success (bye, bye iPhone) has get everyone all of a quiver. The thing is, I'm a big geek... I'm just excited about webOS.  
 
 If you don't know, webOS is the new operating system that Palm have created. Instead of having to write apps in Objective C or Java, Palm have opted for having HTML, Javascript and CSS as the language of choice. I think this might be a smart move on their part; the number of applications that developers write is directly proportional to the number of developers who actually **have** the expertise to code for this platform. However, I think Palm have only made _half_ of this smart move.
 

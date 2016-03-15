@@ -21,7 +21,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-[![barometer]({{ site.baseurl }}/assets/barometer1.jpg "barometer")](http://danrumney.com/wp-content/uploads/2009/05/barometer1.jpg)
+[![barometer]({{ site.github.url }}/assets/barometer1.jpg "barometer")](http://danrumney.com/wp-content/uploads/2009/05/barometer1.jpg)
 
 The past week has seen a lot of change at preDevCamp. It's been a busy time, but I believe we've found our footing again and it's time to move forward.
 

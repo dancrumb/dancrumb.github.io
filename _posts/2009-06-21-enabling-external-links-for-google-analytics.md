@@ -21,7 +21,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-[![googleAnalyticsLogo]({{ site.baseurl }}/assets/googleAnalyticsLogo11.jpg "googleAnalyticsLogo")]({{ site.baseurl }}/assets/googleAnalyticsLogo11.jpg)
+[![googleAnalyticsLogo]({{ site.github.url }}/assets/googleAnalyticsLogo11.jpg "googleAnalyticsLogo")]({{ site.github.url }}/assets/googleAnalyticsLogo11.jpg)
 
 Tracking external links with Google Analytics is a great way to work out and why how people are leaving your site. This post describes a method for automatically tracking external links in a way that degrades gracefully in the absence of Javascript.  
 

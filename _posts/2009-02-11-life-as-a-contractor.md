@@ -12,18 +12,15 @@ tags:
 - brother
 - contractor
 - UK
-meta:
-  _edit_last: '1'
 author:
-  login: admin
   email: dancrumb@gmail.com
-  display_name: dancrumb
+  display_name: Dan Rumney
   first_name: ''
   last_name: ''
 ---
-![]({{ site.baseurl }}/assets/shakingHands.jpg "Shaking Hands")
+![Shaking Hands]({{ site.github.url }}/assets/shakingHands.jpg "Shaking Hands")
 
-[My brother](http://orconservices.co.uk/) is an IT contractor in the UK and has just completed a series of four articles on his transition from the world of permanent work to that of contractual work. One of the interesting points he makes is that, with the downturn in the global economy, on of the main barriers to becoming a contractor (the lack of job security) has been significantly diminished as large companies start to fail and roll out massive layoffs.
+My brother is an IT contractor in the UK and has just completed a series of four articles on his transition from the world of permanent work to that of contractual work. One of the interesting points he makes is that, with the downturn in the global economy, on of the main barriers to becoming a contractor (the lack of job security) has been significantly diminished as large companies start to fail and roll out massive layoffs.
 
 The four articles can all be found at [http://www.contractoruk.com](http://www.contractoruk.com) or you can click to them from here:
 

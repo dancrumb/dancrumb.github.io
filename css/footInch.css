@@ -1,0 +1,83 @@
+/* 
+ * Styling for the Foot-Inch Calculator
+ */
+input#equation
+{
+	width:12em;	
+}
+div#answers
+{
+ border:thin solid black;
+ -moz-border-radius:5px;
+ -webkit-border-radius:5px;
+ padding:0px 5px 5px 5px;
+ 
+ width:16em;
+ overflow:auto;
+ height:250px
+}
+
+div#answers ul,
+div#answers ul li
+{
+	list-style-image:none;
+	list-style-type:none;
+	padding-left:0px;
+}
+
+
+div#answers ul li
+{
+	padding-bottom:2px;
+}
+
+div#button_panel{
+	position:absolute;
+	top:5em;
+	left:2em;
+}
+
+div#calculator
+{
+	position:relative;
+}
+
+div#answerDiv
+{
+	position:absolute;
+	top:0em;
+	left:20em;
+}
+div#equationDiv
+{
+	position:absolute;
+	top:0em;
+	left:2em;
+}
+
+
+.calc_button
+{
+	width:3em;
+	margin:0em;
+}
+
+
+
+.error
+{
+	color:red;
+}
+
+
+.expression
+{
+	cursor:pointer;
+	color:blue;
+}
+
+.result
+{
+	cursor:pointer;
+	color:green;
+}

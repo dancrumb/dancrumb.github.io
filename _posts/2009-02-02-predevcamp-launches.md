@@ -20,7 +20,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.baseurl }}/assets/smartphonewarsfeb.jpg "Palm pre")
+![]({{ site.github.url }}/assets/smartphonewarsfeb.jpg "Palm pre")
 
 Today, [@whurley](http://twitter.com/whurley), [@giovanni](http://twitter.com/giovanni) and [I](http://twitter.com/dancrumb) launched the Palm [preDevCamp](http://predevcamp.org/).
 

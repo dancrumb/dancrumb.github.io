@@ -20,7 +20,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.baseurl }}/assets/n667959782_2810030_1842486.jpg "preDevCamp Team and Pam from Palm")
+![]({{ site.github.url }}/assets/n667959782_2810030_1842486.jpg "preDevCamp Team and Pam from Palm")
 
 Last night was the launch party for the Palm Pre and I was lucky enough to receive an invite. Originally, I was a little perplexed; the invite touted:
 

@@ -25,7 +25,7 @@ author:
   first_name: ''
   last_name: ''
 ---
-![]({{ site.baseurl }}/assets/webOSRoughCutsTitle.png "webOS Rough Cuts")
+![]({{ site.github.url }}/assets/webOSRoughCutsTitle.png "webOS Rough Cuts")
 
 O'reilly release [the first chapter of their new webOS book](http://oreilly.com/catalog/9780596801816/) in the past few days and it has been a welcome island in a sea of tedious rumours. While others may wildly speculate on **when** the Pre will appear, at least we now have some idea of what it will be running.  
 
