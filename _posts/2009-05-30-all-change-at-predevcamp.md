@@ -21,11 +21,11 @@ author:
   first_name: ''
   last_name: ''
 ---
-[![barometer]({{ site.github.url }}/assets/barometer1.jpg "barometer")](http://danrumney.com/wp-content/uploads/2009/05/barometer1.jpg)
+[![barometer]({{ site.github.url }}/assets/barometer1.jpg "barometer")]({{ site.github.url }}/assets/barometer1.jpg)
 
 The past week has seen a lot of change at preDevCamp. It's been a busy time, but I believe we've found our footing again and it's time to move forward.
 
-Following our challenges with Palm, [whurley](http://whurley.com/open-innovation/2009/05/21/exit-whurley-stage-left/) and [gio](http://blog.gallucci.net/2009/05/so-palm-got-it.html) have opted to move on to other things. We wouldn't be where we are without them and I've eternally grateful to them for all they did for preDevCamp. I hope I'll see them at their local events and hope to work with them again on future projects.
+Following our challenges with Palm, [whurley](http://whurley.com) and [gio](http://blog.gallucci.net) have opted to move on to other things. We wouldn't be where we are without them and I've eternally grateful to them for all they did for preDevCamp. I hope I'll see them at their local events and hope to work with them again on future projects.
 
 Joining the organizing team are [Lisa Brewster](http://www.lisabrewster.com/) and Greg Stevenson. I'm very grateful to them, since preDevCamp is, in no way, a one person job.
 

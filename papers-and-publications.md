@@ -38,6 +38,6 @@ FlashCopy functionality.
 
 
 * [![icon_pdf (1K)]({{ site.github.url }}/assets/icon_pdf.gif)]({{ site.github.url }}/papers/visualfcms/visualisefcms.pdf "PDF version") PDF
-* [![icon_script (1K)]({{ site.github.url }}/assets/icon_script.gif)]({{ site.github.url }}/visualfcms/makeFCMapTree.sh "Script") FlashCopy Mapping Visualisation script</td>
-* [![icon_html (1K)]({{ site.github.url }}/assets/icon_html.gif)]({{ site.github.url }}/visualfcms/visualisefcms.html "HTML version") HTML</td>
-* [![icon_xml (1K)]({{ site.github.url }}/assets/icon_xml.gif)]({{ site.github.url }}/visualfcms/visualisefcms.xml "DocBook version") DocBook</td>
+* [![icon_script (1K)]({{ site.github.url }}/assets/icon_script.gif)]({{ site.github.url }}/papers/visualfcms/makeFCMapTree.sh "Script") FlashCopy Mapping Visualisation script</td>
+* [![icon_html (1K)]({{ site.github.url }}/assets/icon_html.gif)]({{ site.github.url }}/papers/visualfcms/visualisefcms.html "HTML version") HTML</td>
+* [![icon_xml (1K)]({{ site.github.url }}/assets/icon_xml.gif)]({{ site.github.url }}/papers/visualfcms/visualisefcms.xml "DocBook version") DocBook</td>
