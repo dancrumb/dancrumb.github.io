@@ -1,0 +1,579 @@
+<!doctype HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<head>
+<title>Sinclair Spectrum ROMs and Games | Free Download</title>
+<meta name="description" content="Download Sinclair Spectrum ROMs and Games for PC,iPhone,iPad or Android device and get the emulators for free from the webs No1 Rom and Emulator site theoldcomputer.com" >
+<meta name="Keywords" content="Sinclair,Spectrum,Spectrum ROMs,Sinclair Spectrum ROMs,Spectrum Games,Sinclair Games,Sinclair Spectrum Games,roms,rom,game,games,download,free,free download,cool rom,free games,android,ipad,iphone,ios,emulation,theoldcomputer,the old computer,old computer games,computer games,old games," >
+<meta http-equiv="content-language" content="en">
+<meta name="Language" content="english">
+<meta name="viewport" content="width=1080, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="http://sitefiles.theoldcomputer.com/css/main.css">
+
+<style type="text/css">
+body,td,th {font-family: Tahoma, Verdana;font-size: 12px;color: #FFFFFF;}
+
+a:link {text-decoration: none;color: #FFFFFF;}
+a:visited {text-decoration: none;color: #999999;}
+a:hover {text-decoration: underline;color: #99CC33;}
+a:active {text-decoration: none;color: #99CC33;}
+a.sort:link{text-decoration: underline;color: #FFFFFF;}
+a.sort:visited{text-decoration: underline;color: #FFFFFF;}
+a.sort:hover{text-decoration: underline;color: #FFFFFF;}
+a.sort:active{text-decoration: none;color: #FFFFFF;}
+.top_row {color: #FFFFFF;font-weight: bold;font-size: 14px;background-color: #005300;border-radius: 5px;}
+.folder_bg {background-color: #006600;border-radius: 5px;}
+.file_bg1 {background-color: #000033;}
+.file_bg2 {background-color: #000033;}.table_border {border: 1px dashed #666666;}
+.path_font {font-family: "Courier New", Courier, monospace;}
+.banned_font {font-size: 9px;}
+.error {
+	border-top-width: 2px;
+	border-bottom-width: 2px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #FF666A;
+	border-bottom-color: #FF666A;
+	color: #333;
+}
+#color_scheme {cursor:pointer;}
+.option_style {font-family: Verdana, Tahoma;font-size: 11px;}
+.language_selection {height: 22px;	width: 182px;background-color:#000033;	border: 1px dashed #666666;}
+.selected_lang {background-color:#000033;}
+#file_edit_box {position:absolute;width: 150px;display:none;}
+body {
+	background-image: url(http://sitefiles.theoldcomputer.com/images/back.gif);
+	background-repeat: repeat;
+    background-attachment: fixed;
+	background-color: #000000;
+}
+.style6 {color: #FFFF00}
+.style8 {color: #FF6600}
+.style9 {color: #999999}
+a:link {color: #00FF00;}
+a:visited {
+	color: #339933;
+}
+.focus_item td{
+	border: 2px solid #FFF;
+	background-color: #900;
+}
+.style12 {color: #666666}
+.access_rights {float: right;}
+.access_rights div {float: left;height: 16px;width: 16px;color: #333;text-align: center;margin-left: 2px;position: relative;	z-index: 2;}
+.access_rights div .greyout{background-color: #333;z-index: 10;left: -2px;top: 0px;position: absolute;opacity: 0.8;filter: alpha(opacity = 80);}
+.access_rights .guest {background-color: #a1ffa7;}
+.access_rights .registered {background-color: #ffff63;}
+.access_rights .unlimited {background-color: #f9a394;}
+
+#dir_content td {
+	position: relative;
+}
+#dir_content td .access_rights {
+	position: absolute;
+	right: 0px;
+}
+#dir_content td a {
+	display: block;
+}
+
+
+
+
+.message{
+    background-size: 40px 40px;
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%,
+                        transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%,
+                        transparent 75%, transparent);                                      
+     box-shadow: inset 0 -1px 0 rgba(255,255,255,.4);
+     width: 100%;
+     border: 1px solid;
+     color: #fff;
+     padding: 15px;
+     position: fixed;
+     _position: absolute;
+     text-shadow: 0 1px 0 rgba(0,0,0,.5);
+     animation: animate-bg 5s linear infinite;
+}
+
+.info{
+     background-color: #4ea5cd;
+     border-color: #3b8eb5;
+}
+
+.error{
+     background-color: #de4343;
+     border-color: #c43d3d;
+}
+     
+.warning{
+     background-color: #eaaf51;
+     border-color: #d99a36;
+}
+
+.success{
+     background-color: #61b832;
+     border-color: #55a12c;
+}
+
+.message h3{
+     margin: 0 0 5px 0;                                                  
+}
+
+.message p{
+     margin: 0;                                                  
+}
+
+@keyframes animate-bg {
+    from {
+        background-position: 0 0;
+    }
+    to {
+       background-position: -80px 0;
+    }
+}
+
+</style>
+
+<script type="text/javascript">
+function change_color_scheme(id)
+{
+	window.location = 'dirLIST_files/chng_clschm.php?folder=Sinclair/Spectrum&id='+id;
+}
+function set_language()
+{
+	window.location = 'dirLIST_files/set_language.php?folder=Sinclair/Spectrum&lang_id='+document.getElementById('language_selection').value;
+}
+var selected_item_type;
+var selected_item_id;
+var mouse_x;
+var mouse_y;
+var ms_ie = document.all?true:false;
+if (!ms_ie) document.captureEvents(Event.MOUSEMOVE)
+document.onmousemove = update_mouse_xy;
+function update_mouse_xy(e)
+{
+	if(ms_ie)
+	{
+		mouse_x = event.clientX + document.body.scrollLeft;
+		mouse_y = event.clientY + document.body.scrollTop;
+	}
+	else
+	{
+		mouse_x = e.pageX;
+		mouse_y = e.pageY;
+	}
+	return true
+}
+function show_div(item_type, item_id)
+{
+	selected_item_type = item_type;
+	selected_item_id = item_id;
+	x = mouse_x;
+	y = mouse_y;
+	//some browsers may return negative values
+	if(x < 0) x = 0;
+	if(y < 0) y = 0;
+	document.getElementById('file_edit_box').style.display = 'block';
+	document.getElementById('file_edit_box').style.left = x-8+'px';
+	document.getElementById('file_edit_box').style.top = y-8+'px';
+}
+function mouse_out_handler(event)
+{
+	var toElement = null;
+	if(event.relatedTarget)
+		toElement = event.relatedTarget;
+	else if(event.toElement)
+		toElement = event.toElement;
+	while (toElement && toElement.tagName != "DIV")
+		toElement = toElement.parentNode;
+	if(!toElement)
+		document.getElementById('file_edit_box').style.display = 'none';
+}
+function check_for_update() 
+{
+	var xhr;
+	try	{ xhr = new XMLHttpRequest();}
+	catch(e)
+	{
+		try
+		{
+			xhr = new ActiveXObject("Msxml12.XMLHTTP");
+		}
+		catch(e)
+		{
+			try
+			{
+				xhr = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			catch(e)
+			{
+				return false;
+			}
+		}
+	}
+	xhr.onreadystatechange = function()
+	{
+		document.getElementById('checking_gif').style.display = 'block';
+		document.getElementById('update_link_container').innerHTML = '';
+		if(xhr.readyState == 4)
+		{
+			document.getElementById('checking_gif').style.display = 'none';
+			if(xhr.responseText == 1)
+			{
+				document.getElementById('update_link_container').innerHTML = '<a href="http://dir-list.sourceforge.net/process/redir_to_update.php" target="_blank" Update Available >';
+			}
+			else
+			{
+				document.getElementById('update_link_container').innerHTML = 'No Update Found'
+			}
+		}
+	}
+	xhr.open("GET", "dirLIST_files/version_check.php?version=0.3.0", true);
+	xhr.send(null);
+}
+</script>
+
+</head>
+<body>
+
+<div class="info message">
+ <h3>IMPORTANT MESSAGE !</h3>
+ <a href="http://www.theoldcomputer.com/forum/viewtopic.php?f=17&t=4877"><p>We are looking for professional webdesigner(s) and coder(s) who would be interested in working</p>
+ <p> with us on the re-design of this website.  Please click on this message for full details.</p></a>
+</div>
+
+<div align="center"><img src="http://sitefiles.theoldcomputer.com/graphics/banners/theoldcomputer-pixel-banner-780.png" alt="The Old Computer ROMs Downloads" width="752" height="113" ></div>
+<div id="login_div_container">
+<div id="login_div">
+<div class="close_login_div" onClick="toggle_login('hide');">x</div>
+<form action="dirLIST_files/custom_development/process_user_login.php" method="post">
+<table width="100%" border="0">
+  <tr>
+    <td height="35" colspan="2"><span style="font-size:14px;font-weight:bold;">Login using your forums credentials</span> <a href="http://www.theoldcomputer.com/forum/ucp.php?mode=register">(Register)</a></td>
+    </tr>
+  <tr>
+    <td width="30%">Username</td>
+    <td width="70%"><input type="text" name="username" id="username" size="30" title="Username" ></td>
+  </tr>
+  <tr>
+    <td>Password</td>
+    <td><input type="password" name="password" id="password" size="30" title="Password" ></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="login" value="Login" >
+    <input type="hidden" name="redirect" value="" >
+      <input type="hidden" name="folder" value="Sinclair%2FSpectrum" ></td>
+  </tr>
+</table>
+</form>
+</div>
+</div>
+<table width="1030" align="center" cellpadding="3" cellspacing="0" >
+  <tr>
+    <td width="140" height="500" valign="top"><table width="140" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><!-- #BeginLibraryItem "/Library/Main Menu.lbi" --><div class="verticlemenu">
+ <div class="headerbar1">Main Menu</div>
+   <ul>
+     <li><a href="http://www.theoldcomputer.com/index.php">Home</a></li>
+     <li><a href="http://www.theoldcomputer.com/roms/index.php">Roms</a></li>
+     <li><a href="http://www.theoldcomputer.com/emulators/index.php">Emulators</a></li>
+     <li><a href="http://www.theoldcomputer.com/game-box-art-covers/index.php">Game Box Covers</a></li>
+     <li><a href="http://www.theoldcomputer.com/gamemusic/index.php">Game Music</a></li>
+     <li><a href="http://www.theoldcomputer.com/Libraries/Manuals/Game_Manuals_summary.htm">Game Manuals</a></li>
+     <li><a href="http://www.theoldcomputer.com/retro_radio/RetroRadio_Main.htm">Retro Radio Streams</a></li>
+     <li><a href="http://www.theoldcomputer.com/Libraries/Librarys (main).htm">Other Retro Material</a></li>
+    </ul>
+  <div class="headerbar3">Our Community</div>
+    <ul>
+     <li><a href="http://www.theoldcomputer.com/about/index.php">About</a></li>
+     <li><a href="http://www.theoldcomputer.com/forum/index.php">Forums</a></li>
+     <li><a href="http://www.theoldcomputer.com/blog/index.php">Blog</a></li>
+     <li><a href="https://twitter.com/Hottrout">Twitter</a></li>
+     <li><a href="https://www.facebook.com/The-Old-Computer-Dot-Com-132654320078924/">Facebook Page</a></li>
+     <li><a href="https://www.youtube.com/user/TheOldComputerDotCom">YouTube Channel</a></li>
+     <li><a href="http://www.theoldcomputer.com/website_donations.php">Hall of Fame</a></li>
+     <li><a href="http://www.theoldcomputer.com/Links/Site_links.htm">Links</a></li>     	
+  </ul>
+  <div class="headerbar4">Join Us</div>
+   <ul>
+     <li><a href="http://www.theoldcomputer.com/forum/ucp.php?mode=register">Register Here</a></li>
+     <li><a href="http://www.theoldcomputer.com/donate.php">Donate/Upgrade</a></li>
+     <li><a href="http://www.theoldcomputer.com/how_to_help.html">How To Help</a></li>
+     <li><a href="http://www.theoldcomputer.com/forum/viewtopic.php?f=5&amp;t=3238">FAQs</a></li>
+  </ul>
+</div><!-- #EndLibraryItem --></td>
+      </tr>
+    </table>    </td>
+    <td width="750" align="center" valign="top">
+<div style="text-align:center; color:#FFF; background-color:#F00;font-size:18px; line-height:30px;display:none">Please select a rating</div>
+<div id="current_listing_info">
+<table width="100%" border="0" cellpadding="1" cellspacing="0">
+            <tr><td class="title"><h1>Sinclair Spectrum ROMs</h1></td>
+            </tr>
+                        <tr>
+              <td align="center">    
+              <a href="http://jscustom.theoldcomputer.com/images/manufacturers_systems/Sinclair/Spectrum/799164sinclair-ZXSpectrum48Krev.jpg" title="Sinclair Spectrum Roms" ><img src="http://jscustom.theoldcomputer.com/images/manufacturers_systems/Sinclair/Spectrum/thumb_799164sinclair-ZXSpectrum48Krev.jpg" alt="Sinclair Spectrum Roms" border="0"></a>                
+              </td>
+            </tr>
+                        <tr>
+              <td valign="top"><h3 class="newstitle">Manufacturer : Sinclair | System : Spectrum</h3>
+              <h2 class="newspost"><b>Welcome to the Sinclair Spectrum ROMs section of the ROM Database. Please scroll down for more sections and remember to share this page. You can also vote for your favourite system.</b></h2></td>
+            </tr>
+            <tr>
+              <td valign="top" class="newspost">Sinclair Spectrum 48k/128k Plus Roms Section.<br />
+<br />
+The ZX Spectrum (pronounced /ˈzɛdˌɛks/ "Zed-Ex") is an 8-bit personal home computer released in the United Kingdom in 1982 by Sinclair Research Ltd.<br />
+<br />
+Referred to during development as the ZX81 Colour and ZX82, the machine was launched as the ZX Spectrum by Sinclair to highlight the machine's colour display, compared with the black and white of its predecessor, the ZX81. The Spectrum was ultimately released as eight different models, ranging from the entry level model with 16 KB RAM released in 1982 to the ZX Spectrum +3 with 128 KB RAM and built in floppy disk drive in 1987; together they sold in excess of 5 million units worldwide (not counting numerous clones).<br />
+<br />
+The Spectrum was among the first mainstream-audience home computers in the UK, similar in significance to the Commodore 64 in the USA. The introduction of the ZX Spectrum led to a boom in companies producing software and hardware for the machine, the effects of which are still seen; some credit it as the machine which launched the UK IT industry. Licensing deals and clones followed, and earned Clive Sinclair a knighthood for "services to British industry".<br />
+<br />
+The Commodore 64, Oric-1 and Atmos, BBC Microcomputer and later the Amstrad CPC range were rivals to the Spectrum in the UK market during the early 1980s. Over 24,000 software titles have been released since the Spectrum's launch and new titles continue to be released--over 100 in 2012. In 2014, a bluetooth keyboard modelled on the Spectrum was announced.                <br><br>   
+                <table width="100%" border="0" cellpadding="5" cellspacing="0">
+                  <tr>
+                    <td width="450" valign="middle" bgcolor="#666666"><span style="font-weight:bold;color:#66ff00;cursor:pointer;" onClick="$('top_10').toggle();">[+] Top 10 ROM Downloads (click to view)</span>
+                    <div id="top_10" style="display:block; background-color:#666666; padding:5px;margin-top:4px;">
+                      1. <a href="getfile.php?file=U2luY2xhaXIvU3BlY3RydW0vR2FtZXMvdC9UaGVDb2xvdXJPZk1hZ2ljLnppcA==">TheColourOfMagic.zip</a><br>2. <a href="getfile.php?file=U2luY2xhaXIvU3BlY3RydW0vR2FtZXMvdC9UaGVUcmFkaW5nR2FtZS56aXA=">TheTradingGame.zip</a><br>3. <a href="getfile.php?file=U2luY2xhaXIvU3BlY3RydW0vR2FtZXMvYy9DYXBpdGFsTGV0dGVycy56aXA=">CapitalLetters.zip</a><br>4. <a href="getfile.php?file=U2luY2xhaXIvU3BlY3RydW0vR2FtZXMvbC9Mb3Jkc09mQ2hhb3Muemlw">LordsOfChaos.zip</a><br>5. <a href="getfile.php?file=U2luY2xhaXIvU3BlY3RydW0vR2FtZXMvbC9MaXZpbmdzdG9uZVN1cG9uZ29JSS56aXA=">LivingstoneSupongoII.zip</a><br>6. <a href="getfile.php?file=U2luY2xhaXIvU3BlY3RydW0vR2FtZXMvbC9Mb29nYXJvby56aXA=">Loogaroo.zip</a><br>7. <a href="getfile.php?file=U2luY2xhaXIvU3BlY3RydW0vR2FtZXMvbC9Mb3JkT2ZUaGVSaW5ncy56aXA=">LordOfTheRings.zip</a><br>8. <a href="getfile.php?file=U2luY2xhaXIvU3BlY3RydW0vR2FtZXMvbC9Mb25lV29sZjMtVGhlTWlycm9yT2ZEZWF0aChTeXN0ZW00KS56aXA=">LoneWolf3-TheMirrorOfDeath(System4).zip</a><br>9. <a href="getfile.php?file=U2luY2xhaXIvU3BlY3RydW0vR2FtZXMvbC9Mb3Jkc09mTWFnaWMuemlw">LordsOfMagic.zip</a><br>10. <a href="getfile.php?file=U2luY2xhaXIvU3BlY3RydW0vR2FtZXMvYy9DaGF0Ym94LnppcA==">Chatbox.zip</a><br>                    </div>                    </td>
+                  <td width="263" align="right" valign="middle" bgcolor="#666666">
+                                      <div style="float:right;" class="five_star star_class"></div>
+                   <div style="float:right;margin-right:6px;">Rating (5 votes):</div>
+                                      
+                   
+                    <input type="button" value="Please login to rate" onclick="toggle_login('show');" >                    </td>
+                  </tr>
+              </table>            </td>
+          </tr>
+        </table>
+    </div>
+        <table width="44" border="0" align="center" cellpadding="0">
+          <tr>
+            <td width="40">
+                        <a href="http://www.theoldcomputer.com/donate.php">
+            	<img src="http://sitefiles.theoldcomputer.com/graphics/banners/account-differences-upgrade.png" alt="Upgrade to Unlimited" width="750" height="601" border="0">
+            </a>
+                        </td>
+          </tr>
+        </table>
+<div align="center">
+<table width="100%" border="1" align="center" cellpadding="5" cellspacing="0" >
+  <tr>
+            <td width="100%" align="center" bgcolor="#003300"><table width="99%" border="0" cellspacing="0" cellpadding="5" >
+                <tr>
+                  <td width="400" align="left" bgcolor="#006600" class="style6">Current User Status : Guest
+</td>
+                    <td width="293" align="right" valign="top" bgcolor="#006600"><a href="http://www.theoldcomputer.com/forum/viewtopic.php?f=5&amp;t=294" target="_blank">[ User Guide ]</a> | <a href="http://www.theoldcomputer.com/forum/viewtopic.php?f=5&amp;t=3238" target="_blank">[ Support FAQ ]</a></td>
+                </tr>
+                <tr>
+                  <td colspan="2" align="left" bgcolor="#006600"><span class="style6">Your Download Settings : 
+                                        [G] [GUEST MEMBER] [64KB/s] [2 Downloads at a time]
+                                      </span></td>
+                </tr>
+                <tr>
+                  <td colspan="2" align="left" bgcolor="#006600"><span >
+                    Please <a href="http://www.theoldcomputer.com/forum/ucp.php?mode=register">[ REGISTER ]</a> and <a href="javascript:void();"  onclick="toggle_login('show')">[ LOGIN ]</a> for full access or <a href="http://www.theoldcomputer.com/donate.php">[ UPGRADE ]</a> for UNLIMITED access.
+                  </span></td>
+                </tr>
+                <tr>
+                  <td align="left"><table width="390" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                      <td width="100" height="21" align="left" >Current Folder is Available to :</td>
+                      <td width="50"><div class="access_rights">
+                        <div class="guest">
+                                                    <div class="greyout">&nbsp;</div>
+                                                    G</div>
+                        <div class="registered">
+                                                    R</div>
+                        <div class="unlimited">
+                                                    U</div>
+                        </div></td>
+                      <td width="80"></td>
+                    </tr>
+                                        <tr>
+                      <td height="21" align="left">Your Current Access Rights :</td>
+                      <td><div class="access_rights">
+                        <div class="guest">G</div>
+                        <div class="registered">
+                                                    <div class="greyout">&nbsp;</div>
+                                                    R</div>
+                        <div class="unlimited">
+                                                    <div class="greyout">&nbsp;</div>
+                                                    U</div>
+                      </div></td>
+                      <td></td>
+                    </tr>
+                  </table></td>
+                  <td valign="bottom">
+                  <div class="addthis_toolbox addthis_32x32_style addthis_default_style">
+                  <a class="addthis_button_google_plusone" style="width:70px;"></a>
+                  <a class="addthis_button_pinterest_pinit"></a>
+                  <a class="addthis_button_facebook"></a>
+                  <a class="addthis_button_twitter"></a>
+                  <a class="addthis_button_email"></a>
+                  <a class="addthis_button_compact"></a></div>
+                  </td>
+                </tr>
+            </table></td>
+          </tr>
+      </table>
+        <table width="97%" border="0" cellspacing="0" cellpadding="5">
+          <tr>
+            <td></td>
+          </tr>
+        </table>
+    </div></td>
+<td width="140" align="left" valign="top"><table width="150" border="0" cellpadding="2">
+  <tr>
+    <td><!-- #BeginLibraryItem "/Library/TopRoms.lbi" -->    <div class="verticlemenu">
+		<div class="headerbar2">Popular ROMs</div>
+   		<ul>
+            <li><a href="http://www.theoldcomputer.com/roms/index.php?folder=Adult-Games-XXX">Adult Sex Games</a></li>
+            <li><a href="http://www.theoldcomputer.com/roms/index.php?folder=Arcade">Arcade Games</a></li>
+            <li><a href="http://www.theoldcomputer.com/roms/index.php?folder=Cell-Mobile-Phone">CELL Phone</a></li> 
+            <li><a href="http://www.theoldcomputer.com/roms/index.php?folder=Nintendo/Gameboy-Color">Game Boy</a></li>
+            <li><a href="http://www.theoldcomputer.com/roms/index.php?folder=Nintendo/Gameboy-Advance">Game Boy Advance</a></li>
+            <li><a href="http://www.theoldcomputer.com/roms/index.php?folder=Nintendo/GameCube">Game Cube</a></li>
+            <li><a href="http://www.theoldcomputer.com/roms/index.php?folder=MAME">MAME</a></li>
+            <li><a href="http://www.theoldcomputer.com/roms/index.php?folder=MAME/Mame4All">Mame4All</a></li>
+            <li><a href="http://www.theoldcomputer.com/roms/index.php?folder=Nintendo/DS">Nintendo DS</a></li>
+            <li><a href="http://www.theoldcomputer.com/roms/index.php?folder=Nintendo/N64">Nintendo N64</a></li>
+            <li><a href="http://www.theoldcomputer.com/roms/index.php?folder=Nintendo/NES">Nintendo NES</a></li>
+            <li><a href="http://www.theoldcomputer.com/roms/index.php?folder=Nintendo/SNES">Nintendo SNES</a></li>
+            <li><a href="http://www.theoldcomputer.com/roms/index.php?folder=PC">IBM PC Games</a></li>
+            <li><a href="http://www.theoldcomputer.com/roms/index.php?folder=Sony/Playstation-PSX-PS1">Playstation</a></li>
+            <li><a href="http://www.theoldcomputer.com/roms/index.php?folder=Sega">SEGA</a></li>
+		</ul>
+        </div>
+	</div><!-- #EndLibraryItem --></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+  </tr>
+</table></td>
+  </tr>
+  <tr>
+    <td width="140" align="right" valign="top">&nbsp;</td>
+    <td width="750" align="center" valign="top" bgcolor="#000000"><p>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td align="left">Index of: <a href="index.php">Roms</a>/<a href="index.php?folder=Sinclair">Sinclair</a>/<a href="index.php?folder=Sinclair/Spectrum">Spectrum</a>/</td></tr></table><br>    <!--</p>-->
+<table width="725" border="0" cellspacing="5" cellpadding="5" id="dir_content">
+        <tr>
+          <td align="left" class="top_row">Name</td>
+          <td width="70" align="left" class="top_row">Size</td>
+          <td width="65" align="left" class="top_row">Modified</td>
+          <!--***********Custom code follows-->
+                    <!--***********Custom code follows -done-->
+        </tr>
+      <tr align="left" class="folder_bg"><td><div style="float:left;width:100%"> <a href="index.php?folder=Sinclair/Spectrum/Compilations">Compilations</a></div></td><td>102.81 MB</td>
+		<td>08/13/15</td></tr><tr align="left" class="folder_bg"><td><div style="float:left;width:100%"> <a href="index.php?folder=Sinclair/Spectrum/Demos">Demos</a></div></td><td>21.37 MB</td>
+		<td>08/13/15</td></tr><tr align="left" class="folder_bg"><td><div style="float:left;width:100%"> <a href="index.php?folder=Sinclair/Spectrum/DoublePlay-Adventure">DoublePlay-Adventure</a></div></td><td>493.0 KB</td>
+		<td>09/10/10</td></tr><tr align="left" class="folder_bg"><td><div style="float:left;width:100%"> <a href="index.php?folder=Sinclair/Spectrum/Games">Games</a></div></td><td>649.53 MB</td>
+		<td>09/10/10</td></tr><tr align="left" class="folder_bg"><td><div style="float:left;width:100%"> <a href="index.php?folder=Sinclair/Spectrum/Interface-II-Carts">Interface-II-Carts</a></div></td><td>2.35 MB</td>
+		<td>08/13/15</td></tr><tr align="left" class="folder_bg"><td><div style="float:left;width:100%"> <a href="index.php?folder=Sinclair/Spectrum/Spectrum-Computing-Cover-Disks">Spectrum-Computing-Cover-Disks</a></div></td><td>1005.6 KB</td>
+		<td>09/10/10</td></tr><tr align="left" class="folder_bg"><td><div style="float:left;width:100%"> <a href="index.php?folder=Sinclair/Spectrum/TR-DOS">TR-DOS</a></div></td><td>76.30 MB</td>
+		<td>08/13/15</td></tr><tr align="left" class="folder_bg"><td><div style="float:left;width:100%"> <a href="index.php?folder=Sinclair/Spectrum/Utils">Utils</a></div></td><td>42.43 MB</td>
+		<td>08/13/15</td></tr></table>
+      <br>
+      <!-- Output basic HTMl code -->
+              <br>
+    <span class="newsinfo">The Old Computer ROMs Engine v2.5 22.07.15</span></td>
+    <td width="140" valign="top">&nbsp;</td>
+  </tr>
+</table><!-- #BeginLibraryItem "/Library/Navigation and Copyright Bar BOTTOM.lbi" --><div align="center">
+  <table align="center" width="100%" border="0" cellspacing="0" cellpadding="1"	bgcolor="#000000">
+    <tr>
+      <td>
+      <table align="center" width="600" border="0">
+        <tr>
+          <td>
+<script type="text/javascript">
+  (function() {
+    var cx = '011937694968912933872:WMX-958796734';
+    var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<div class="gcse-search"></div>
+          </td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><a href="/">Home</a> | <a href="/emulators/index.php">Emulators</a> | <a href="/roms/index.php">Roms</a> | <a href="http://www.theoldcomputer.com/game-box-art-covers/index.php">Box Art</a> | <a href="http://www.theoldcomputer.com/gamemusic/index.php">Game Music</a> | <a href="http://www.theoldcomputer.com/forum/index.php"> Forum</a> | <a href="http://www.theoldcomputer.com/blog/index.php">Blog</a></font></div></td>
+    </tr>
+    <tr>
+      <td><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><a href="/disclaimer.htm"> Disclaimer</a> | <a href="/privacy_policy.htm">Privacy Policy</a> | <a href="https://www.facebook.com/The-Old-Computer-Dot-Com-132654320078924/">Facebook</a> | <a href="https://twitter.com/Hottrout">Twitter</a></font></div></td>
+    </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+      <tr><td><div align="center">
+          <p><font color="#666666" face="Verdana, Arial, Helvetica, sans-serif" size="2"> Copyright 
+&copy; 1999-2016 The Old Computer Dot Com. All rights reserved.</font></p>
+       </div></td>
+    </tr>
+  </table>
+</div><!-- #EndLibraryItem --><!--Additional JS required for the custom development-->
+<script type="text/javascript" src="http://jscustom.theoldcomputer.com/javascript.js"></script>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=hottrout"></script>
+<script type="text/javascript" src="http://jscustom.theoldcomputer.com/lightbox/js/prototype.js"></script>
+<!--the 'more' box-->
+<script type="text/javascript">
+var get_folder = 'Sinclair/Spectrum';
+var current_class_name; //to make this variable global
+window.onload = function() {
+		if($('focus_item') != null) {
+		current_class_name = $('focus_item').className;
+		$('focus_item').className = current_class_name+' focus_item';
+		$('focus_item').scrollTo();
+		document.documentElement.scrollTop = document.documentElement.scrollTop - 60;
+		setTimeout("$('focus_item').className = current_class_name;", 3000);
+	}
+}
+</script>
+<div id="more_details_container" style="left:-1000px;">
+<div id="close_more_details" onClick="$('more_details_container').style.left = '-1000px';">[x]</div>
+	<div id="more_details">
+        <div id="section_buttons">
+            <div id="rom_details_tab_button" style="background-color:#4D4D4D" onMouseOver="this.className = 'section_button_hover';" onMouseOut="this.className = 'section_button';" class="section_button" onClick="display_tab('rom_details_tab');">Rom Details</div>
+                <div id="comments_tab_button" onMouseOver="this.className = 'section_button_hover';" onMouseOut="this.className = 'section_button';" class="section_button" onClick="display_tab('comments_tab');">Comments</div>
+              <div id="reviews_tab_button" onMouseOver="this.className = 'section_button_hover';" onMouseOut="this.className = 'section_button';" class="section_button" onClick="display_tab('reviews_tab');">Reviews</div>
+                <div id="screenshots_tab_button" onMouseOver="this.className = 'section_button_hover';" onMouseOut="this.className = 'section_button';" class="section_button" onClick="display_tab('screenshots_tab');">Screenshots</div>
+      </div>
+      <div id="tab_container">
+          <div id="rom_details_tab"></div>
+          <div id="comments_tab"></div>
+          <div id="reviews_tab"></div>
+          <div id="screenshots_tab"></div>
+      </div>
+  </div>
+</div><!-- #BeginLibraryItem "/Library/Counters.lbi" --><!-- Counters -->
+<!-- Quantcast -->
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">_qacct="p-96-_zx-a0SDvA";quantserve();</script>
+<noscript> <a href="https://www.quantcast.com/p-96-_zx-a0SDvA" target="_blank"><img src="http://pixel.quantserve.com/pixel/p-96-_zx-a0SDvA.gif" style="display: none;" border="0" height="1" width="1" alt="Quantcast"></a> 
+</noscript> 
+<!-- Quantcast End -->
+<!-- Google -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3384276-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- Google End -->
+<!-- Counters End --><!-- #EndLibraryItem --></body>
+</html>

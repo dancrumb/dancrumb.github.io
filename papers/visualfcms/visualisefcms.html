@@ -1,0 +1,569 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>Visualizing IBM SAN Volume Controller FlashCopy Mappings</title><meta name="generator" content="DocBook XSL-NS Stylesheets V1.74.0"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="article" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="d4e1"></a>Visualizing IBM SAN Volume Controller FlashCopy Mappings</h2></div><div><div class="author"><h3 class="author"><span class="firstname">Dan</span> <span class="surname">Rumney</span></h3></div></div><div><p class="pubdate">January 22, 2009</p></div></div><hr></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="#d4e18">SVC FlashCopy Mappings</a></span></dt><dt><span class="section"><a href="#d4e37">The DOT Language</a></span></dt><dt><span class="section"><a href="#d4e73">SVC Command Line Scripting</a></span></dt><dt><span class="section"><a href="#d4e121">Script Analysis</a></span></dt><dd><dl><dt><span class="section"><a href="#d4e127">Lines 1-18</a></span></dt><dt><span class="section"><a href="#d4e144">Lines 19-26</a></span></dt><dt><span class="section"><a href="#d4e195">Lines 27-30</a></span></dt><dt><span class="section"><a href="#d4e227">Lines 31-46</a></span></dt><dt><span class="section"><a href="#d4e250">Lines 48-55</a></span></dt><dt><span class="section"><a href="#d4e259">Lines 56-58</a></span></dt></dl></dd><dt><span class="section"><a href="#sUsage">Using the script</a></span></dt><dd><dl><dt><span class="section"><a href="#d4e265">Interactive session</a></span></dt><dt><span class="section"><a href="#d4e271">Batch session</a></span></dt></dl></dd><dt><span class="section"><a href="#d4e345">Possible Improvements</a></span></dt><dt><span class="appendix"><a href="#aScript">A. Graph generating script</a></span></dt><dt><span class="appendix"><a href="#aDOTColours">B. Valid colours in the DOT language</a></span></dt></dl></div>
+  
+
+  <div class="abstract"><p class="title"><b>Abstract</b></p>
+    <p> With the introduction of Multiple-Target <span class="trademark">FlashCopy</span>&reg; and Cascaded FlashCopy to <span class="trademark">IBM</span>&reg;
+      <span class="trademark">System Storage</span>&#8482;
+      <em class="firstterm">SAN Volume Controller</em> (SVC) , it can become difficult to keep track of
+      which Virtual Disks are mapped to which, and how <em class="firstterm">FlashCopy Mappings</em>
+      (FCM) depend upon one another. While submitting <span class="command"><strong>svcinfo</strong></span>commands or using
+      the SVC Console can provide this information in a textual format, there are times when a
+      diagram provides all the information you need in an easy to understand format. </p>
+    <p> This paper outlines a method for generating diagrams that link VDisks and FlashCopy
+      Mappings. It also serves as a worked example of automation on the SVC Command Line. This paper
+      assumes familiarity with SVC and the FlashCopy functionality. </p>
+  </div>
+
+  <div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d4e18"></a>SVC FlashCopy Mappings</h2></div></div></div>
+    
+    <p> When SVC was introduced in 2003 it included a number of Copy Services: FlashCopy and
+      Remote Copy. FlashCopy is a Point-In-Time Copy Service, whereby the contents of a
+        <em class="firstterm">Source Virtual Disk</em> (Source) is copied to a <em class="firstterm">Target Virtual
+        Disk</em> (Target), such that the Target is an <span class="emphasis"><em>exact</em></span> copy of the
+      Source, at that point in time. The relationship between a Source and a Target is called a
+      FlashCopy Mapping (FCM). The original implementation was such that a Source could only ever
+      have one active Target. In addition to this, a Target of one FCM could not be the Source of
+      another FCM. A number of FCMs can be gathered together into a <em class="firstterm">FlashCopy Consistency
+        Group</em> (FCG) and managed as a single entity, to ensure that all Target VDisks in
+      the FCG represent the exact same point in time.</p>
+    <p> With the release of SVC 4.2.1, new types of FlashCopy arrangements can be created. A
+      single VDisk can act as the Source to multiple Targets. In addition to this, a VDisk which is
+      acting as the Target of one FCM can also act as the Source of a different FCM. For more
+      details on Copy Services in SVC, see the Redbook <em class="citetitle">SVC 4.2.1 Advanced Copy
+        Services</em>
+      <a class="ulink" href="http://www.redbooks.ibm.com/abstracts/sg247574.html" target="_top">
+        [<span class="citation">SG24-7574-00</span>]
+      </a>. </p>
+    <p> In a complex environment, the interactions between FCMs and VDisks can get quite
+      involved. Dependencies between FCMs stem from internal data structures within the cluster
+      rather than the logical connections between VDisks. All of these dependencies can be
+      discovered by submitting the appropriate <span class="command"><strong>svcinfo</strong></span> commands, but the
+      information is presented in a purely textual way; this provides no insight into the
+      interaction between cluster objects. <a class="xref" href="#eSampleCLI" title="Example&nbsp;1.&nbsp;Sample output from SVC commands, viewing FCM interactions">Example&nbsp;1, &#8220;Sample output from SVC commands, viewing FCM interactions&#8221;</a> shows how this output
+      looks.</p>
+    <div class="example"><a name="eSampleCLI"></a><p class="title"><b>Example&nbsp;1.&nbsp;Sample output from SVC commands, viewing FCM interactions</b></p><div class="example-contents">
+      
+      <pre class="screen">IBM_2145:cluster_name:admin&gt;svcinfo lsfcmap -delim :
+id:name:source_vdisk_id:source_vdisk_name:target_vdisk_id:target_vdisk_name:
+group_id:group_name:status:progress:copy_rate:clean_progress:incremental
+0:fcmap0:1039:vdisk1039:1040:vdisk1040:::idle_or_copied:100:93:100:on
+1:fcmap1:1041:vdisk1041:1042:vdisk1042:::idle_or_copied:100:30:100:off
+2:fcmap2:1043:vdisk1043:1044:vdisk1044:::idle_or_copied:100:88:100:on
+3:fcmap3:1045:vdisk1045:1046:vdisk1046:::idle_or_copied:100:36:100:off
+4:fcmap4:1046:vdisk1046:1047:vdisk1047:::idle_or_copied:100:96:100:on
+IBM_2145:cluster_name:admin&gt;
+IBM_2145:cluster_name:admin&gt;svcinfo lsfcmapdependentmaps -delim : 2
+fc_id:fc_name
+1:fcmap1
+3:fcmap3</pre>
+    </div></div><br class="example-break">
+    <p> The output from the <span class="command"><strong>svcinfo</strong></span> command does not lend itself to a swift
+      overview of the cluster state. We look to the DOT language to generate a graphical
+      representation of this information. </p>
+  </div>
+
+  <div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d4e37"></a>The DOT Language</h2></div></div></div>
+    
+    <p> The DOT Language is a language used to describe directed and undirected graphs. Once
+      written, the DOT can then be processed by an appropriate program, to render the graph on
+      screen.</p>
+    <p> A <em class="firstterm">directed graph</em> consists of <em class="firstterm">nodes</em> and
+        <em class="firstterm">edges</em>. A node is a graphical shape which may or may not contain some
+      text. The nodes are interconnected by lines, called edges. In a directed graph, the edges have
+      arrows at one or both ends. <a class="xref" href="#fSampledigraph" title="Figure&nbsp;1.&nbsp;Sample directed graph">Figure&nbsp;1, &#8220;Sample directed graph&#8221;</a> shows a sample directed graph.
+      Ellipses <code class="varname">a</code>,<code class="varname">b</code>, <code class="varname">c</code> and
+        <code class="varname">d</code> are all nodes.</p>
+    <div class="figure"><a name="fSampledigraph"></a><p class="title"><b>Figure&nbsp;1.&nbsp;Sample directed graph</b></p><div class="figure-contents">
+      
+      <div class="mediaobject"><img src="figure\sampleDigraph.gif" alt="Sample directed graph generated by a DOT parser"></div>
+    </div></div><br class="figure-break">
+    <p> The DOT language is quite straightforward; for instance, the DOT required to generate
+        <a class="xref" href="#fSampledigraph" title="Figure&nbsp;1.&nbsp;Sample directed graph">Figure&nbsp;1, &#8220;Sample directed graph&#8221;</a> can be seen in <a class="xref" href="#eSampleDOT" title="Example&nbsp;2.&nbsp;DOT language for generating a directed graph">Example&nbsp;2, &#8220;DOT language for generating a directed graph&#8221;</a>. The nodes are
+      represented by the various letters. In each line in the example, you can see the 'arrow'
+      notation which indicates a directed edge, joining two nodes.</p>
+    <div class="example"><a name="eSampleDOT"></a><p class="title"><b>Example&nbsp;2.&nbsp;DOT language for generating a directed graph</b></p><div class="example-contents">
+      
+      <pre class="programlisting">digraph EXAMPLE
+{
+  a -&gt; c;
+  b -&gt; c;
+  c -&gt; d;
+  d -&gt; a;
+}</pre>
+    </div></div><br class="example-break">
+    <p> A DOT file only <span class="emphasis"><em>describes</em></span> the graph. You must pass this file to a
+      rendering program in order to generate a graphical representation. Once such program is
+        <span class="command"><strong>dot</strong></span>, which is part of the 
+      <a class="ulink" href="http://graphviz.org/" target="_top"><span class="application">Graphviz</span></a> package. 
+      Once installed, the invocation shown in <a class="xref" href="#eDOTCmd" title="Example&nbsp;3.&nbsp;Invocation to generate graphic from DOT language (Windows)">Example&nbsp;3, &#8220;Invocation to generate graphic from DOT language (Windows)&#8221;</a> will
+      generate a GIF file rendering of the sample directed graph described in <a class="xref" href="#eSampleDOT" title="Example&nbsp;2.&nbsp;DOT language for generating a directed graph">Example&nbsp;2, &#8220;DOT language for generating a directed graph&#8221;</a>. </p>
+    <div class="example"><a name="eDOTCmd"></a><p class="title"><b>Example&nbsp;3.&nbsp;Invocation to generate graphic from DOT language (Windows)</b></p><div class="example-contents">
+      
+      <pre class="screen">dot -T gif -o sampleDigraph.gif -K dot -v sampleDiGraph.dot</pre>
+    </div></div><br class="example-break">
+    <p> The capabilities of the DOT language lend themselves directly to the challenge of
+      visualizing FlashCopy Mapping and VDisk relationships. The challenge is to generate the DOT
+      necessary to generate our required visualization. In order to do this, we can use SVC Command
+      Line Scripting. </p>
+  </div>
+
+  <div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d4e73"></a>SVC Command Line Scripting</h2></div></div></div>
+    
+    <p>The SVC Command Line Interface is based on a restricted Bash Shell. This provides us with
+      a double-edged opportunity. On one hand, the Bash Shell means that we have the opportunity to
+      execute scripts while logged in to the SVC Command Line. On the other hand, the restricted
+      aspect strongly limits what we can do and results in the need for some imaginative scripting. </p>
+    <p> The Bash Shell includes a number of 'built-in' commands that can be used, such as:
+        </p><table class="simplelist" border="0" summary="Simple list"><tr><td>
+          <span class="command"><strong>if</strong></span>
+        </td></tr><tr><td>
+          <span class="command"><strong>while</strong></span>
+        </td></tr><tr><td>
+          <span class="command"><strong>for</strong></span>
+        </td></tr><tr><td>
+          <span class="command"><strong>read</strong></span>
+        </td></tr><tr><td>
+          <span class="command"><strong>echo</strong></span>
+        </td></tr></table>
+    <p>The restrictions on the Shell mean that there is no access to scripting standards such as
+        <span class="command"><strong>sed</strong></span>, <span class="command"><strong>awk</strong></span> and <span class="command"><strong>grep</strong></span>. In addition, IO
+      cannot be redirected to files. However, command output <span class="emphasis"><em>can</em></span> be redirected
+      to other commands, via pipes.</p>
+    <p>
+      <a class="xref" href="#aScript" title="A.&nbsp;Graph generating script">Appendix&nbsp;A, <i>Graph generating script</i></a> contains the script that we'll be discussing for the remainder of
+      this paper. This script creates a CLI function which, when executed, generates DOT language
+      which describes the connections between a set of VDisks and FCMs. The CLI function has one
+      parameter, which is the id of one of the cluster's VDisks. Given a VDisk ID, this command
+      follows the procedure below.</p>
+    <div class="procedure"><ol type="1"><li>
+        <p>Search for any FCMs which have the provided VDisk as a Source or Target</p>
+      </li><li>
+        <p> For any FCMs found, identify the counterpart VDisks and repeat step 1 for each of the new VDisks</p>
+      </li><li>
+        <p>For all of the FCMs found, search for all dependant FCMs</p>
+      </li><li>
+        <p>Generate the DOT language, describing the VDisk and FCM interactions</p>
+      </li></ol></div>
+    <p><a class="xref" href="#eOutputFromScript" title="Example&nbsp;4.&nbsp;Sample output from script">Example&nbsp;4, &#8220;Sample output from script&#8221;</a> shows example output from this function. When rendered
+      by <span class="command"><strong>dot</strong></span>, the graphic shown in <a class="xref" href="#fSampleFCDigraph" title="Figure&nbsp;2.&nbsp;Sample directed graph">Figure&nbsp;2, &#8220;Sample directed graph&#8221;</a>
+    </p>
+    <div class="example"><a name="eOutputFromScript"></a><p class="title"><b>Example&nbsp;4.&nbsp;Sample output from script</b></p><div class="example-contents">
+      
+      <pre class="screen">IBM_2145:cluster_name:admin&gt;makeFCMapTree 1212
+digraph F {
+  1210 [style=filled,fillcolor=green]
+  514 [shape=box,height=0.4,width=0.4,fillcolor=green,style=filled]
+  1210 -&gt; 514
+  514 -&gt; 1212
+  515 [shape=box,height=0.4,width=0.4,fillcolor=green,style=filled]
+  1210 -&gt; 515
+  515 -&gt; 1213
+  1212 [style=filled,fillcolor=green]
+  1213 [style=filled,fillcolor=green]
+  1211 [style=filled,fillcolor=green]
+  512 [shape=box,height=0.4,width=0.4,fillcolor=green,style=filled]
+  1211 -&gt; 512
+  512 -&gt; 1209
+  513 [shape=box,height=0.4,width=0.4,fillcolor=green,style=filled]
+  1211 -&gt; 513
+  513 -&gt; 1210
+  1209 [style=filled,fillcolor=green]
+}</pre>
+    </div></div><br class="example-break">
+    <p> The ellipses represent VDisks. The rectangles represent FlashCopy Mappings. The colours
+      of the shapes represent the state of the FlashCopy Mappings and VDisks. In one glance, the
+      interactions between VDisks and FlashCopy Mappings are clear and any issues are immediately
+      obvious. </p>
+    <div class="figure"><a name="fSampleFCDigraph"></a><p class="title"><b>Figure&nbsp;2.&nbsp;Sample directed graph</b></p><div class="figure-contents">
+      
+      <div class="mediaobject"><img src="figure\fc.gif" alt="Sample FlashCopy graph"></div>
+    </div></div><br class="figure-break">
+    <p>
+      In the next section, we will go through this script line by line and explain what is being done. The techniques used in this script can be used in scripts of your own to perform whatever actions you require. 
+      If you prefer, you can skip to <a class="xref" href="#sUsage" title="Using the script">the section called &#8220;Using the script&#8221;</a> to learn how to use the script.
+    </p>
+  </div>
+
+  <div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d4e121"></a>Script Analysis</h2></div></div></div>
+    
+    <p>When the script in <a class="xref" href="#aScript" title="A.&nbsp;Graph generating script">Appendix&nbsp;A, <i>Graph generating script</i></a> is executed, it creates a new function called
+        <code class="function">makeFCMapTree</code> in the active SVC CLI session. The script itself has
+        <span class="emphasis"><em>no</em></span> output. Once the function has been created, it is invoked by
+      providing the function name and a VDisk ID. It generates output in the DOT language which can
+      be captured and saved for later rendering. In this section, we analysis the script section by
+      section and explain its function.</p>
+    <div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d4e127"></a>Lines 1-18</h3></div></div></div>
+      
+      <p>The first 18 lines are concerned with setting up variables for use during the main
+        loop.</p>
+      <p>
+        <b>Lines 1-15.&nbsp;</b>
+         The fifteen first lines simply start the function and set up some variables assigning
+          colours to FCM and VDisk states. These can be changed to suit your needs, with the
+          requirement that all 10 states are present and the colours that are selected are part of
+          the DOT language. <a class="xref" href="#aDOTColours" title="B.&nbsp;Valid colours in the DOT language">Appendix&nbsp;B, <i>Valid colours in the DOT language</i></a> shows the colours supported by DOT.
+      </p>
+      <p>
+        <b>Line 16.&nbsp;</b>
+        This line outputs the first line of DOT, which indicates that we'll be describing a
+          directed graph. We call it F for FlashCopy, but the name is entirely arbitrary (within the
+          constraints of the DOT language) 
+      </p>
+      <p>
+        <b>Line 17.&nbsp;</b>
+        In this line, we create an array called <code class="varname">$possSrcs</code>. This array will be
+          treated as a FIFO stack. It will contain a list of VDisks which are possibly acting as the Sources
+          of an FCM. At this point in the execution, we add the VDisk ID that was provided as the
+          sole parameter to the function. In subsequent passes through the main loop, new VDisk IDs
+          may be added, as required. 
+      </p>
+
+      <p>
+        <b>Line 18.&nbsp;</b>
+        Here, we create an empty array which will keep track of all  VDisk IDs which
+          have been processed. This is to ensure that the script processes each VDisk ID once and
+          once only. 
+      </p>
+    </div>
+
+    <div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d4e144"></a>Lines 19-26</h3></div></div></div>
+      
+      <p>These lines start the main loop and gather information about the next VDisk ID in the
+          <code class="varname">$possSrcs</code> stack.</p>
+      <p>
+        <b>Line 19.&nbsp;</b>
+        This starts the main loop of this script. The loop will execute as long as there are
+          VDisk IDs in <code class="varname">$possSrcs</code>. This loop ends on line 56.
+      </p>
+      <p>
+        <b>Lines 20-21.&nbsp;</b>
+        Lines 20-21 perform the <code class="function">pop</code> operation of a stack, removing the
+          first element from <code class="varname">$possSrcs</code> and assigning it to
+            <code class="varname">$currSrc</code>.
+      </p>
+      <p>
+        <b>Lines 22-26.&nbsp;</b>
+         Lines 22-26 show a technique that will be repeated a number of times in this script.
+          This technique is to run an <span class="command"><strong>svcinfo</strong></span> command and execute a series of
+          commands based on each line of output from the <span class="command"><strong>svcinfo</strong></span> command.
+      </p>
+      <p> The technique has the following form:
+        </p><pre class="programlisting">svcinfo xxxx | while read var1 var2 var3 rest; do
+          some commands using $var1, $var2, etc
+done</pre><p>
+        This technique will take each line of output from the <span class="command"><strong>svcinfo</strong></span> command and
+        pass it to the <span class="command"><strong>read</strong></span> built-in command. The read command works in the
+        following way: </p><div class="cmdsynopsis"><p>
+          <code class="command">read</code> 
+           [
+            <em class="replaceable"><code>name</code></em>
+          ...]
+        </p></div>
+      <p> The <span class="command"><strong>read</strong></span> command takes a line from STDIN and splits it into words
+        separated according to the <em class="firstterm">Internal Field Separator</em> (IFS). By default, IFS is
+        set to whitespace. The first word is assigned to the first
+          <code class="varname">name</code>, the second to  the second <code class="varname">name</code> and so on. Any leftover
+        words are assigned to the final name with the intervening IFS included.</p>
+      <p>In the technique shown above, the variables <code class="varname">$var1</code>, <code class="varname">$var2</code>, etc can now be used by commands inside the
+          <span class="command"><strong>while</strong></span> loop. The loop will repeat once per line of output from the
+          <span class="command"><strong>svcinfo</strong></span> command. The variable <code class="varname">$rest</code> is needed to
+        capture any remaining values at the end of the line of output. </p>
+
+      <p>The command <code class="code">svcinfo lsvdisk -nohdr -filtervalue id=$currSrc</code> will
+        generate zero or one line of output. (depending on whether the value in
+          <code class="varname">$currSrc</code> is an actual VDisk ID). </p>
+
+      <p>
+        <b>Line 24.&nbsp;</b>
+         This line acts to 'dereference' the VDisk status. The code <code class="varname">$(eval echo
+            \$$vStatus)</code> will take the value stored in <code class="varname">$vStatus</code> and
+          treat it as the name of a variable and try to find the value stored in that. For instance,
+          if <code class="varname">$vStatus</code> is equal to 'preparing' then this line will look for the
+          value found in <code class="varname">$preparing</code> and, in this case, return 'yellow'. In this
+          way, we can assign colours to VDisk states.
+      </p>
+      <p>
+        <b>Line 25.&nbsp;</b>
+         This generates lines of DOT which define a node in the graph. In this instance a
+          VDisk node is generated. The VDisk node is an ellipse, filled in a colour representing the
+          VDisk's state. 
+      </p>
+    </div>
+
+    <div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d4e195"></a>Lines 27-30</h3></div></div></div>
+      
+      <p> These two lines generate an array of FCM Target VDisk IDs and mark the current VDisk ID
+        (held in <code class="varname">$currentSrc</code>) as having been processed. </p>
+      <p>
+        <b>Lines 27-29.&nbsp;</b>
+         Lines 27-29 create a new array that holds all of the FCMs which have the current
+          VDisk (represented by <code class="varname">$currSrc</code>) as the Source VDisk. This array is
+          called <code class="varname">$newTgts</code>. These three lines shows a method of generating an
+          array directly from the output of an <span class="command"><strong>svcinfo</strong></span> command. In this
+          particular instance, each line of <span class="command"><strong>svcinfo</strong></span> output generates 3 array
+          elements: </p><div class="variablelist"><dl><dt><span class="term">
+                <code class="varname">$newTgts[L]</code>
+              </span></dt><dd>
+                <p>FlashCopy Mapping ID</p>
+              </dd><dt><span class="term">
+                <code class="varname">$newTgts[L+1]</code>
+              </span></dt><dd>
+                <p>Target VDisk ID</p>
+              </dd><dt><span class="term">
+                <code class="varname">$newTgts[L+2]</code>
+              </span></dt><dd>
+                <p> FlashCopy Mapping status</p>
+              </dd></dl></div><p> where <code class="varname">L</code> increases by one per line of
+            <span class="command"><strong>svcinfo</strong></span> output.
+      </p>
+
+      <p>
+        <b>Line 30.&nbsp;</b>
+         Line 30 keeps track of the fact that we have now processed the VDisk ID(as an
+          FCM Source... it may appear later as an FCM Target). 
+      </p>
+    </div>
+
+    <div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d4e227"></a>Lines 31-46</h3></div></div></div>
+      
+      <p>These lines process the FCMs that were placed into <code class="varname">$newTgts</code> and
+        generate the appropriate DOT to represent them.</p>
+      <p>
+        <b>Line 31.&nbsp;</b>
+         Lines 31 creates the loop to process <code class="varname">$newTgts</code>. It creates an index
+          variable which is incremented by 3 for each pass (since 3 elements in an array represent <span class="emphasis"><em>one</em></span>
+          FC Mapping). 
+      </p>
+      <p>
+        <b>Lines 32-35.&nbsp;</b>
+        Lines 32 to 34 simply collect the relevant array elements in to clearer variable
+          names. Line 35 decodes the FC Mapping status into a colour, much like line 24. 
+      </p>
+      <p>
+        <b>Lines 36-39.&nbsp;</b>
+        Lines 36-39 generate DOT language; lines 36 and 37 creates an FC Mapping node, which
+          is a square filled with a colour that represents its state. 
+      </p>
+      <p>Lines 38 and 39 generate the edges that link the FC Mapping node with its Source and
+        Target VDisks. </p>
+      <p>
+        <b>Lines 40-42.&nbsp;</b>
+        Lines 40-42 look at the FCM Target and determine whether or not it has been processed as
+          a Source. If it has not, it is added to our list of possible Sources: <code class="varname">$possSrcs</code>. The
+          code in line 41 acts to place this new VDisk ID at the end of the stack. 
+      </p>
+      <p>
+        <b>Lines 43-45.&nbsp;</b>
+        Lines 43-45 look to see if there are any dependencies between this FCM and other FCMs.
+          If there are, a new edge is generated to indicate this. 
+      </p>
+    </div>
+
+    <div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d4e250"></a>Lines 48-55</h3></div></div></div>
+      
+      <p> Lines 48-55 perform a similar task to line 27 and the loop that follows it.</p>
+
+      <p>
+        <b>Line 48.&nbsp;</b>
+        Line 48 generates an array of FCM Source VDisk IDs, which have
+            <code class="varname">$currentSrc</code> as their Target. This array is called
+            <code class="varname">$newSrcs</code>. Instead of generating any DOT in the loop, however, this
+          loop simply adds the indicated VDisk IDs to the <code class="varname">$possSrcs</code> array, if they
+          have not previously been processed. 
+      </p>
+    </div>
+
+    <div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d4e259"></a>Lines 56-58</h3></div></div></div>
+      
+      <p> All that remains at this point is to complete the loops, close out the DOT language
+        with a curly bracket and the function is complete. </p>
+    </div>
+  </div>
+
+  <div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sUsage"></a>Using the script</h2></div></div></div>
+    
+    <p> There are two simple ways to use the script. It can be executed directly from an
+      interactive CLI session, or it can be used as part of a batch session.</p>
+    <div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d4e265"></a>Interactive session</h3></div></div></div>
+      
+      <p>Adding the <code class="function">makeFCTreeMap</code> function to an interactive session is very
+        straightforward. Simply copy the full text of the script into the clipboard and then paste
+        it into the terminal. Once the script has executed, the <code class="function">makeFCTreeMap</code>
+        function will be available to you for the remainder of that CLI session.</p>
+      <p> Once you've passed a VDisk ID to  the function, you will need to copy the output from the CLI
+        session and place it into a dot file for rendering. </p>
+    </div>
+    <div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d4e271"></a>Batch session</h3></div></div></div>
+      
+      <p> Adding the <code class="function">makeFCTreeMap</code> function to a batch session depends on
+        your SSH client. Here, we will discuss <span class="application">PuTTY</span> for the Windows
+        operating system and <span class="command"><strong>ssh</strong></span> for Linux or <span class="trademark">AIX</span>&reg;. </p>
+      <p> Whichever operating system you use, the output from the script will be returned to the
+        STDOUT stream on your local system. You can redirect this output to a dot file, and then
+        pass it to your rendering application. </p>
+      <div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d4e279"></a>Required script changes</h4></div></div></div>
+        
+        <p> When a script is submitted to the SVC Cluster in this way, STDIN is replaced by the
+          contents of the script and executed as if it was typed in manually. Once the end of the
+          file is reached, control returns to the local command line and <span class="emphasis"><em>not</em></span>
+          the SVC command line. Since the normal function of the makeFCTreeMap script is to create a
+          new function in the CLI session (and nothing more), the following modifications are needed
+          to generate output: </p><div class="itemizedlist"><ul type="disc"><li>
+              <p>Delete lines 1 and 2</p>
+            </li><li>
+              <p>Delete line 58</p>
+            </li><li>
+              <p>Replace <code class="varname">$1</code> in line 17 with the ID of the VDisk that you're
+                interested in.</p>
+            </li></ul></div><p>
+        </p>
+        <p>
+          Once these changes have been made, the resulting <code class="varname">script_file</code> should be submitted to the cluster using one of the methods shown in the next subsections.
+        </p>
+      </div>
+      
+      <div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d4e293"></a>PuTTY</h4></div></div></div>
+        
+        <p> The <span class="command"><strong>plink</strong></span> command comes as part of the
+            <span class="application">PuTTY</span> application. <a class="xref" href="#ePlink" title="Example&nbsp;5.&nbsp;Submitting script to an SVC cluster using plink">Example&nbsp;5, &#8220;Submitting script to an SVC cluster using plink&#8221;</a> shows the command
+          to use to submit a script to an SVC cluster. </p>
+        <div class="example"><a name="ePlink"></a><p class="title"><b>Example&nbsp;5.&nbsp;Submitting script to an SVC cluster using <span class="command">plink</span></b></p><div class="example-contents">
+          
+          <pre class="screen">
+plink -l admin -m script_file -i private_key_file cluster_name 
+              </pre>
+          <div class="variablelist"><dl><dt><span class="term">
+                <code class="varname">script_file</code>
+              </span></dt><dd>
+                <p>The file containing the makeFCTreeMap script</p>
+              </dd><dt><span class="term">
+                <code class="varname">private_key_file</code>
+              </span></dt><dd>
+                <p>An SSH private key which corresponds to a public key that has been uploaded to
+                  the SVC cluster in question</p>
+              </dd><dt><span class="term">
+                <code class="varname">cluster_name</code>
+              </span></dt><dd>
+                <p>The IP address or DNS name</p>
+              </dd></dl></div>
+        </div></div><br class="example-break">
+
+      </div>
+      <div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d4e319"></a>SSH</h4></div></div></div>
+        
+        <p> The <span class="command"><strong>ssh</strong></span> command comes with most (if not all) *nix operating
+          systems. <a class="xref" href="#eSSH" title="Example&nbsp;6.&nbsp;Submitting script to an SVC cluster using ssh">Example&nbsp;6, &#8220;Submitting script to an SVC cluster using ssh&#8221;</a> shows the invocation required to submit a script to an SVC
+          cluster using <span class="command"><strong>ssh</strong></span>. </p>
+        <div class="example"><a name="eSSH"></a><p class="title"><b>Example&nbsp;6.&nbsp;Submitting script to an SVC cluster using <span class="command">ssh</span></b></p><div class="example-contents">
+          
+          <pre class="screen">
+ssh -i private_key_file -T admin@cluster_name &lt; script_file 
+          </pre>
+          <div class="variablelist"><dl><dt><span class="term">
+                <code class="varname">script_file</code>
+              </span></dt><dd>
+                <p>The file containing the makeFCTreeMap script</p>
+              </dd><dt><span class="term">
+                <code class="varname">private_key_file</code>
+              </span></dt><dd>
+                <p>An SSH private key which corresponds to a public key that has been uploaded to
+                  the SVC cluster in question</p>
+              </dd><dt><span class="term">
+                <code class="varname">cluster_name</code>
+              </span></dt><dd>
+                <p>The IP address or DNS name</p>
+              </dd></dl></div>
+        </div></div><br class="example-break">
+      </div>
+    </div>
+
+  </div>
+  <div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d4e345"></a>Possible Improvements</h2></div></div></div>
+    
+    <p>
+      The script in <a class="xref" href="#aScript" title="A.&nbsp;Graph generating script">Appendix&nbsp;A, <i>Graph generating script</i></a> functions correctly for all possible VDisk IDs, including ones that are not present on the cluster. However, there are some interesting changes that could be made to enhance the script. These
+      are offered as suggestions and are left to the reader to implement:
+      </p><div class="variablelist"><p class="title"><b>Possible improvements to script</b></p><dl><dt><span class="term">Handle Multiple VDisk IDs</span></dt><dd><p>The current version of the <code class="function">makeFCTreeMap</code> only accepts a single VDisk ID. It would be a fairly simple task to change the script to allow the function to accept any number of VDisk IDs. It would be important
+          to check for duplicate VDisk IDs appearing in the <code class="varname">$possSrcs</code> stack.</p></dd><dt><span class="term">Handle FlashCopy Mapping IDs</span></dt><dd><p>Expanding this script to support FCM IDs instead of VDisk IDs is the straightforward task of taking the FCM ID, determining the Source VDisk's ID and placing this into the <code class="varname">$possSrcs</code> stack and then proceeding
+          as before. The challenge lies in making the one script support VDisk IDs <span class="emphasis"><em>and</em></span> FCM IDs.</p></dd><dt><span class="term">Handle FlashCopy Consistency Group IDs</span></dt><dd><p>Handling FlashCopy Consistency Groups is the natural combination of handling multiple VDisk IDs and handling FlashCopy Mappings, since an FCG is simply a group of  FCMs. The following code will turn an FCG id into an array of
+            FCM ids: <code class="code">fcmIDs=(`svcinfo lsfcmap -nohdr -filtervalue group_id=0 | while read fcmid rest; do echo $fcmid; done`)</code></p></dd></dl></div><p>
+      
+      
+    </p>
+  </div>
+  
+  
+  <div class="appendix" lang="en"><h2 class="title" style="clear: both"><a name="aScript"></a>A.&nbsp;Graph generating script</h2>
+    
+    <p> The script below has been formatted so that it will fit onto the page. As a result, line
+      continuation operators have been used on lines 22, 27, 28, 36 and 48. </p>
+    <pre class="programlisting">makeFCMapTree ()
+{
+  # Define the colouring for FC Mapping and VDisk states
+  idle_or_copied=green
+  preparing=yellow
+  prepared=green
+  copying=green
+  stopped=red
+  suspended=red
+  stopping=yellow
+  online=green
+  offline=red
+  degraded=yellow
+  
+  # Start the directed graph
+  echo "digraph F {";
+  possSrcs=($1);
+  processed=();
+  while [ ${#possSrcs[@]} -gt 0 ]; do
+    currSrc=${possSrcs[0]};
+    possSrcs=(${possSrcs[@]:1});
+    svcinfo lsvdisk -nohdr -filtervalue id=$currSrc | while read id name \
+iogId iogName vStatus junk; do
+      vdkColour=$(eval echo \$$vStatus);
+      echo "$currSrc [style=filled,fillcolor=$vdkColour]";
+    done
+    newTgts=(`svcinfo lsfcmap -nohdr -filtervalue source_vdisk_id=$currSrc \
+-delim :| while IFS=: read id n srcId srcName tgtId tgtName gId gName \
+status junk; do echo "$id $tgtId $status"; done`);
+    processed[$currSrc]=y;
+    for ((i=0; i&lt;${#newTgts[@]};i=$(($i + 3)))); do
+      fcm=${newTgts[$i]};
+      tgt=${newTgts[$(($i + 1))]};
+      status=${newTgts[$(($i + 2))]};
+      colour=$(eval echo \$$status);
+      echo "fc$fcm [label=\"$fcm\"shape=box,height=0.4,width=0.4,\
+fillcolor=$colour,style=filled]";
+      echo "$currSrc -&gt; fc$fcm";
+      echo "fc$fcm -&gt; $tgt";
+      if [ "${processed[$tgt]}" != "y" ]; then
+      possSrcs=(${possSrcs[@]} $tgt);
+      fi;
+      svcinfo lsfcmapdependentmaps -nohdr $fcm | while read fcId fcName; do
+        echo "$fcm -&gt; $fcId [style=dotted]"
+      done
+    done;
+    
+    newSrcs=(`svcinfo lsfcmap -nohdr -filtervalue target_vdisk_id=$currSrc| \
+while read id name srcId junk; do echo "$srcId "; done`);
+    for src in ${newSrcs[@]};
+    do
+      if [ "${processed[$src]}" != "y" ]; then
+      possSrcs=(${possSrcs[@]} $src);
+      fi;
+    done;
+  done;
+  echo "}";
+}</pre>
+  </div>
+  <div class="appendix" lang="en"><h2 class="title" style="clear: both"><a name="aDOTColours"></a>B.&nbsp;Valid colours in the DOT language</h2>
+    
+    <p>The following are acceptable colours in the DOT language: This list can also be found at <a class="ulink" href="http://www.graphviz.org/doc/info/colors.html" target="_top"><em class="citetitle">Graphviz Color Names</em></a></p>
+    <table class="simplelist" border="0" summary="Simple list"><tr><td><code class="code">aliceblue</code></td><td><code class="code">gray18</code></td><td><code class="code">grey74</code></td><td><code class="code">orange1</code></td></tr><tr><td><code class="code">antiquewhite</code></td><td><code class="code">gray19</code></td><td><code class="code">grey75</code></td><td><code class="code">orange2</code></td></tr><tr><td><code class="code">antiquewhite1</code></td><td><code class="code">gray20</code></td><td><code class="code">grey76</code></td><td><code class="code">orange3</code></td></tr><tr><td><code class="code">antiquewhite2</code></td><td><code class="code">gray21</code></td><td><code class="code">grey77</code></td><td><code class="code">orange4</code></td></tr><tr><td><code class="code">antiquewhite3</code></td><td><code class="code">gray22</code></td><td><code class="code">grey78</code></td><td><code class="code">orangered</code></td></tr><tr><td><code class="code">antiquewhite4</code></td><td><code class="code">gray23</code></td><td><code class="code">grey79</code></td><td><code class="code">orangered1</code></td></tr><tr><td><code class="code">aquamarine</code></td><td><code class="code">gray24</code></td><td><code class="code">grey80</code></td><td><code class="code">orangered2</code></td></tr><tr><td><code class="code">aquamarine1</code></td><td><code class="code">gray25</code></td><td><code class="code">grey81</code></td><td><code class="code">orangered3</code></td></tr><tr><td><code class="code">aquamarine2</code></td><td><code class="code">gray26</code></td><td><code class="code">grey82</code></td><td><code class="code">orangered4</code></td></tr><tr><td><code class="code">aquamarine3</code></td><td><code class="code">gray27</code></td><td><code class="code">grey83</code></td><td><code class="code">orchid</code></td></tr><tr><td><code class="code">aquamarine4</code></td><td><code class="code">gray28</code></td><td><code class="code">grey84</code></td><td><code class="code">orchid1</code></td></tr><tr><td><code class="code">azure</code></td><td><code class="code">gray29</code></td><td><code class="code">grey85</code></td><td><code class="code">orchid2</code></td></tr><tr><td><code class="code">azure1</code></td><td><code class="code">gray30</code></td><td><code class="code">grey86</code></td><td><code class="code">orchid3</code></td></tr><tr><td><code class="code">azure2</code></td><td><code class="code">gray31</code></td><td><code class="code">grey87</code></td><td><code class="code">orchid4</code></td></tr><tr><td><code class="code">azure3</code></td><td><code class="code">gray32</code></td><td><code class="code">grey88</code></td><td><code class="code">palegoldenrod</code></td></tr><tr><td><code class="code">azure4</code></td><td><code class="code">gray33</code></td><td><code class="code">grey89</code></td><td><code class="code">palegreen</code></td></tr><tr><td><code class="code">beige</code></td><td><code class="code">gray34</code></td><td><code class="code">grey90</code></td><td><code class="code">palegreen1</code></td></tr><tr><td><code class="code">bisque</code></td><td><code class="code">gray35</code></td><td><code class="code">grey91</code></td><td><code class="code">palegreen2</code></td></tr><tr><td><code class="code">bisque1</code></td><td><code class="code">gray36</code></td><td><code class="code">grey92</code></td><td><code class="code">palegreen3</code></td></tr><tr><td><code class="code">bisque2</code></td><td><code class="code">gray37</code></td><td><code class="code">grey93</code></td><td><code class="code">palegreen4</code></td></tr><tr><td><code class="code">bisque3</code></td><td><code class="code">gray38</code></td><td><code class="code">grey94</code></td><td><code class="code">paleturquoise</code></td></tr><tr><td><code class="code">bisque4</code></td><td><code class="code">gray39</code></td><td><code class="code">grey95</code></td><td><code class="code">paleturquoise1</code></td></tr><tr><td><code class="code">black</code></td><td><code class="code">gray40</code></td><td><code class="code">grey96</code></td><td><code class="code">paleturquoise2</code></td></tr><tr><td><code class="code">blanchedalmond</code></td><td><code class="code">gray41</code></td><td><code class="code">grey97</code></td><td><code class="code">paleturquoise3</code></td></tr><tr><td><code class="code">blue</code></td><td><code class="code">gray42</code></td><td><code class="code">grey98</code></td><td><code class="code">paleturquoise4</code></td></tr><tr><td><code class="code">blue1</code></td><td><code class="code">gray43</code></td><td><code class="code">grey99</code></td><td><code class="code">palevioletred</code></td></tr><tr><td><code class="code">blue2</code></td><td><code class="code">gray44</code></td><td><code class="code">grey100</code></td><td><code class="code">palevioletred1</code></td></tr><tr><td><code class="code">blue3</code></td><td><code class="code">gray45</code></td><td><code class="code">honeydew</code></td><td><code class="code">palevioletred2</code></td></tr><tr><td><code class="code">blue4</code></td><td><code class="code">gray46</code></td><td><code class="code">honeydew1</code></td><td><code class="code">palevioletred3</code></td></tr><tr><td><code class="code">blueviolet</code></td><td><code class="code">gray47</code></td><td><code class="code">honeydew2</code></td><td><code class="code">palevioletred4</code></td></tr><tr><td><code class="code">brown</code></td><td><code class="code">gray48</code></td><td><code class="code">honeydew3</code></td><td><code class="code">papayawhip</code></td></tr><tr><td><code class="code">brown1</code></td><td><code class="code">gray49</code></td><td><code class="code">honeydew4</code></td><td><code class="code">peachpuff</code></td></tr><tr><td><code class="code">brown2</code></td><td><code class="code">gray50</code></td><td><code class="code">hotpink</code></td><td><code class="code">peachpuff1</code></td></tr><tr><td><code class="code">brown3</code></td><td><code class="code">gray51</code></td><td><code class="code">hotpink1</code></td><td><code class="code">peachpuff2</code></td></tr><tr><td><code class="code">brown4</code></td><td><code class="code">gray52</code></td><td><code class="code">hotpink2</code></td><td><code class="code">peachpuff3</code></td></tr><tr><td><code class="code">burlywood</code></td><td><code class="code">gray53</code></td><td><code class="code">hotpink3</code></td><td><code class="code">peachpuff4</code></td></tr><tr><td><code class="code">burlywood1</code></td><td><code class="code">gray54</code></td><td><code class="code">hotpink4</code></td><td><code class="code">peru</code></td></tr><tr><td><code class="code">burlywood2</code></td><td><code class="code">gray55</code></td><td><code class="code">indianred</code></td><td><code class="code">pink</code></td></tr><tr><td><code class="code">burlywood3</code></td><td><code class="code">gray56</code></td><td><code class="code">indianred1</code></td><td><code class="code">pink1</code></td></tr><tr><td><code class="code">burlywood4</code></td><td><code class="code">gray57</code></td><td><code class="code">indianred2</code></td><td><code class="code">pink2</code></td></tr><tr><td><code class="code">cadetblue</code></td><td><code class="code">gray58</code></td><td><code class="code">indianred3</code></td><td><code class="code">pink3</code></td></tr><tr><td><code class="code">cadetblue1</code></td><td><code class="code">gray59</code></td><td><code class="code">indianred4</code></td><td><code class="code">pink4</code></td></tr><tr><td><code class="code">cadetblue2</code></td><td><code class="code">gray60</code></td><td><code class="code">indigo</code></td><td><code class="code">plum</code></td></tr><tr><td><code class="code">cadetblue3</code></td><td><code class="code">gray61</code></td><td><code class="code">ivory</code></td><td><code class="code">plum1</code></td></tr><tr><td><code class="code">cadetblue4</code></td><td><code class="code">gray62</code></td><td><code class="code">ivory1</code></td><td><code class="code">plum2</code></td></tr><tr><td><code class="code">chartreuse</code></td><td><code class="code">gray63</code></td><td><code class="code">ivory2</code></td><td><code class="code">plum3</code></td></tr><tr><td><code class="code">chartreuse1</code></td><td><code class="code">gray64</code></td><td><code class="code">ivory3</code></td><td><code class="code">plum4</code></td></tr><tr><td><code class="code">chartreuse2</code></td><td><code class="code">gray65</code></td><td><code class="code">ivory4</code></td><td><code class="code">powderblue</code></td></tr><tr><td><code class="code">chartreuse3</code></td><td><code class="code">gray66</code></td><td><code class="code">khaki</code></td><td><code class="code">purple</code></td></tr><tr><td><code class="code">chartreuse4</code></td><td><code class="code">gray67</code></td><td><code class="code">khaki1</code></td><td><code class="code">purple1</code></td></tr><tr><td><code class="code">chocolate</code></td><td><code class="code">gray68</code></td><td><code class="code">khaki2</code></td><td><code class="code">purple2</code></td></tr><tr><td><code class="code">chocolate1</code></td><td><code class="code">gray69</code></td><td><code class="code">khaki3</code></td><td><code class="code">purple3</code></td></tr><tr><td><code class="code">chocolate2</code></td><td><code class="code">gray70</code></td><td><code class="code">khaki4</code></td><td><code class="code">purple4</code></td></tr><tr><td><code class="code">chocolate3</code></td><td><code class="code">gray71</code></td><td><code class="code">lavender</code></td><td><code class="code">red</code></td></tr><tr><td><code class="code">chocolate4</code></td><td><code class="code">gray72</code></td><td><code class="code">lavenderblush</code></td><td><code class="code">red1</code></td></tr><tr><td><code class="code">coral</code></td><td><code class="code">gray73</code></td><td><code class="code">lavenderblush1</code></td><td><code class="code">red2</code></td></tr><tr><td><code class="code">coral1</code></td><td><code class="code">gray74</code></td><td><code class="code">lavenderblush2</code></td><td><code class="code">red3</code></td></tr><tr><td><code class="code">coral2</code></td><td><code class="code">gray75</code></td><td><code class="code">lavenderblush3</code></td><td><code class="code">red4</code></td></tr><tr><td><code class="code">coral3</code></td><td><code class="code">gray76</code></td><td><code class="code">lavenderblush4</code></td><td><code class="code">rosybrown</code></td></tr><tr><td><code class="code">coral4</code></td><td><code class="code">gray77</code></td><td><code class="code">lawngreen</code></td><td><code class="code">rosybrown1</code></td></tr><tr><td><code class="code">cornflowerblue</code></td><td><code class="code">gray78</code></td><td><code class="code">lemonchiffon</code></td><td><code class="code">rosybrown2</code></td></tr><tr><td><code class="code">cornsilk</code></td><td><code class="code">gray79</code></td><td><code class="code">lemonchiffon1</code></td><td><code class="code">rosybrown3</code></td></tr><tr><td><code class="code">cornsilk1</code></td><td><code class="code">gray80</code></td><td><code class="code">lemonchiffon2</code></td><td><code class="code">rosybrown4</code></td></tr><tr><td><code class="code">cornsilk2</code></td><td><code class="code">gray81</code></td><td><code class="code">lemonchiffon3</code></td><td><code class="code">royalblue</code></td></tr><tr><td><code class="code">cornsilk3</code></td><td><code class="code">gray82</code></td><td><code class="code">lemonchiffon4</code></td><td><code class="code">royalblue1</code></td></tr><tr><td><code class="code">cornsilk4</code></td><td><code class="code">gray83</code></td><td><code class="code">lightblue</code></td><td><code class="code">royalblue2</code></td></tr><tr><td><code class="code">crimson</code></td><td><code class="code">gray84</code></td><td><code class="code">lightblue1</code></td><td><code class="code">royalblue3</code></td></tr><tr><td><code class="code">cyan</code></td><td><code class="code">gray85</code></td><td><code class="code">lightblue2</code></td><td><code class="code">royalblue4</code></td></tr><tr><td><code class="code">cyan1</code></td><td><code class="code">gray86</code></td><td><code class="code">lightblue3</code></td><td><code class="code">saddlebrown</code></td></tr><tr><td><code class="code">cyan2</code></td><td><code class="code">gray87</code></td><td><code class="code">lightblue4</code></td><td><code class="code">salmon</code></td></tr><tr><td><code class="code">cyan3</code></td><td><code class="code">gray88</code></td><td><code class="code">lightcoral</code></td><td><code class="code">salmon1</code></td></tr><tr><td><code class="code">cyan4</code></td><td><code class="code">gray89</code></td><td><code class="code">lightcyan</code></td><td><code class="code">salmon2</code></td></tr><tr><td><code class="code">darkgoldenrod</code></td><td><code class="code">gray90</code></td><td><code class="code">lightcyan1</code></td><td><code class="code">salmon3</code></td></tr><tr><td><code class="code">darkgoldenrod1</code></td><td><code class="code">gray91</code></td><td><code class="code">lightcyan2</code></td><td><code class="code">salmon4</code></td></tr><tr><td><code class="code">darkgoldenrod2</code></td><td><code class="code">gray92</code></td><td><code class="code">lightcyan3</code></td><td><code class="code">sandybrown</code></td></tr><tr><td><code class="code">darkgoldenrod3</code></td><td><code class="code">gray93</code></td><td><code class="code">lightcyan4</code></td><td><code class="code">seagreen</code></td></tr><tr><td><code class="code">darkgoldenrod4</code></td><td><code class="code">gray94</code></td><td><code class="code">lightgoldenrod</code></td><td><code class="code">seagreen1</code></td></tr><tr><td><code class="code">darkgreen</code></td><td><code class="code">gray95</code></td><td><code class="code">lightgoldenrod1</code></td><td><code class="code">seagreen2</code></td></tr><tr><td><code class="code">darkkhaki</code></td><td><code class="code">gray96</code></td><td><code class="code">lightgoldenrod2</code></td><td><code class="code">seagreen3</code></td></tr><tr><td><code class="code">darkolivegreen</code></td><td><code class="code">gray97</code></td><td><code class="code">lightgoldenrod3</code></td><td><code class="code">seagreen4</code></td></tr><tr><td><code class="code">darkolivegreen1</code></td><td><code class="code">gray98</code></td><td><code class="code">lightgoldenrod4</code></td><td><code class="code">seashell</code></td></tr><tr><td><code class="code">darkolivegreen2</code></td><td><code class="code">gray99</code></td><td><code class="code">lightgoldenrodyellow</code></td><td><code class="code">seashell1</code></td></tr><tr><td><code class="code">darkolivegreen3</code></td><td><code class="code">gray100</code></td><td><code class="code">lightgray</code></td><td><code class="code">seashell2</code></td></tr><tr><td><code class="code">darkolivegreen4</code></td><td><code class="code">green</code></td><td><code class="code">lightgrey</code></td><td><code class="code">seashell3</code></td></tr><tr><td><code class="code">darkorange</code></td><td><code class="code">green1</code></td><td><code class="code">lightpink</code></td><td><code class="code">seashell4</code></td></tr><tr><td><code class="code">darkorange1</code></td><td><code class="code">green2</code></td><td><code class="code">lightpink1</code></td><td><code class="code">sienna</code></td></tr><tr><td><code class="code">darkorange2</code></td><td><code class="code">green3</code></td><td><code class="code">lightpink2</code></td><td><code class="code">sienna1</code></td></tr><tr><td><code class="code">darkorange3</code></td><td><code class="code">green4</code></td><td><code class="code">lightpink3</code></td><td><code class="code">sienna2</code></td></tr><tr><td><code class="code">darkorange4</code></td><td><code class="code">greenyellow</code></td><td><code class="code">lightpink4</code></td><td><code class="code">sienna3</code></td></tr><tr><td><code class="code">darkorchid</code></td><td><code class="code">grey</code></td><td><code class="code">lightsalmon</code></td><td><code class="code">sienna4</code></td></tr><tr><td><code class="code">darkorchid1</code></td><td><code class="code">grey0</code></td><td><code class="code">lightsalmon1</code></td><td><code class="code">skyblue</code></td></tr><tr><td><code class="code">darkorchid2</code></td><td><code class="code">grey1</code></td><td><code class="code">lightsalmon2</code></td><td><code class="code">skyblue1</code></td></tr><tr><td><code class="code">darkorchid3</code></td><td><code class="code">grey2</code></td><td><code class="code">lightsalmon3</code></td><td><code class="code">skyblue2</code></td></tr><tr><td><code class="code">darkorchid4</code></td><td><code class="code">grey3</code></td><td><code class="code">lightsalmon4</code></td><td><code class="code">skyblue3</code></td></tr><tr><td><code class="code">darksalmon</code></td><td><code class="code">grey4</code></td><td><code class="code">lightseagreen</code></td><td><code class="code">skyblue4</code></td></tr><tr><td><code class="code">darkseagreen</code></td><td><code class="code">grey5</code></td><td><code class="code">lightskyblue</code></td><td><code class="code">slateblue</code></td></tr><tr><td><code class="code">darkseagreen1</code></td><td><code class="code">grey6</code></td><td><code class="code">lightskyblue1</code></td><td><code class="code">slateblue1</code></td></tr><tr><td><code class="code">darkseagreen2</code></td><td><code class="code">grey7</code></td><td><code class="code">lightskyblue2</code></td><td><code class="code">slateblue2</code></td></tr><tr><td><code class="code">darkseagreen3</code></td><td><code class="code">grey8</code></td><td><code class="code">lightskyblue3</code></td><td><code class="code">slateblue3</code></td></tr><tr><td><code class="code">darkseagreen4</code></td><td><code class="code">grey9</code></td><td><code class="code">lightskyblue4</code></td><td><code class="code">slateblue4</code></td></tr><tr><td><code class="code">darkslateblue</code></td><td><code class="code">grey10</code></td><td><code class="code">lightslateblue</code></td><td><code class="code">slategray</code></td></tr><tr><td><code class="code">darkslategray</code></td><td><code class="code">grey11</code></td><td><code class="code">lightslategray</code></td><td><code class="code">slategray1</code></td></tr><tr><td><code class="code">darkslategray1</code></td><td><code class="code">grey12</code></td><td><code class="code">lightslategrey</code></td><td><code class="code">slategray2</code></td></tr><tr><td><code class="code">darkslategray2</code></td><td><code class="code">grey13</code></td><td><code class="code">lightsteelblue</code></td><td><code class="code">slategray3</code></td></tr><tr><td><code class="code">darkslategray3</code></td><td><code class="code">grey14</code></td><td><code class="code">lightsteelblue1</code></td><td><code class="code">slategray4</code></td></tr><tr><td><code class="code">darkslategray4</code></td><td><code class="code">grey15</code></td><td><code class="code">lightsteelblue2</code></td><td><code class="code">slategrey</code></td></tr><tr><td><code class="code">darkslategrey</code></td><td><code class="code">grey16</code></td><td><code class="code">lightsteelblue3</code></td><td><code class="code">snow</code></td></tr><tr><td><code class="code">darkturquoise</code></td><td><code class="code">grey17</code></td><td><code class="code">lightsteelblue4</code></td><td><code class="code">snow1</code></td></tr><tr><td><code class="code">darkviolet</code></td><td><code class="code">grey18</code></td><td><code class="code">lightyellow</code></td><td><code class="code">snow2</code></td></tr><tr><td><code class="code">deeppink</code></td><td><code class="code">grey19</code></td><td><code class="code">lightyellow1</code></td><td><code class="code">snow3</code></td></tr><tr><td><code class="code">deeppink1</code></td><td><code class="code">grey20</code></td><td><code class="code">lightyellow2</code></td><td><code class="code">snow4</code></td></tr><tr><td><code class="code">deeppink2</code></td><td><code class="code">grey21</code></td><td><code class="code">lightyellow3</code></td><td><code class="code">springgreen</code></td></tr><tr><td><code class="code">deeppink3</code></td><td><code class="code">grey22</code></td><td><code class="code">lightyellow4</code></td><td><code class="code">springgreen1</code></td></tr><tr><td><code class="code">deeppink4</code></td><td><code class="code">grey23</code></td><td><code class="code">limegreen</code></td><td><code class="code">springgreen2</code></td></tr><tr><td><code class="code">deepskyblue</code></td><td><code class="code">grey24</code></td><td><code class="code">linen</code></td><td><code class="code">springgreen3</code></td></tr><tr><td><code class="code">deepskyblue1</code></td><td><code class="code">grey25</code></td><td><code class="code">magenta</code></td><td><code class="code">springgreen4</code></td></tr><tr><td><code class="code">deepskyblue2</code></td><td><code class="code">grey26</code></td><td><code class="code">magenta1</code></td><td><code class="code">steelblue</code></td></tr><tr><td><code class="code">deepskyblue3</code></td><td><code class="code">grey27</code></td><td><code class="code">magenta2</code></td><td><code class="code">steelblue1</code></td></tr><tr><td><code class="code">deepskyblue4</code></td><td><code class="code">grey28</code></td><td><code class="code">magenta3</code></td><td><code class="code">steelblue2</code></td></tr><tr><td><code class="code">dimgray</code></td><td><code class="code">grey29</code></td><td><code class="code">magenta4</code></td><td><code class="code">steelblue3</code></td></tr><tr><td><code class="code">dimgrey</code></td><td><code class="code">grey30</code></td><td><code class="code">maroon</code></td><td><code class="code">steelblue4</code></td></tr><tr><td><code class="code">dodgerblue</code></td><td><code class="code">grey31</code></td><td><code class="code">maroon1</code></td><td><code class="code">tan</code></td></tr><tr><td><code class="code">dodgerblue1</code></td><td><code class="code">grey32</code></td><td><code class="code">maroon2</code></td><td><code class="code">tan1</code></td></tr><tr><td><code class="code">dodgerblue2</code></td><td><code class="code">grey33</code></td><td><code class="code">maroon3</code></td><td><code class="code">tan2</code></td></tr><tr><td><code class="code">dodgerblue3</code></td><td><code class="code">grey34</code></td><td><code class="code">maroon4</code></td><td><code class="code">tan3</code></td></tr><tr><td><code class="code">dodgerblue4</code></td><td><code class="code">grey35</code></td><td><code class="code">mediumaquamarine</code></td><td><code class="code">tan4</code></td></tr><tr><td><code class="code">firebrick</code></td><td><code class="code">grey36</code></td><td><code class="code">mediumblue</code></td><td><code class="code">thistle</code></td></tr><tr><td><code class="code">firebrick1</code></td><td><code class="code">grey37</code></td><td><code class="code">mediumorchid</code></td><td><code class="code">thistle1</code></td></tr><tr><td><code class="code">firebrick2</code></td><td><code class="code">grey38</code></td><td><code class="code">mediumorchid1</code></td><td><code class="code">thistle2</code></td></tr><tr><td><code class="code">firebrick3</code></td><td><code class="code">grey39</code></td><td><code class="code">mediumorchid2</code></td><td><code class="code">thistle3</code></td></tr><tr><td><code class="code">firebrick4</code></td><td><code class="code">grey40</code></td><td><code class="code">mediumorchid3</code></td><td><code class="code">thistle4</code></td></tr><tr><td><code class="code">floralwhite</code></td><td><code class="code">grey41</code></td><td><code class="code">mediumorchid4</code></td><td><code class="code">tomato</code></td></tr><tr><td><code class="code">forestgreen</code></td><td><code class="code">grey42</code></td><td><code class="code">mediumpurple</code></td><td><code class="code">tomato1</code></td></tr><tr><td><code class="code">gainsboro</code></td><td><code class="code">grey43</code></td><td><code class="code">mediumpurple1</code></td><td><code class="code">tomato2</code></td></tr><tr><td><code class="code">ghostwhite</code></td><td><code class="code">grey44</code></td><td><code class="code">mediumpurple2</code></td><td><code class="code">tomato3</code></td></tr><tr><td><code class="code">gold</code></td><td><code class="code">grey45</code></td><td><code class="code">mediumpurple3</code></td><td><code class="code">tomato4</code></td></tr><tr><td><code class="code">gold1</code></td><td><code class="code">grey46</code></td><td><code class="code">mediumpurple4</code></td><td><code class="code">transparent</code></td></tr><tr><td><code class="code">gold2</code></td><td><code class="code">grey47</code></td><td><code class="code">mediumseagreen</code></td><td><code class="code">turquoise</code></td></tr><tr><td><code class="code">gold3</code></td><td><code class="code">grey48</code></td><td><code class="code">mediumslateblue</code></td><td><code class="code">turquoise1</code></td></tr><tr><td><code class="code">gold4</code></td><td><code class="code">grey49</code></td><td><code class="code">mediumspringgreen</code></td><td><code class="code">turquoise2</code></td></tr><tr><td><code class="code">goldenrod</code></td><td><code class="code">grey50</code></td><td><code class="code">mediumturquoise</code></td><td><code class="code">turquoise3</code></td></tr><tr><td><code class="code">goldenrod1</code></td><td><code class="code">grey51</code></td><td><code class="code">mediumvioletred</code></td><td><code class="code">turquoise4</code></td></tr><tr><td><code class="code">goldenrod2</code></td><td><code class="code">grey52</code></td><td><code class="code">midnightblue</code></td><td><code class="code">violet</code></td></tr><tr><td><code class="code">goldenrod3</code></td><td><code class="code">grey53</code></td><td><code class="code">mintcream</code></td><td><code class="code">violetred</code></td></tr><tr><td><code class="code">goldenrod4</code></td><td><code class="code">grey54</code></td><td><code class="code">mistyrose</code></td><td><code class="code">violetred1</code></td></tr><tr><td><code class="code">gray</code></td><td><code class="code">grey55</code></td><td><code class="code">mistyrose1</code></td><td><code class="code">violetred2</code></td></tr><tr><td><code class="code">gray0</code></td><td><code class="code">grey56</code></td><td><code class="code">mistyrose2</code></td><td><code class="code">violetred3</code></td></tr><tr><td><code class="code">gray1</code></td><td><code class="code">grey57</code></td><td><code class="code">mistyrose3</code></td><td><code class="code">violetred4</code></td></tr><tr><td><code class="code">gray2</code></td><td><code class="code">grey58</code></td><td><code class="code">mistyrose4</code></td><td><code class="code">wheat</code></td></tr><tr><td><code class="code">gray3</code></td><td><code class="code">grey59</code></td><td><code class="code">moccasin</code></td><td><code class="code">wheat1</code></td></tr><tr><td><code class="code">gray4</code></td><td><code class="code">grey60</code></td><td><code class="code">navajowhite</code></td><td><code class="code">wheat2</code></td></tr><tr><td><code class="code">gray5</code></td><td><code class="code">grey61</code></td><td><code class="code">navajowhite1</code></td><td><code class="code">wheat3</code></td></tr><tr><td><code class="code">gray6</code></td><td><code class="code">grey62</code></td><td><code class="code">navajowhite2</code></td><td><code class="code">wheat4</code></td></tr><tr><td><code class="code">gray7</code></td><td><code class="code">grey63</code></td><td><code class="code">navajowhite3</code></td><td><code class="code">white</code></td></tr><tr><td><code class="code">gray8</code></td><td><code class="code">grey64</code></td><td><code class="code">navajowhite4</code></td><td><code class="code">whitesmoke</code></td></tr><tr><td><code class="code">gray9</code></td><td><code class="code">grey65</code></td><td><code class="code">navy</code></td><td><code class="code">yellow</code></td></tr><tr><td><code class="code">gray10</code></td><td><code class="code">grey66</code></td><td><code class="code">navyblue</code></td><td><code class="code">yellow1</code></td></tr><tr><td><code class="code">gray11</code></td><td><code class="code">grey67</code></td><td><code class="code">oldlace</code></td><td><code class="code">yellow2</code></td></tr><tr><td><code class="code">gray12</code></td><td><code class="code">grey68</code></td><td><code class="code">olivedrab</code></td><td><code class="code">yellow3</code></td></tr><tr><td><code class="code">gray13</code></td><td><code class="code">grey69</code></td><td><code class="code">olivedrab1</code></td><td><code class="code">yellow4</code></td></tr><tr><td><code class="code">gray14</code></td><td><code class="code">grey70</code></td><td><code class="code">olivedrab2</code></td><td><code class="code">yellowgreen</code></td></tr><tr><td><code class="code">gray15</code></td><td><code class="code">grey71</code></td><td><code class="code">olivedrab3</code></td><td>&nbsp;</td></tr><tr><td><code class="code">gray16</code></td><td><code class="code">grey72</code></td><td><code class="code">olivedrab4</code></td><td>&nbsp;</td></tr><tr><td><code class="code">gray17</code></td><td><code class="code">grey73</code></td><td><code class="code">orange</code></td><td>&nbsp;</td></tr></table>
+    
+  </div>
+  
+  
+</div></body></html>

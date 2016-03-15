@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Enable Google Analytics Demo</title>
+<script src="/js/jQuery.js" type="text/javascript"></script>
+<script type="text/javascript" src="/js/EnableGA.js"></script>
+</head>
+
+<body>
+<h1>Enable Google Analytics Demo</h1>
+<p>This page demonstrates <code>EnableGA.js</code>. This is a script which searches for external links on a webpage and enables Google Analytics tracking of these links. See <a href="http://www.danrumney.co.uk/2009/06/21/enabling-external-links-for-google-analytics/">this post</a> for more details.</p>
+<p>In this demonstration, there are a list of links below. Some are internal, some are external. When you click on the external ones, you will be shown the pseudo-locations that will be tracked by Google Analytics.</p>
+<p>Links:</p>
+<ul>
+    <li><a href="http://www.xkcd.com">XKCD Home</a></li>
+    <li><a href="http://news.bbc.co.uk">BBC News</a></li>
+    <li><a href="../papers/papers.html">Papers</a></li>
+    <li><a href="http://xkcd.com/282/">Great XKCD Pun</a></li>
+    <li><a href="http://www.ibm.com">IBM (with preceding www)</a></li>
+    <li><a href="http://ibm.com/support/plan/us/en/?cm_re=other-_-suprcn-_-plan">IBM Support (no www)</a></li>
+</ul>
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7182876-1");
+pageTracker._trackPageview();
+var ega = new EnableGA(pageTracker,{BBC:new RegExp("bbc\.co."), IBM: new RegExp("ibm\.com"),XKCD: new RegExp("xkcd\.com")},false,true);
+} catch(err) {}</script>
+</body>
+</html>

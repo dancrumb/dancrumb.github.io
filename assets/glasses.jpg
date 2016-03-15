@@ -1,0 +1,405 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"Ug4AVlJQGwICXVZXAAUG"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(){}function r(t){function e(t){return t&&t instanceof n?t:t?a(t,i,o):o()}function u(n,r,o){t&&t(n,r,o);for(var i=e(o),a=l(n),s=a.length,f=0;s>f;f++)a[f].apply(i,r);var u=c[v[n]];return u&&u.push([w,n,r,i]),i}function d(t,e){m[t]=l(t).concat(e)}function l(t){return m[t]||[]}function p(t){return f[t]=f[t]||r(u)}function h(t,e){s(t,function(t,n){e=e||"feature",v[n]=e,e in c||(c[e]=[])})}var m={},v={},w={on:d,emit:u,get:p,listeners:l,context:e,buffer:h};return w}function o(){return new n}var i="nr@context",a=t("gos"),s=t(1),c={},f={},u=e.exports=r();u.backlog=c},{1:24,gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t){try{i.console&&console.log(t)}catch(e){}}var n,r=t("ee"),o=t(1),i={};try{n=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(i.console=!0,-1!==n.indexOf("dev")&&(i.dev=!0),-1!==n.indexOf("nr_dev")&&(i.nrDev=!0))}catch(a){}i.nrDev&&r.on("internal-error",function(t){e(t.stack)}),i.dev&&r.on("fn-err",function(t,n,r){e(r.stack)}),i.dev&&(e("NR AGENT IN DEVELOPMENT MODE"),e("flags: "+o(i,function(t){return t}).join(", ")))},{1:24,ee:"QJf3ax"}],4:[function(t){function e(t,e,n,i,a){try{f?f-=1:r("err",[a||new UncaughtException(t,e,n)])}catch(c){try{r("ierr",[c,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof s?s.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(6),i=t("ee"),a=t("loader"),s=window.onerror,c=!1,f=0;a.features.err=!0,t(5),window.onerror=e;try{throw new Error}catch(u){"stack"in u&&(t(1),t(2),"addEventListener"in window&&t(3),a.xhrWrappable&&t(4),c=!0)}i.on("fn-start",function(){c&&(f+=1)}),i.on("fn-err",function(t,e,r){c&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){c&&!this.thrown&&f>0&&(f-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:10,2:9,3:7,4:11,5:3,6:25,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t){t("loader").features.ins=!0},{loader:"G9z0Bl"}],6:[function(t){function e(){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(1),i=t(2);t("loader").features.stn=!0,t(3);var a=NREUM.o.EV;n.on("fn-start",function(t){var e=t[0];e instanceof a&&(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof a&&r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),i.on("fn-start",function(){this.bstStart=Date.now()}),i.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),"requestAnimationFrame"])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.clearResourceTimings?window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1):window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:10,2:9,3:8,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],7:[function(t,e){function n(t){for(var e=t;e&&!e.hasOwnProperty("addEventListener");)e=Object.getPrototypeOf(e);e&&r(e)}function r(t){a.inPlace(t,["addEventListener","removeEventListener"],"-",o)}function o(t){return t[1]}var i=t("ee").get("events"),a=t(1)(i),s=t("gos");e.exports=i,r(window),"getPrototypeOf"in Object?(n(document),n(XMLHttpRequest.prototype)):XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&r(XMLHttpRequest.prototype),i.on("addEventListener-start",function(t){if(t[1]){var e=t[1];if("function"==typeof e){var n=s(e,"nr@wrapped",function(){return a(e,"fn-",null,e.name||"anonymous")});this.wrapped=t[1]=n}else"function"==typeof e.handleEvent&&a.inPlace(e,["handleEvent"],"fn-")}}),i.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:26,ee:"QJf3ax",gos:"7eSDFh"}],8:[function(t,e){var n=t("ee").get("history"),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState","replaceState"],"-")},{1:26,ee:"QJf3ax"}],9:[function(t,e){var n=t("ee").get("raf"),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:26,ee:"QJf3ax"}],10:[function(t,e){function n(t,e,n){t[0]=i(t[0],"fn-",null,n)}function r(t,e,n){this.method=n,this.timerDuration="number"==typeof t[1]?t[1]:0,t[0]=i(t[0],"fn-",this,n)}var o=t("ee").get("timer"),i=t(1)(o);e.exports=o,i.inPlace(window,["setTimeout","setImmediate"],"setTimer-"),i.inPlace(window,["setInterval"],"setInterval-"),i.inPlace(window,["clearTimeout","clearImmediate"],"clearTimeout-"),o.on("setInterval-start",n),o.on("setTimer-start",r)},{1:26,ee:"QJf3ax"}],11:[function(t,e){function n(t,e){e=e||this;var n=i.context(e);e.readyState>3&&!n.resolved&&(n.resolved=!0,i.emit("xhr-resolved",[],e));try{c.inPlace(e,l,"fn-",r)}catch(o){}}function r(t,e){return e}function o(t,e){for(var n in t)e[n]=t[n];return e}var i=t("ee").get("xhr"),a=t(1),s=t(2),c=s(i),f=s(a),u=NREUM.o,d=u.XHR,l=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout","onreadystatechange"];e.exports=i,window.XMLHttpRequest=function(t){var e=new d(t);try{i.emit("new-xhr",[e],e),e.hasOwnProperty("addEventListener")&&f.inPlace(e,["addEventListener","removeEventListener"],"-",r),e.addEventListener("readystatechange",n,!1)}catch(o){try{i.emit("internal-error",[o])}catch(a){}}return e},o(d,XMLHttpRequest),XMLHttpRequest.prototype=d.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",r),i.on("send-xhr-start",n),i.on("open-xhr-start",n)},{1:7,2:26,ee:"QJf3ax"}],12:[function(t){function e(t){var e=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var o=0;u>o;o++)t.removeEventListener(f[o],this.listener,!1);if(!e.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var i=n(t,this.lastSize);if(i&&(r.rxSize=i),this.sameOrigin){var s=t.getResponseHeader("X-NewRelic-App-Data");s&&(e.cat=s.split(", ").pop())}}else e.status=0;r.cbTime=this.cbTime,c.emit("xhr-done",[t],t),a("xhr",[e,r,this.startTime])}}}function n(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var o="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return r(o)}function r(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function o(t,e){var n=s(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var i=t("loader");if(i.xhrWrappable){var a=t("handle"),s=t(2),c=t("ee"),f=["load","error","abort","timeout"],u=f.length,d=t(1),l=t(3),p=window.XMLHttpRequest;i.features.xhr=!0,t(5),t(4),c.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=e,n.ended=!1,n.xhrGuids={},n.lastSize=null,l&&(l>34||10>l)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),c.on("open-xhr-start",function(t){this.params={method:t[0]},o(this,t[1]),this.metrics={}}),c.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),c.on("send-xhr-start",function(t,e){var n=this.metrics,o=t[0],i=this;if(n&&o){var a=r(o);a&&(n.txSize=a)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof e.onload))&&i.end(e)}catch(n){try{c.emit("internal-error",[n])}catch(r){}}};for(var s=0;u>s;s++)e.addEventListener(f[s],this.listener,!1)}),c.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),c.on("xhr-load-added",function(t,e){var n=""+d(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),c.on("xhr-load-removed",function(t,e){var n=""+d(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),c.on("addEventListener-end",function(t,e){e instanceof p&&"load"===t[0]&&c.emit("xhr-load-added",[t[1],t[2]],e)}),c.on("removeEventListener-end",function(t,e){e instanceof p&&"load"===t[0]&&c.emit("xhr-load-removed",[t[1],t[2]],e)}),c.on("fn-start",function(t,e,n){e instanceof p&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),c.on("fn-end",function(t,e){this.xhrCbStart&&c.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:13,3:15,4:11,5:7,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],13:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],14:[function(t,e){function n(t,e){return function(){r(t,[(new Date).getTime()].concat(i(arguments)),null,e)}}var r=t("handle"),o=t(1),i=t(2);"undefined"==typeof window.newrelic&&(newrelic=NREUM);var a=["setPageViewName","addPageAction","setCustomAttribute","finished","addToTrace","inlineHit"],s=["addPageAction"],c="api-";o(a,function(t,e){newrelic[e]=n(c+e,"api")}),o(s,function(t,e){newrelic[e]=n(c+e)}),e.exports=newrelic,newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),r("err",[t,(new Date).getTime()])}},{1:24,2:25,handle:"D5DuLP"}],15:[function(t,e){var n=0,r=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);r&&(n=+r[1]),e.exports=n},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],D5DuLP:[function(t,e){function n(t,e,n,o){r.buffer([t],o),r.emit(t,e,n)}var r=t("ee").get("handle");e.exports=n,n.ee=r},{ee:"QJf3ax"}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],G9z0Bl:[function(t,e){function n(){if(!h++){var t=p.info=NREUM.info,e=f.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){s(d,function(e,n){t[e]||(t[e]=n)});var n="https"===u.split(":")[0]||t.sslForHttp;p.proto=n?"https://":"http://",a("mark",["onload",i()],null,"api");var r=f.createElement("script");r.src=p.proto+t.agent,e.parentNode.insertBefore(r,e)}}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()],null,"api")}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=window,f=c.document;NREUM.o={ST:setTimeout,XHR:c.XMLHttpRequest,REQ:c.Request,EV:c.Event,PR:c.Promise,MO:c.MutationObserver},t(2);var u=(""+location).split("?")[0],d={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-885.min.js"},l=window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent),p=e.exports={offset:i(),origin:u,features:{},xhrWrappable:l};f.addEventListener?(f.addEventListener("DOMContentLoaded",o,!1),c.addEventListener("load",n,!1)):(f.attachEvent("onreadystatechange",r),c.attachEvent("onload",n)),a("mark",["firstbyte",i()],null,"api");var h=0},{1:24,2:14,handle:"D5DuLP"}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],24:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],25:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],26:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@original",a=Object.prototype.hasOwnProperty,s=!1;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,c;try{i=this,n=o(arguments),s="function"==typeof r?r(n,i):r||{}}catch(u){d([u,"",[n,i,a],s])}f(e+"start",[n,i,a],s);try{return c=t.apply(i,n)}catch(l){throw f(e+"err",[n,i,l],s),l}finally{f(e+"end",[n,i,c],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=t,u(t,nrWrapper),nrWrapper)}function c(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s))}function f(e,n,r){if(!s){s=!0;try{t.emit(e,n,r)}catch(o){d([o,e,n,r])}s=!1}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){d([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function d(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=c,e.flag=i,e}},{1:25,ee:"QJf3ax"}]},{},["G9z0Bl",4,12,6,5]);</script>
+<title>nerd nite: welcome</title>
+<script type="text/javascript" src="https://nerdnite.com/wp-content/themes/nerdnite3/script.js"></script>
+<!-- GA Tracking -->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-28227199-2']);
+  _gaq.push(['_setDomainName', 'nerdnite.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<link rel="stylesheet" href="https://nerdnite.com/wp-content/themes/nerdnite3/style.css" type="text/css" media="screen" />
+<!--[if IE 6]><link rel="stylesheet" href="https://nerdnite.com/wp-content/themes/nerdnite3/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="https://nerdnite.com/wp-content/themes/nerdnite3/style.ie7.css" type="text/css" media="screen" /><![endif]-->
+<link rel="alternate" type="application/rss+xml" title="nerd nite RSS Feed" href="https://nerdnite.com/feed/" />
+<link rel="alternate" type="application/atom+xml" title="nerd nite Atom Feed" href="https://nerdnite.com/feed/atom/" /> 
+
+<link rel="pingback" href="https://nerdnite.com/xmlrpc.php" />
+<link rel="alternate" type="application/rss+xml" title="nerd nite &raquo; welcome Comments Feed" href="https://nerdnite.com/welcome/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"https:\/\/nerdnite.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.3.1"}};
+			!function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='ext-profile-css'  href='https://nerdnite.com/wp-content/plugins/extended-profile/profile.css?ver=4.3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='nerd-gallery-css'  href='https://nerdnite.com/wp-content/plugins/nerd-nite-plugin/features/nerdpics.css?ver=1.04' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='https://nerdnite.com/wp-content/plugins/jetpack/css/jetpack.css?ver=3.8.1' type='text/css' media='all' />
+<script type='text/javascript' src='https://nerdnite.com/wp-includes/js/jquery/jquery.js?ver=1.11.3'></script>
+<script type='text/javascript' src='https://nerdnite.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://nerdnite.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://nerdnite.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.3.1" />
+<link rel='canonical' href='https://nerdnite.com/' />
+<link rel='shortlink' href='https://wp.me/P5wQBp-g' />
+<meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+<style type="text/css">
+    label {
+        float: left;
+        text-align: right;
+        margin-right: 15px;
+        width: 100px;
+    }
+
+    input:focus {
+        border: 2px solid #900;
+    }
+
+    span.error {
+        color: #ff0000;
+        font-size: x-small;
+        padding-left: 1em;
+    }
+</style>
+
+<style type='text/css'>img#wpstats{display:none}</style><!-- Vipers Video Quicktags v6.5.2 | http://www.viper007bond.com/wordpress-plugins/vipers-video-quicktags/ -->
+<style type="text/css">
+.vvqbox { display: block; max-width: 100%; visibility: visible !important; margin: 10px auto; } .vvqbox img { max-width: 100%; height: 100%; } .vvqbox object { max-width: 100%; } 
+</style>
+<script type="text/javascript">
+// <![CDATA[
+	var vvqflashvars = {};
+	var vvqparams = { wmode: "opaque", allowfullscreen: "true", allowscriptaccess: "always" };
+	var vvqattributes = {};
+	var vvqexpressinstall = "https://nerdnite.com/wp-content/plugins/vipers-video-quicktags/resources/expressinstall.swf";
+// ]]>
+</script>
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="nerd nite" />
+<meta property="og:description" content="be there and be square" />
+<meta property="og:url" content="https://nerdnite.com/" />
+<meta property="og:site_name" content="nerd nite" />
+<meta property="og:image" content="http://img.youtube.com/vi//0.jpg" />
+<meta property="og:image:secure_url" content="https://img.youtube.com/vi//0.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary" />
+</head>
+<body>
+<div class="PageBackgroundSimpleGradient">
+</div>
+<div class="Main">
+<div class="Sheet">
+    <div class="Sheet-tl"></div>
+    <div class="Sheet-tr"></div>
+    <div class="Sheet-bl"></div>
+    <div class="Sheet-br"></div>
+    <div class="Sheet-tc"></div>
+    <div class="Sheet-bc"></div>
+    <div class="Sheet-cl"></div>
+    <div class="Sheet-cr"></div>
+    <div class="Sheet-cc"></div>
+    <div class="Sheet-body">
+<div class="Header">
+    <div class="Header-png"></div>
+    <div class="Header-jpeg"></div>
+<div class="logo">
+    <h1 id="name-text" class="logo-name">
+        <a href="http://nerdnite.com/">nerd nite</a></h1>
+    <div id="slogan-text" class="logo-text">
+        be there and be square</div>
+</div>
+
+</div>
+<div class="nav">
+	<div class="l">	</div>
+	<div class="r">	</div>
+	<ul class="artmenu">
+		<li class="page_item page-item-16 current_page_item"><a class="active" href="https://nerdnite.com/"><span class="l"></span><span class="r"></span><span class="t">welcome</span></a></li>
+<li class="page_item page-item-122"><a href="https://nerdnite.com/nerd-merch/"><span class="l"></span><span class="r"></span><span class="t">nerd merch</span></a></li>
+<li class="page_item page-item-52"><a href="https://nerdnite.com/nerdery/"><span class="l"></span><span class="r"></span><span class="t">nerdery</span></a></li>
+<li class="page_item page-item-3921"><a href="https://nerdnite.com/smithsonian/"><span class="l"></span><span class="r"></span><span class="t">smithsonian</span></a></li>
+<li class="page_item page-item-1142"><a href="https://nerdnite.com/sponsor/"><span class="l"></span><span class="r"></span><span class="t">sponsor</span></a></li>
+<li class="page_item page-item-3"><a href="https://nerdnite.com/nerdpress/"><span class="l"></span><span class="r"></span><span class="t">nerd press</span></a></li>
+<li class="page_item page-item-11"><a href="https://nerdnite.com/nerds/"><span class="l"></span><span class="r"></span><span class="t">nerds</span></a></li>
+<li class="page_item page-item-195"><a href="https://nerdnite.com/contact/"><span class="l"></span><span class="r"></span><span class="t">contact</span></a></li>
+	</ul>
+</div>
+<div class="contentLayout">
+<div class="content">
+
+ 
+<div class="Post">
+    <div class="Post-body">
+<div class="Post-inner article">
+<h2 class="PostHeaderIcon-wrapper">
+<span class="PostHeader"><a href="https://nerdnite.com/" rel="bookmark" title="Permanent Link to welcome">
+welcome</a></span>
+</h2>
+<div class="PostContent">
+<p>We all know that learning is more fun when you&#8217;re drinking with friends and colleagues. Thus, Nerd Nite is a monthly event held in more than 90 cities across the globe during which several folks give 18-21-minute fun-yet-informative presentations across all disciplines &#8211; while the audience drinks along.  And there are often bands, acrobats, trivia, and other shenanigans as well.  Imagine learning about everything from math feuds or the science of the Simpsons, to the genealogy of Godzilla or zombie insects, while having a few or a few too many.  Fun, right?  Click on the cities on the right to find a Nerd Nite near you. And yes, we know this is an ugly website, but Nerd Nite isn&#8217;t really about aesthetics anyway.</p>
+<p>Watch all the <a href="http://www.smithsonianmag.com/innovation/future-here-2015-180954528/" target="_blank">videos</a> from our <strong>Nerd Nite Global Fest 2015</strong> in conjunction with the Smithsonian&#8217;s Future Is Here Festival in May 2015.  Or watch all the <a href="http://www.smithsonianmag.com/innovation/future-here-2014-180949696/" target="_blank">videos</a> from from our 2014 fest.</p>
+<p><strong>Start one in your town?</strong> If you&#8217;re interested in bringing Nerd Nite to your town, contact Matt Wasowski at <a href="mailto:matt@nerdnite.com">(matt @ nerdnite.com)</a>. There are some rules and guidelines, so it&#8217;s not a slam dunk.</p>
+<p>Listen to our <strong><em>Nerd Nite Podcast on the Podbean network</em></strong>: <a href="http://nerdnite.podbean.com/" target="_blank">Listen and/or subscribe here. </a>You can also <a href="https://itunes.apple.com/us/podcast/id1007486932">download it on iTunes</a>.</p>
+<p><strong>Corporate Event? Nerd Nite is super fun for team building activities, parties, etc.  For those, also contact Matt Wasowski at <a href="mailto:matt@nerdnite.com">(matt @ nerdnite.com)</a>.</strong></p>
+<p><strong>Donate</strong> to Nerd Nite <a href="http://www.regonline.com/nerdnitedonations" target="_blank">here</a>.</p>
+<p>View photos on our new <a href="http://www.flickr.com/groups/nerdnite/" target="_blank">Nerd Nite Flickr page</a>.  Which I don&#8217;t think has been updated since 2011. If you have Nerd Nite photos you can upload them to our Flickr page too!</p>
+<p><strong>An example of a Nerd Nite presentation </strong>(<em>Nerd Rage </em>by Ali Mattu)<strong>: <span class="vvqbox vvqyoutube" style="width:425px;height:344px;"><span id="vvq-16-youtube-1"><a href="http://www.youtube.com/watch?v=fpXX8mdYTQI"><img src="http://img.youtube.com/vi/fpXX8mdYTQI/0.jpg" alt="YouTube Preview Image" /></a></span></span><br />
+</strong></p>
+<p>Nerd Nite Documentary on Japan&#8217;s NHK!This documentary about Nerd Nite aired nationally in Japan.<br />
+<span class="vvqbox vvqvimeo" style="width:400px;height:300px;"><iframe id="vvq-16-vimeo-1" src="//player.vimeo.com/video/5033585?title=1&#038;byline=1&#038;portrait=0&#038;fullscreen=1" width="400" height="300" frameborder="0"><a href="http://www.vimeo.com/5033585">http://www.vimeo.com/5033585</a></iframe></span></p>
+<p>Read our <strong>Privacy Policy</strong> <a href="http://www.nerdnite.com/privacy" target="_blank">here</a></p>
+
+</div>
+<div class="cleared"></div>
+
+</div>
+
+    </div>
+</div>
+
+
+</div>
+<div class="sidebar1">
+<div class="sidebar1">      
+<div class="Block">
+    <div class="Block-tl"></div>
+    <div class="Block-tr"></div>
+    <div class="Block-bl"></div>
+    <div class="Block-br"></div>
+    <div class="Block-tc"></div>
+    <div class="Block-bc"></div>
+    <div class="Block-cl"></div>
+    <div class="Block-cr"></div>
+    <div class="Block-cc"></div>
+    <div class="Block-body">
+<div class="BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="header-tag-icon">
+        <div class="t">Nerd Nite Cities</div>
+    </div>
+</div><div class="BlockContent">
+    <div class="BlockContent-body">
+		<div id="nn-cities-widget">
+			<select id="nerdnite-city-selector" data-placeholder="Choose a city...">
+				<option value=""></option>
+				<option value='aachen.nerdnite.com'>Aachen</option><option value='amsterdam.nerdnite.com'>Amsterdam</option><option value='anchorage.nerdnite.com'>Anchorage</option><option value='annarbor.nerdnite.com'>Ann Arbor</option><option value='atlanta.nerdnite.com'>Atlanta</option><option value='auckland.nerdnite.com'>Auckland</option><option value='austin.nerdnite.com'>Austin</option><option value='baltimore.nerdnite.com'>Baltimore</option><option value='banff.nerdnite.com'>Banff</option><option value='barcelona.nerdnite.com'>Barcelona</option><option value='berlin.nerdnite.com'>Berlin</option><option value='boca.nerdnite.com'>Boca</option><option value='boston.nerdnite.com'>Boston</option><option value='brighton.nerdnite.com'>Brighton</option><option value='brownsville.nerdnite.com'>Brownsville</option><option value='calgary.nerdnite.com'>Calgary</option><option value='camden.nsw.nerdnite.com'>Camden, NSW</option><option value='chicago.nerdnite.com'>Chicago</option><option value='columbia.nerdnite.com'>Columbia</option><option value='concordia.nerdnite.com'>Concordia</option><option value='dc.nerdnite.com'>DC</option><option value='denver.nerdnite.com'>Denver</option><option value='detroit.nerdnite.com'>Detroit</option><option value='duluth.nerdnite.com'>Duluth</option><option value='eastbay.nerdnite.com'>East Bay</option><option value='edmonton.nerdnite.com'>Edmonton</option><option value='erlangen.nerdnite.com'>Erlangen</option><option value='fargo.nerdnite.com'>Fargo</option><option value='greenville.nc.nerdnite.com'>Greenville, NC</option><option value='harare.nerdnite.com'>Harare</option><option value='honolulu.nerdnite.com'>Honolulu</option><option value='houston.nerdnite.com'>Houston</option><option value='ithaca.nerdnite.com'>Ithaca</option><option value='jakarta.nerdnite.com'>Jakarta</option><option value='kansascity.nerdnite.com'>Kansas City</option><option value='kw.nerdnite.com'>Kitchener-Waterloo</option><option value='lawrence.nerdnite.com'>Lawrence</option><option value='liberia.nerdnite.com'>Liberia</option><option value='lincolnuk.nerdnite.com'>Lincoln UK</option><option value='london.nerdnite.com'>London</option><option value='la.nerdnite.com'>Los Angeles</option><option value='madison.nerdnite.com'>Madison</option><option value='magdeburg.nerdnite.com'>Magdeburg</option><option value='melbourne.nerdnite.com'>Melbourne</option><option value='miami.nerdnite.com'>Miami</option><option value='milan.nerdnite.com'>Milan</option><option value='milwaukee.nerdnite.com'>Milwaukee</option><option value='montreal.nerdnite.com'>Montreal</option><option value='muenchen.nerdnite.com'>München</option><option value='nola.nerdnite.com'>NOLA</option><option value='noho.nerdnite.com'>NoHo</option><option value='north.bay.nerdnite.com'>North Bay</option><option value='nyc.nerdnite.com'>Nyc</option><option value='orange.county.nerdnite.com'>Orange County</option><option value='orlando.nerdnite.com'>Orlando</option><option value='oslo.nerdnite.com'>Oslo</option><option value='ottawaks.nerdnite.com'>Ottawa, KS</option><option value='philadelphia.nerdnite.com'>Philly</option><option value='phoenix.nerdnite.com'>Phoenix</option><option value='portland.nerdnite.com'>Portland</option><option value='rochester.nerdnite.com'>Rochester</option><option value='sf.nerdnite.com'>SF</option><option value='sandiego.nerdnite.com'>San Diego</option><option value='santiagodecompostela.nerdnite.com'>Santiago De Compostela</option><option value='savannah.nerdnite.com'>Savannah</option><option value='seattle.nerdnite.com'>Seattle</option><option value='sheffield.nerdnite.com'>Sheffield</option><option value='sv.nerdnite.com'>Silicon Valley</option><option value='sydney.nerdnite.com'>Sydney</option><option value='thunder.bay.nerdnite.com'>Thunder Bay</option><option value='toronto.nerdnite.com'>Toronto</option><option value='triangle.nerdnite.com'>Triangle</option><option value='twincities.nerdnite.com'>Twin Cities</option><option value='vancouver.nerdnite.com'>Vancouver</option><option value='vermillion.nerdnite.com'>Vermillion</option><option value='wagga.nerdnite.com'>Wagga</option><option value='waldkraiburg.nerdnite.com'>Waldkraiburg</option><option value='wellington.nerdnite.com'>Wellington</option><option value='windsor.nerdnite.com'>Windsor</option><option value='zurich.nerdnite.com'>Zurich</option>			</select>
+			<div id="nn-city-map-display">map</div>
+
+			<div id="nn-map-of-cities-dialog">
+				<div id="nn-map-of-cities"></div>
+			</div>
+		</div>
+		
+    </div>
+</div>
+
+    </div>
+</div>
+		<div class="Block">
+    <div class="Block-tl"></div>
+    <div class="Block-tr"></div>
+    <div class="Block-bl"></div>
+    <div class="Block-br"></div>
+    <div class="Block-tc"></div>
+    <div class="Block-bc"></div>
+    <div class="Block-cl"></div>
+    <div class="Block-cr"></div>
+    <div class="Block-cc"></div>
+    <div class="Block-body">
+		<div class="BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="header-tag-icon">
+        <div class="t">Updates</div>
+    </div>
+</div><div class="BlockContent">
+    <div class="BlockContent-body">
+		<ul>
+					<li>
+				<a href="https://nerdnite.com/2015/08/21/nerd-nite-nyc-at-brooklyn-historical-society-on-sept-24-2015/">Nerd Nite NYC at Brooklyn Historical Society on Sept 24, 2015</a>
+						</li>
+					<li>
+				<a href="https://nerdnite.com/2014/01/08/nerd-nite-houston-debuts-at-notsuoh/">Nerd Nite Houston Debuts at Notsuoh</a>
+						</li>
+					<li>
+				<a href="https://nerdnite.com/2013/10/24/nerd-nite-brings-movies-music-to-brooklyn-winery-on-december-3-2013/">Nerd Nite Brings Movies &amp; Music to Brooklyn Winery on December 3, 2013</a>
+						</li>
+					<li>
+				<a href="https://nerdnite.com/2013/10/23/spooks-and-kooks-nerd-nite-detroit/">Spooks and Kooks! &#8211; <b>Nerd Nite</b> Detroit</a>
+						</li>
+					<li>
+				<a href="https://nerdnite.com/2013/10/21/bay-area-science-festival-kicks-off-with-50-events/">Bay Area Science Festival kicks off with 50 events</a>
+						</li>
+				</ul>
+		
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="Block">
+    <div class="Block-tl"></div>
+    <div class="Block-tr"></div>
+    <div class="Block-bl"></div>
+    <div class="Block-br"></div>
+    <div class="Block-tc"></div>
+    <div class="Block-bc"></div>
+    <div class="Block-cl"></div>
+    <div class="Block-cr"></div>
+    <div class="Block-cc"></div>
+    <div class="Block-body">
+<div class="BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="header-tag-icon">
+        <div class="t">Stay in touch here</div>
+    </div>
+</div><div class="BlockContent">
+    <div class="BlockContent-body">
+        <div id='signup-content'>
+            <p>Sign up here for updates about Nerd Nite events in your city.</p>
+            <script src="/js/list_subscribe_checker.js" language="Javascript" type="text/javascript"></script>
+            <form method=post name="subscribeform" action="//nerdnite.com/lists/?p=subscribe&id=42"
+                  target="nnSignup" onsubmit="window.open('', this.target,
+'dialog,modal,scrollbars=no,resizable=no,width=550,height=300,left=0,top=0');">
+                <div class="required">Name</div>
+    <span class="attributeinput">
+            <input type=text name="attribute1" class="attributeinput" size="20" value=""/>
+           <script language="Javascript" type="text/javascript">addFieldToCheck("attribute1", "Name");</script>
+    </span>
+
+                <div class="required">Email</div>
+        <span class="attributeinput">
+           <input type=text name=email value="" size="20"/>
+        <script language="Javascript" type="text/javascript">addFieldToCheck("email", "Email");</script>
+    </span>
+
+                <div class="required">Confirm your email address</div>
+    <span class="attributeinput">
+            <input type=text name=emailconfirm value="" size="20"/>
+        <script language="Javascript"
+                type="text/javascript">addFieldToCheck("emailconfirm", "Confirm your email address");</script>
+    </span>
+                <input type=hidden name="htmlemail" value="0"/>
+
+                <div class="required">Would you like to present, some day? <span class="attributeinput">
+            <!--0--><select name="attribute3" class="attributeinput">
+                    <option value="4">Yes</option>
+                    <option value="5">No</option>
+                    <option value="6" selected="selected">Maybe</option>
+                </select>
+    </span></div>
+
+                <input type="hidden" name="list[5]" value="signup"/>
+                <input type="hidden" name="listname[5]" value="nerdnite-global"/>
+
+                <div class="required">Add me to the Global Nerd Nite list too:  <span class="attributeinput">
+      <input type="checkbox" name="add_to_global" id="add_to_global" checked/>
+    </span></div>
+                <div id="global-list-info">more info</div>
+
+                <input class="global-list" type="hidden" name="list[5]" value="signup"/>
+                <input class="global-list" type="hidden" name="listname[5]" value="nerdnite-global"/>
+
+                <div style="display:none">
+                    <input type="text" name="VerificationCodeX" value="" size="20"/>
+                </div>
+                <p>
+                    <input type=submit name="subscribe" value="Sign Up" onclick="return checkform();"/>
+                </p>
+            </form>
+        </div>
+        
+    </div>
+</div>
+
+    </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="cleared"></div>
+
+<div class="Footer">
+    <div class="Footer-inner">
+                <a href="https://nerdnite.com/feed/" class="rss-tag-icon" title="RSS"></a>
+                <div class="Footer-text">
+<p>
+Copyright © 2015 nerd nite. All Rights Reserved.</p>
+</div>
+    </div>
+    <div class="Footer-background">
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="cleared"></div>
+<p class="page-footer">Powered by <a href="http://wordpress.org/">WordPress</a> and <a href="http://www.artisteer.com/?p=wordpress_themes">WordPress Theme</a> created with Artisteer.</p>
+</div>
+
+<!-- 246 queries. 1.052 seconds. -->
+<div>	<div style="display:none">
+	</div>
+<link rel='stylesheet' id='jquery-ui-lightness-css'  href='//code.jquery.com/ui/1.11.2/themes/ui-lightness/jquery-ui.css?ver=4.3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='nn-menu-lib-css'  href='https://nerdnite.com/wp-content/plugins/nerd-nite-plugin/features/ui/chosen/chosen.min.css?ver=4.3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='city-selector-css'  href='https://nerdnite.com/wp-content/plugins/nerd-nite-plugin/features/ui/city-selector/city-selector.css?ver=4.3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='city-map-css'  href='https://nerdnite.com/wp-content/plugins/nerd-nite-plugin/features/ui/city-map/city-map.css?ver=4.3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='signup_widget-css'  href='https://nerdnite.com/wp-content/plugins/nerd-nite-plugin/features/signup_widget.css?ver=1.05' type='text/css' media='all' />
+<link rel='stylesheet' id='qtip-css'  href='https://nerdnite.com/wp-content/plugins/nerd-nite-plugin/features/jquery.qtip.min.css?ver=4.3.1' type='text/css' media='all' />
+<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201610'></script>
+<script type='text/javascript' src='https://secure.gravatar.com/js/gprofiles.js?ver=2016Maraa'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://nerdnite.com/wp-content/plugins/jetpack/modules/wpgroho.js?ver=4.3.1'></script>
+<script type='text/javascript' src='https://nerdnite.com/wp-content/plugins/nerd-nite-plugin/features/ui/chosen/chosen.jquery.min.js?ver=4.3.1'></script>
+<script type='text/javascript' src='https://nerdnite.com/wp-content/plugins/nerd-nite-plugin/features/ui/city-selector/city-selector.js?ver=2.00'></script>
+<script type='text/javascript' src='https://nerdnite.com/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://nerdnite.com/wp-includes/js/jquery/ui/widget.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://nerdnite.com/wp-includes/js/jquery/ui/mouse.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://nerdnite.com/wp-includes/js/jquery/ui/resizable.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://nerdnite.com/wp-includes/js/jquery/ui/draggable.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://nerdnite.com/wp-includes/js/jquery/ui/button.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://nerdnite.com/wp-includes/js/jquery/ui/position.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://nerdnite.com/wp-includes/js/jquery/ui/dialog.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='//maps.googleapis.com/maps/api/js?key=AIzaSyBYrgCehrswg4kbfjc9IOo-o2SIkmKKAYs&#038;sensor=false&#038;ver=3'></script>
+<script type='text/javascript' src='https://nerdnite.com/wp-content/plugins/nerd-nite-plugin/features/ui/city-map/city-map.js?ver=1.01'></script>
+<script type='text/javascript' src='https://nerdnite.com/wp-content/plugins/nerd-nite-plugin/features/jquery.qtip.min.js?ver=4.3.1'></script>
+<script type='text/javascript' src='https://nerdnite.com/wp-content/plugins/nerd-nite-plugin/features/signup_widget.js?ver=1.01'></script>
+<script type='text/javascript' src='https://nerdnite.com/wp-includes/js/swfobject.js?ver=2.2-20120417'></script>
+
+<script type="text/javascript">
+	swfobject.embedSWF("http://www.youtube.com/v/fpXX8mdYTQI&#038;rel=0&#038;fs=1&#038;showsearch=0&#038;showinfo=0", "vvq-16-youtube-1", "425", "344", "10", vvqexpressinstall, vvqflashvars, vvqparams, vvqattributes);
+</script>
+<script type='text/javascript' src='https://stats.wp.com/e-201610.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:3.8.1',blog:'81710383',post:'16',tz:'-5',srv:'nerdnite.com'} ]);
+	_stq.push([ 'clickTrackerInit', '81710383', '16' ]);
+</script>
+</div>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"5b03fdd6ba","applicationID":"12975741","transactionName":"ZQMEYEZVXhFVBU0KXVxJJ1dAXV8MGxZYBFc=","queueTime":0,"applicationTime":1058,"atts":"SUQHFg5PTR8=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
