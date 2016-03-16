@@ -12,11 +12,6 @@ tags:
 - brother
 - contractor
 - UK
-author:
-  email: dancrumb@gmail.com
-  display_name: Dan Rumney
-  first_name: ''
-  last_name: ''
 ---
 ![Shaking Hands]({{ site.github.url }}/assets/shakingHands.jpg "Shaking Hands")
 

@@ -12,14 +12,6 @@ tags:
 - palm pre
 - pre
 - preDevCamp
-meta:
-  _edit_last: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 [![barometer]({{ site.github.url }}/assets/barometer1.jpg "barometer")]({{ site.github.url }}/assets/barometer1.jpg)
 

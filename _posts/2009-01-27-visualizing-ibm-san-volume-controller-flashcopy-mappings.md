@@ -13,14 +13,6 @@ tags:
 - Storage
 - SVC
 - Visualization
-meta:
-  _edit_last: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 [![disk]({{ site.github.url }}/assets/disk1.jpg "disk")](/assets/disk1.jpg)
 

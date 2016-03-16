@@ -12,16 +12,6 @@ tags:
 - buffer
 - perl
 - sample code
-meta:
-  aktt_notify_twitter: 'yes'
-  _edit_last: '1'
-  aktt_tweeted: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 I'm currently working on some Perl that processes memory dumps from a hardware appliance.
 

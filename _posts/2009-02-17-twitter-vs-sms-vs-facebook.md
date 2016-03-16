@@ -12,14 +12,6 @@ tags:
 - facebook
 - sms
 - twitter
-meta:
-  _edit_last: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 ![]({{ site.github.url }}/assets/messageIcons.png "Message Icons")
 

@@ -9,14 +9,6 @@ categories:
 - Javascript
 - Programming
 tags: []
-meta:
-  _edit_last: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 ![Greasemonkey]({{ site.github.url }}/assets/tweetMonkey.jpg "Twitter - Greasemonkey")
 

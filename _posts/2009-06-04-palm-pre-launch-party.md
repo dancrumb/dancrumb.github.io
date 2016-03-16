@@ -11,14 +11,6 @@ tags:
 - palm pre
 - party
 - preDevCamp
-meta:
-  _edit_last: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 Last night was the launch party for the Palm Pre and I was lucky enough to receive an invite. Originally, I was a little perplexed; the invite touted:
 

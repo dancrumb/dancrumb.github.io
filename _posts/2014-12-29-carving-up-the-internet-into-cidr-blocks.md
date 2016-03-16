@@ -5,20 +5,9 @@ date: 2014-12-29 04:59:42.000000000 -06:00
 type: post
 published: true
 status: publish
-categories: []
+categories:
+  - networking
 tags: []
-meta:
-  _wpas_done_all: '1'
-  _publicize_twitter_user: "@therealdancrumb"
-  _wpcom_is_markdown: '1'
-  _edit_last: '1'
-  _wpas_skip_9584030: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 I recently had to understand what CIDR blocks are and how they describe blocks of IP addresses and I figured I'd share what I learned.
 

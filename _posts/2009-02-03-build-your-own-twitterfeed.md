@@ -14,14 +14,6 @@ tags:
 - Javascript
 - json
 - twitter
-meta:
-  _edit_last: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 As part of the [preDevCamp 2009](http://predevcamp.org) site, I created a JavaScript TwitterFeed today.
 

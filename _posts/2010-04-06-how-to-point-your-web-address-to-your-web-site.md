@@ -8,16 +8,6 @@ status: publish
 categories:
 - Technology
 tags: []
-meta:
-  aktt_notify_twitter: 'yes'
-  _edit_last: '1'
-  aktt_tweeted: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 Many readers will already know this, but I've had call to walk people through this process a few times, recently, so I'm putting directions online for future reference.
 

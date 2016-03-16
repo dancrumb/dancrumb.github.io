@@ -13,16 +13,6 @@ tags:
 - google
 - icalendar
 - pre
-meta:
-  aktt_notify_twitter: 'yes'
-  _edit_last: '1'
-  aktt_tweeted: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 [![syncMess]({{ site.github.url }}/assets/syncMess11.png "syncMess")](/assets/syncMess11.png)
 

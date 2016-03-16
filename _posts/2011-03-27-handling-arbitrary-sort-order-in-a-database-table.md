@@ -9,16 +9,6 @@ categories:
 - Database
 - Programming
 tags: []
-meta:
-  _edit_last: '1'
-  aktt_notify_twitter: 'yes'
-  aktt_tweeted: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 There are times when your web application needs to retain an arbitrary sort order for object. For example, you may have a slideshow of photographs and you want to be able to arrange them in any order you like. The simplest way to do this is to assign an attribute to each object that explicitly represents its sort position.
 

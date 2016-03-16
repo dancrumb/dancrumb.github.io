@@ -13,14 +13,6 @@ tags:
 - coding
 - mozilla
 - review
-meta:
-  _edit_last: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 ![]({{ site.github.url }}/assets/Episode_5_Cloud_City_Clouds.jpg "Bespin")
 

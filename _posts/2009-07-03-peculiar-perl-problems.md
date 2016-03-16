@@ -12,18 +12,6 @@ tags:
 - errors
 - perl
 - Programming
-meta:
-  aktt_notify_twitter: 'yes'
-  _edit_last: '1'
-  _aioseop_description: A couple of common problems when uploading Perl files from
-    a development system to a production system
-  aktt_tweeted: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 ![]({{ site.github.url }}/assets/perl.jpg "Perl Camel")
 

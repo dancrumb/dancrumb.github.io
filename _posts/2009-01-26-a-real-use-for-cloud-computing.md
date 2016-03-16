@@ -12,15 +12,6 @@ tags:
 - education
 - obama
 - whurley
-meta:
-  _edit_last: '1'
-  aktt_notify_twitter: 'yes'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 ![Cloud]({{ site.github.url }}/assets/cloud-61.jpg "Cloud")
 

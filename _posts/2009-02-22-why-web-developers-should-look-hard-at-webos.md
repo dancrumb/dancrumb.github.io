@@ -14,14 +14,6 @@ tags:
 - mojo
 - palm pre
 - web
-meta:
-  _edit_last: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 ![]({{ site.github.url }}/assets/guyAtComputer.jpg "Guy At Computer")There is a lot of excitement in the mobile development world about the coming of the Palm Pre. Palm's been doing pretty poorly of late, so the alternate prospects of abject failure (and bye, bye Palm) and glorious success (bye, bye iPhone) has get everyone all of a quiver. The thing is, I'm a big geek... I'm just excited about webOS.  
 

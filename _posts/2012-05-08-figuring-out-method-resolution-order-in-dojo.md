@@ -13,17 +13,6 @@ tags:
 - inheritance
 - mro
 - utility
-meta:
-  aktt_tweeted: '1'
-  _cws_is_markdown: '1'
-  aktt_notify_twitter: 'yes'
-  _edit_last: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 Dojo allows the simulation of class-based inheritance with the [declare](http://dojotoolkit.org/reference-guide/1.7/dojo/declare.html) function. It even allows for multiple inheritance. However, this raises questions of how to figure out which Function to call, when a method of an instantiated Object is provided by a parent object. This article provides guidance on how to figure it out and a handy little function to determine <abbr title="Method Resolution Order">MRO</abbr> for certain.
 

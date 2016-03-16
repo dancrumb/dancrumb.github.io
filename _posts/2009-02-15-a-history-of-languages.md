@@ -20,14 +20,6 @@ tags:
 - perl
 - Programming
 - python
-meta:
-  _edit_last: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 ![Laptop and Books]({{ site.github.url }}/assets/laptopAndBooks.jpg "Laptop and Books")
 

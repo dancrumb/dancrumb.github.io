@@ -12,16 +12,6 @@ tags:
 - Javascript
 - Programming
 - web
-meta:
-  aktt_notify_twitter: 'yes'
-  _edit_last: '1'
-  aktt_tweeted: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 I was recently sent a script designed to take a series of advertising banners and rotate them on a page. By 'rotate', I mean display on banner in a designated position and then, after a certain period of time, replace it with another, and then another, and so on. To be fair to those who paid for the banners, each banner was chosen at random so that each new visitor to the site would see a different banner first, second, third, etc. After taking a look at it, I spotted some problems and decided to fix them.  
 

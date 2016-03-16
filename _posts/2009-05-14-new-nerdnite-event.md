@@ -11,14 +11,6 @@ categories:
 tags:
 - austin
 - NerdNite
-meta:
-  _edit_last: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 [![nerd_nite_glasses]({{ site.github.url }}/assets/nerd_nite_glasses1.jpg "nerd_nite_glasses")](http://danrumney.com/wp-content/uploads/2009/05/nerd_nite_glasses1.jpg)  
 [nerdnite Austin](http://austin.nerdnite.com/) has just announced the line up for the May edition of nerdnite.

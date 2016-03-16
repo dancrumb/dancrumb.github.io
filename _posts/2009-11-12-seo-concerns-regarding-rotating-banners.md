@@ -12,16 +12,6 @@ tags:
 - Javascript
 - Programming
 - SEO
-meta:
-  aktt_notify_twitter: 'yes'
-  _edit_last: '1'
-  aktt_tweeted: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 I recently wrote about [a script designed to generate Rotating Banners](/javascript/programming/2009/11/09/rotating-banners-in-random-order.html). The script works fine, but using JavaScript to present a user with links creates a few problems of its own:
 

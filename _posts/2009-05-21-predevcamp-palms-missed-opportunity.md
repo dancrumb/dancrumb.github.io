@@ -12,14 +12,6 @@ tags:
 - palm
 - palm pre
 - preDevCamp
-meta:
-  _edit_last: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 [![preDevCamp Logo]({{ site.github.url }}/assets/predevcamp_2009_bg2.png "preDevCamp Logo")](http://danrumney.com/wp-content/uploads/2009/05/predevcamp_2009_bg2.png)
 

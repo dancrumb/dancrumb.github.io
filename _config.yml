@@ -21,3 +21,14 @@ redcarpet:
 
 exclude:
   - vendor
+
+defaults:
+  -
+    scope:
+      type: posts
+    values:
+      author:
+        email: dancrumb@gmail.com
+        display_name: Dan Rumney
+        first_name: 'Dan'
+        last_name: 'Rumney'

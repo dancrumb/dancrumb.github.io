@@ -11,14 +11,6 @@ tags:
 - devcamp
 - mobile
 - palm pre
-meta:
-  _edit_last: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 Today, [@whurley](http://twitter.com/whurley), [@giovanni](http://twitter.com/giovanni) and [I](http://twitter.com/dancrumb) launched the Palm [preDevCamp](http://predevcamp.org/).
 

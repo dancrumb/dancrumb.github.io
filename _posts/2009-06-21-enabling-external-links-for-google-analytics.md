@@ -12,14 +12,6 @@ tags:
 - Javascript
 - jquery
 - script
-meta:
-  _edit_last: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 [![googleAnalyticsLogo]({{ site.github.url }}/assets/googleAnalyticsLogo11.jpg "googleAnalyticsLogo")]({{ site.github.url }}/assets/googleAnalyticsLogo11.jpg)
 

@@ -16,19 +16,6 @@ tags:
 - hitch
 - problems
 - quirks
-meta:
-  _edit_last: '1'
-  aktt_tweeted: '1'
-  _cws_is_markdown: '1'
-  aktt_notify_twitter: 'yes'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
-excerpt: An analysis of problems created when using Dojo's hitch, connect and aspect
-  methods in a complex web application.
 ---
 Anyone who has spent time developing web-apps with Dojo will have found the need to associate their own functionality with the raising of events and calling of methods on other objects that may not be within their control. Dojo allows developers to attach _Listeners_ (callback methods) to _Actions_ (DOM events or object method calls) in order to allow such wiring.
 
@@ -40,7 +27,8 @@ Some of you may have stumbled across an issue whereby a Listener has been attach
 
 Take a look at this code and see if you can figure out what the output will be:
 
-<pre lang="javascript" line="1">/*jshint dojo:true devel:true strict:false*/
+```javascript
+/*jshint dojo:true devel:true strict:false*/
 require(['dojo/_base/declare', 'dojo/_base/lang',
          'dojo/_base/connect'],
     function(declare, lang,
@@ -107,11 +95,13 @@ require(['dojo/_base/declare', 'dojo/_base/lang',
         console.info("Calling barAM2");
         barAM2('Via barAM2');        
     }
-);</undef> </undef></pre>
+);
+```
 
 Here's what you will see in your console:
 
-<pre lang="none" line="1">Instantiated a Foo called 'foo'
+```sh
+Instantiated a Foo called 'foo'
 Calling foo.aMethod
 foo.aMethod called with arguments: ["After init"]
 
@@ -143,7 +133,7 @@ bar.anotherMethod called with arguments: ["Via barAM2"]
 foo.aMethod called with arguments: ["Via barAM2"]
 foo.secondMethod called with arguments: ["Via barAM2"]
 
-</pre>
+```
 
 First, we instantiate two objects: `foo` and `bar` and we call some methods to demonstrate how those methods behave.  
 Then, we get a reference to the `bar.anotherMethod` called `barAM`. We connect `foo.aMethod` to `bar.anotherMethod`, so that `foo.aMethod` is called whenever `bar.anotherMethod` is called.  
@@ -276,8 +266,9 @@ So how do we avoid this? Luckily, it's really easy. `hitch` allows you to provid
 
 Your code would now look like:
 
-<pre lang="javascript" line="46">var barAM = lang.hitch(bar, "anotherMethod");
-</pre>
+```javascript
+var barAM = lang.hitch(bar, "anotherMethod");
+```
 
 Any time you make a call to your hitched Function, it has to look up `bar["aMethod"]`. Therefore, any changes to where this points are picked up by your hitched reference. This does have a minor penalty performance, but it makes your code **way** more robust, so it's worth the cost.
 

@@ -10,14 +10,6 @@ categories:
 tags:
 - long beach
 - technology
-meta:
-  _edit_last: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 I'm in Long Beach this weekend, attending the [BIL Conference](http://bilconference.com/). BIL is an open, self-organizing, emergent, arts, science, society and technology conference. Anyone can come; anyone can speak. If you have an idea to spread, start talking. If someone is saying something interesting, stop and listen.
 

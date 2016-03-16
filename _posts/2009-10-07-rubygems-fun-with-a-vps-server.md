@@ -12,16 +12,6 @@ tags:
 - Rails
 - ruby
 - rubygems
-meta:
-  aktt_notify_twitter: 'yes'
-  _edit_last: '1'
-  aktt_tweeted: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 All of my websites are currently running on a VPS server provided by HostIcan. I recently discovered a little quirk involving VPS servers and RubyGems.
 

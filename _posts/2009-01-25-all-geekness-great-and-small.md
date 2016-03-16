@@ -12,14 +12,6 @@ tags:
 - history
 - spectrum
 - technology
-meta:
-  _edit_last: '1'
-author:
-  login: admin
-  email: dancrumb@gmail.com
-  display_name: dancrumb
-  first_name: ''
-  last_name: ''
 ---
 ![ZX Spectrum 48K]({{ site.github.url }}/assets/zxspectrum_48k.jpg "ZX Spectrum 48K")
 
