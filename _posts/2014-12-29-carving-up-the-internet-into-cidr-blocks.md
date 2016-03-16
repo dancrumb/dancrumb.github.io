@@ -13,21 +13,21 @@ I recently had to understand what CIDR blocks are and how they describe blocks o
 
 I'll stick to IPv4 addresses here, since that's what most people are still dealing with these days.
 
-##Anatomy of an IP address
+## Anatomy of an IP address
 The Internet Protocol (IP) provides every device on a network with an IP address. They take the form `a.b.c.d`, where `a`, `b`, `c` and `d` are numbers from 0 to 255.
 Each of these four numbers is called an **octet**.
 It's called an octet because it is a representation of 8 bits. If you're not comfortable with how binary numbers work, you should stop here and [take a quick tutorial](http://computer.howstuffworks.com/bytes.htm).
 
 Since an IP address has four octets and each octet has a value from 0-255, there are a total of 256 × 256 × 256 × 256 or 4,294,967,296 possible IP addresses (incidentally, the 4 billion limit is one of the reasons IPv6 came about).
 
-##Organisation of IP addresses
+## Organisation of IP addresses
 Although there are over 4 billion IP addresses available, they are not given out at random. There are specific IP ranges that are dedicated to specific purposes. For instance, you may have noticed that your home computer's IP address is something like `192.168.0.5` or `192.168.1.20`. That's because the group of IP addresses that start `192.168` has been reserved for private networks. Another group that has been reserved for private use is the group that starts with a `10`.
 
 The Internet Assigned Numbers Authority (IANA) maintains the list of reserved IP addresses in [a publicly available list](http://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml). If you take a look you'll notice that they use a special notation to define groups of IP address (or "CIDR Blocks"). The format is `a.b.c.d/e`. In this notation, `e` is the number that indicates the CIDR block and is called the **prefix length**.
 
 Outside of the reserved blocks, CIDR blocks of different sizes are given out to organizations of different sizes. For instance, IBM has the `9.0.0.0/8` block. The UK Ministry of Defence has the `25.0.0.0/8` block.
 
-##CIDR blocks
+## CIDR blocks
 The spectrum of IP address can be readily carved up into groups of IP addresses. Rather than create groups of arbitrary IP addresses, contiguous blocks are used; these blocks constitute networks within the Internet (the network of networks). As such, they are known as **subnets**.
 The CIDR notation allows us to concisely express a block of IP address that make up a subnet.
 
@@ -71,7 +71,7 @@ The prefix length tells us something about the size of the subnet. For a prefix 
 
 Using a prefix on its own can be used when talking about non-specific CIDR blocks. Thus, we can talk about a `/24` network and and know that we're talking about a network with 4096 IP addresses in it.
 
-##CIDRs and subnet masks
+## CIDRs and subnet masks
 If you've configured the network card of a computer before, you may recall that, along with the IP address of the computer, you sometime need to set the subnet mask. This is directly related to the CIDR prefix length. Essentially, the subnet mask for a prefix length _n_ is the four octets you get when you set the first _n_ bits to 1 and the remaining to 0\. For example
 
 | CIDR prefix length | Subnet mask |
@@ -87,7 +87,7 @@ If you've configured the network card of a computer before, you may recall that,
 | ... | ... |
 | 0 | 0.0.0.0 |
 
-##What are they for?
+## What are they for?
 The main use of CIDR blocks is routing. When you request a web page from a server, your request needs to get out of your network, onto the Internet, into the network that contains the target webserver and to that actual server.
 In order to do this, it must go through several routers. These routers do not contain information about how to reach every single individual IP address on the internet. But the _do_ contain information about how to get to different CIDR blocks.
 
