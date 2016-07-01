@@ -5,6 +5,7 @@ date: 2012-05-08 23:22:07.000000000 -05:00
 type: post
 published: true
 status: publish
+comments: true
 categories:
 - Dojo
 - Programming
