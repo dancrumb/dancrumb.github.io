@@ -6,7 +6,7 @@ comments: true
 categories:
  - Agile
 ---
-A significant part ofAgile development is figuring out how to make storiest smaller as part of refinement.
+A significant part of Agile development is figuring out how to make storiest smaller as part of refinement.
 
 Back in 2009, Richard Lawrence wrote [a post, covering nine patterns](1) that
 he uses to effectively split large stories into smaller ones.
