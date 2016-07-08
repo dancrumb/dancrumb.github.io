@@ -1,6 +1,10 @@
 ---
 layout: post
 type: post
+status: publish
+comments: true
+categories:
+ - Agile
 ---
 A significant part ofAgile development is figuring out how to make storiest smaller as part of refinement.
 
