@@ -41,7 +41,7 @@ are spent simply servicing the debt without actually moving forward.
 Martin Fowler writes nicely about [different types of Technical Debt](1). What he generously calls "Reckless & Inadvertent" Technical Debt,
 I would just call crappy engineering
 
-## Why are Bugs not Technical Debt
+## Why are Bugs not Technical Debt?
 Technical Debt is used to get features out the door quickly. Rapid development can lead to bugs, so it's certainly true that bugs
 can be caused by Technical Debt. The subtle killer here is that you can have bug free code that is riddled with Technical Debt.
 
