@@ -8,9 +8,18 @@
     {% include header.html %}
 
     <div class="page-content">
+      <div class="sidebar">
+        <h1>Most recent posts</h1>
+        <ul>
+          {% for post in site.posts offset: 0 limit: 5  %}
+          <li>{{ post.title }}</li>
+          {% endfor %}
+        </ul>
+      </div>
       <div class="wrapper">
         {{ content }}
       </div>
+
     </div>
 
     {% include footer.html %}

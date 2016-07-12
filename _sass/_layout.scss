@@ -167,6 +167,7 @@
 /**
  * Page content
  */
+
 .page-content {
     padding: $spacing-unit 0;
 }
@@ -194,7 +195,23 @@
     font-size: 24px;
 }
 
+/**
+ * Sidebar
+ */
 
+.sidebar {
+    float: right;
+    width: 250px;
+    padding-right: 40px;
+
+    h1 {
+        font-size: 24px;
+    }
+
+    ul {
+        margin-left: 20px;
+    }
+}
 
 /**
  * Posts
@@ -239,4 +256,5 @@
             font-size: 18px;
         }
     }
+
 }
