@@ -115,7 +115,6 @@ blockquote {
     padding-left: $spacing-unit / 2;
     font-size: 18px;
     letter-spacing: -1px;
-    font-style: italic;
 
     > :last-child {
         margin-bottom: 0;
@@ -150,7 +149,14 @@ pre {
     }
 }
 
+/**
+ * Superscript
+ */
 
+sup {
+    padding-left: 2px;
+    font-size: small;
+}
 
 /**
  * Wrapper

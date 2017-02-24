@@ -8,7 +8,7 @@ categories:
 ---
 A significant part of Agile development is figuring out how to make storiest smaller as part of refinement.
 
-Back in 2009, Richard Lawrence wrote [a post, covering nine patterns](1) that
+Back in 2009, Richard Lawrence wrote [a post, covering nine patterns](http://agileforall.com/patterns-for-splitting-user-stories/) that
 he uses to effectively split large stories into smaller ones.
 
 To his nine patterns, I'd like to add a tenth that I've discovered through
@@ -55,4 +55,3 @@ giving greater opportunity for iteration.
 Certainly, avoiding dependencies altogether is preferred, but when you're not that lucky, this is a great patterns to try
 to reduce risk and reduce story size.
 
-  [1]:http://agileforall.com/patterns-for-splitting-user-stories/

@@ -38,7 +38,7 @@ to otherwise unreachable things.
 As with monetary debt, Technical Debt carries a cost and, if not well looked after, this cost can grow and grow until all your efforts
 are spent simply servicing the debt without actually moving forward.
 
-Martin Fowler writes nicely about [different types of Technical Debt](1). What he generously calls "Reckless & Inadvertent" Technical Debt,
+Martin Fowler writes nicely about [different types of Technical Debt](http://martinfowler.com/bliki/TechnicalDebtQuadrant.html). What he generously calls "Reckless & Inadvertent" Technical Debt,
 I would just call crappy engineering
 
 ## Why are Bugs not Technical Debt?
@@ -69,4 +69,4 @@ Test well, design carefully and you'll find you get a favourable interest rate o
 
 
 
-  [1]: http://martinfowler.com/bliki/TechnicalDebtQuadrant.html
+
