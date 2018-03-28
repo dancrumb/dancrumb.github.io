@@ -33,3 +33,5 @@ defaults:
         display_name: Dan Rumney
         first_name: 'Dan'
         last_name: 'Rumney'
+
+theme: jekyll-theme-hacker
