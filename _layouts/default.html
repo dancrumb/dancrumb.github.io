@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
   {% include head.html %}
 
   <body>
-
     {% include header.html %}
 
     <div class="page-content">
       <div class="sidebar">
         <div class="sidebar-header">Most recent posts</div>
-        <ul>
-          {% for post in site.posts offset: 0 limit: 5  %}
-          <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+        <ul itemscope itemtype="https://schema.org/Blog">
+          {% for post in site.posts offset: 0 limit: 5 %}
+          <li
+            itemprop="blogPost"
+            itemscope
+            itemtype="https://schema.org/BlogPosting"
+          >
+            <a itemprop="url" href="{{ post.url }}">
+                <span itemprop="name headline">{{ post.title }}</span>
+                <span style="display: none;" itemprop="author">{{post.author}}</span>
+            </a>
+          </li>
           {% endfor %}
         </ul>
       </div>
-      <div class="wrapper">
-        {{ content }}
-      </div>
-
+      <div class="wrapper">{{ content }}</div>
     </div>
 
     {% include footer.html %}
-
   </body>
-
 </html>

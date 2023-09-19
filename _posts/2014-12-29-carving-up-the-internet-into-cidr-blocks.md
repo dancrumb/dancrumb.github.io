@@ -7,7 +7,6 @@ published: true
 status: publish
 categories:
   - networking
-tags: []
 ---
 I recently had to understand what CIDR blocks are and how they describe blocks of IP addresses and I figured I'd share what I learned.
 

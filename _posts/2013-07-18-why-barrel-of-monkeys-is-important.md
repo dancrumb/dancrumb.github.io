@@ -7,7 +7,6 @@ published: true
 status: publish
 categories:
 - Performing
-tags: []
 ---
 Those of you who know me are probably aware that I spend a lot of time performing with [Barrel Of Monkeys](http://barrelofmonkeys.org). I could happily tell you why _I_ think they're important, but I'm going to let 15-year-old Sebby D, who attended our Loyola Park After School Program tell you in his own words:
 

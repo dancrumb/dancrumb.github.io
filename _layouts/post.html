@@ -2,39 +2,67 @@
 layout: default
 comments: true
 ---
-<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
+<article
+  class="post"
+  itemscope
+  itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-    <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author.display_name }}</span></span>{% endif %}</p>
+    <p class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
+      {% if page.author %}
+        •
+        <span
+          itemprop="author"
+          itemscope
+          itemtype="http://schema.org/Person">
+          <span itemprop="name">{{ page.author.display_name }}</span>
+        </span>
+      {% endif %}
+      {% if page.categories.size > 0 %}
+        <br/>Categories:
+        {% for category in page.categories %}
+          <span itemprop="keywords">{{ category }}</span>
+          {% if forloop.last == false %}
+            •
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      {% if page.tags.size > 0 %}
+        <br/>Tags:
+        {% for tag in page.tags %}
+          <span itemprop="keywords">{{ tag }}</span>
+          {% if forloop.last == false %}
+            •
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </p>
   </header>
 
-  <div class="post-content" itemprop="articleBody">
-    {{ content }}
-  </div>
+  <div class="post-content" itemprop="articleBody">{{ content }}</div>
   {% if page.comments %}
-  <div id="disqus_thread"></div>
-  <script>
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-     */
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_config = function() {
+        this.page.url = "{{ page.url | prepend: site.url }}"; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "{{ page.url }}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
 
-     var disqus_config = function () {
-     this.page.url = '{{ page.url | prepend: site.url }}';  // Replace PAGE_URL with your page's canonical URL variable
-     this.page.identifier = '{{ page.url }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-     };
+      (function() {
+        var d = document,
+          s = d.createElement("script");
 
-    (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
-      var d = document, s = d.createElement('script');
+        s.src = "//dancrumb.disqus.com/embed.js";
 
-      s.src = '//dancrumb.disqus.com/embed.js';  // IMPORTANT: Replace EXAMPLE with your forum shortname!
-
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        s.setAttribute("data-timestamp", + new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </noscript>
   {% endif %}
-
 </article>

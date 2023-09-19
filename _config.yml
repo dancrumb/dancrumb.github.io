@@ -11,7 +11,6 @@ url: http://dancrumb.com
 email: dancrumb@gmail.com
 description: Dan Rumney's personal blog
 baseurl: "" # the subpath of your site, e.g. /blog
-twitter_username: therealdancrumb
 github_username:  dancrumb
 timezone: America/Chicago
 
@@ -19,6 +18,8 @@ timezone: America/Chicago
 markdown: kramdown
 kramdown:
   extensions: ["no_intra_emphasis", "tables", "autolink", "strikethrough", "with_toc_data"]
+  math_engine: katex
+
 
 exclude:
   - vendor

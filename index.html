@@ -7,14 +7,15 @@ comments: true
 
   <h1 class="page-heading">Posts</h1>
 
-  <ul class="post-list">
+  <ul itemscope itemtype="https://schema.org/Blog" ="post-list">
     {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+      <li itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <span itemprop="datePublished" class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
         <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.github.url }}">{{ post.title }}</a>
+          <a itemprop="url" class="post-link" href="{{ post.url | prepend: site.github.url }}"><span itemprop="headline name">{{ post.title }}</span></a>
         </h2>
+        <span style="display: none;" itemprop="author">{{post.author}}</span>
       </li>
     {% endfor %}
   </ul>

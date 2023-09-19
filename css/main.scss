@@ -20,7 +20,7 @@ $grey-color-light: lighten($grey-color, 40%);
 $grey-color-dark:  darken($grey-color, 25%);
 
 // Width of the content area
-$content-width:    800px;
+$content-width:    1000px;
 
 $on-palm:          600px;
 $on-laptop:        800px;
@@ -30,8 +30,8 @@ $on-laptop:        800px;
 // Use media queries like this:
 // @include media-query($on-palm) {
 //     .wrapper {
-//         padding-right: $spacing-unit / 2;
-//         padding-left: $spacing-unit / 2;
+//         padding-right: math.div($spacing-unit, 2);
+//         padding-left: math.div($spacing-unit, 2);
 //     }
 // }
 @mixin media-query($device) {
@@ -49,3 +49,45 @@ $on-laptop:        800px;
         "syntax-highlighting",
         "resume"
 ;
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px;
+
+    td, th {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+
+        &.empty {
+            border: none;
+            background-color: transparent;
+        }
+    }
+
+    th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #dddddd;
+        color: black;
+    }
+
+    tr {
+        &:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    }
+}
+
+kbd > kbd {
+    border-radius: 3px;
+    padding: 2px 4px 0;
+    border: 1px solid black;
+    background-color: #f7f7f7;
+  }
+
+.katex-html {
+    font-family: monospace;
+}
