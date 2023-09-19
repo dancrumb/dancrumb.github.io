@@ -7,11 +7,11 @@
 
 # Site settings
 title: All Geekness Great and Small
-url: http://dancrumb.com
+url: https://dancrumb.com
 email: dancrumb@gmail.com
 description: Dan Rumney's personal blog
 baseurl: "" # the subpath of your site, e.g. /blog
-github_username:  dancrumb
+github_username: dancrumb
 timezone: America/Chicago
 
 # Build settings
@@ -22,17 +22,16 @@ kramdown:
 
 
 exclude:
-  - vendor
+- vendor
 
 defaults:
-  -
-    scope:
-      type: posts
-    values:
-      author:
-        email: dancrumb@gmail.com
-        display_name: Dan Rumney
-        first_name: 'Dan'
-        last_name: 'Rumney'
+- scope:
+    type: posts
+  values:
+    author:
+      email: dancrumb@gmail.com
+      display_name: Dan Rumney
+      first_name: 'Dan'
+      last_name: 'Rumney'
 
 theme: jekyll-theme-hacker

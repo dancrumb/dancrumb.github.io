@@ -17,7 +17,10 @@
           >
             <a itemprop="url" href="{{ post.url }}">
                 <span itemprop="name headline">{{ post.title }}</span>
-                <span style="display: none;" itemprop="author">{{post.author}}</span>
+                <span style="display: none;" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                  <span itemprop="name">{{post.author.display_name}}</span>
+                  <span itemprop="url">{{ site.url }}{% link about.md %}</span>
+                </span>
             </a>
           </li>
           {% endfor %}
