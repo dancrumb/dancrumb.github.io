@@ -19,6 +19,8 @@
   />
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}"
   href="{{ "/feed.xml" | prepend: site.github.url | prepend: site.url }}">
+  
+  {% if jekyll.environment != "development" %}
   <!-- Google tag (gtag.js) -->
   <script
     async
@@ -33,6 +35,7 @@
 
     gtag("config", "G-5NXJW4P9HW");
   </script>
+  {% endif %}
 
   {% if page.katex %}
   <!-- KaTeX -->
